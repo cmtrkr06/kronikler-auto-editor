@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-10-16T10:22:41+03:00",
+ "taken_at": "2026-10-16T10:26:54+03:00",
  "hub": {
   "url": "https://shiftandtrend.com/araclar/",
   "stats": {
@@ -140,23 +140,28 @@
    "outcomes": [
     {
      "label": "Hayır, sorun yaşamadım",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     },
     {
      "label": "Mekatronik onarıldı / değişti",
-     "count": 2
+     "count": 2,
+     "unit": "%"
     },
     {
      "label": "Kavrama (debriyaj) değişti",
-     "count": 3
+     "count": 3,
+     "unit": "%"
     },
     {
      "label": "Titreme / sarsıntı var, henüz onarılmadı",
-     "count": 6
+     "count": 6,
+     "unit": "%"
     },
     {
      "label": "Bilmiyorum / aracı yeni aldım",
-     "count": 6
+     "count": 6,
+     "unit": "%"
     }
    ],
    "facts": [
@@ -210,19 +215,23 @@
    "outcomes": [
     {
      "label": "Hayır, sorun yaşamadım",
-     "count": 40
+     "count": 40,
+     "unit": "%"
     },
     {
      "label": "Evet, değişti / onarıldı",
-     "count": 1
+     "count": 1,
+     "unit": "%"
     },
     {
      "label": "Belirti var, henüz değişmedi",
-     "count": 1
+     "count": 1,
+     "unit": "%"
     },
     {
      "label": "Bilmiyorum / aracı yeni aldım",
-     "count": 8
+     "count": 8,
+     "unit": "%"
     }
    ],
    "facts": [
@@ -246,15 +255,18 @@
    "outcomes": [
     {
      "label": "Hayır, sorun yaşamadım",
-     "count": 20
+     "count": 20,
+     "unit": "%"
     },
     {
      "label": "Evet, değişti / onarıldı",
-     "count": 1
+     "count": 1,
+     "unit": "%"
     },
     {
      "label": "Bilmiyorum / aracı yeni aldım",
-     "count": 2
+     "count": 2,
+     "unit": "%"
     }
    ],
    "facts": [],
@@ -271,15 +283,18 @@
    "outcomes": [
     {
      "label": "Hayır, sorun yaşamadım",
-     "count": 12
+     "count": 12,
+     "unit": "%"
     },
     {
      "label": "Mekatronik onarıldı / değişti",
-     "count": 1
+     "count": 1,
+     "unit": "%"
     },
     {
      "label": "Bilmiyorum / aracı yeni aldım",
-     "count": 2
+     "count": 2,
+     "unit": "%"
     }
    ],
    "facts": [
@@ -317,23 +332,28 @@
     "outcomes": [
      {
       "label": "Hayır, sorun yaşamadım",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Mekatronik onarıldı / değişti",
-      "count": 2
+      "count": 2,
+      "unit": "%"
      },
      {
       "label": "Kavrama (debriyaj) değişti",
-      "count": 3
+      "count": 3,
+      "unit": "%"
      },
      {
       "label": "Titreme / sarsıntı var, henüz onarılmadı",
-      "count": 6
+      "count": 6,
+      "unit": "%"
      },
      {
       "label": "Bilmiyorum / aracı yeni aldım",
-      "count": 6
+      "count": 6,
+      "unit": "%"
      }
     ],
     "facts": [
@@ -610,15 +630,18 @@
     "outcomes": [
      {
       "label": "Hayır, sorun yaşamadım",
-      "count": 12
+      "count": 12,
+      "unit": "%"
      },
      {
       "label": "Mekatronik onarıldı / değişti",
-      "count": 1
+      "count": 1,
+      "unit": "%"
      },
      {
       "label": "Bilmiyorum / aracı yeni aldım",
-      "count": 2
+      "count": 2,
+      "unit": "%"
      }
     ],
     "facts": [
@@ -766,101 +789,122 @@
     "Bu araçta hangi donanımı önerirsin?": [
      {
       "label": "Life",
-      "count": 48
+      "count": 48,
+      "unit": "%"
      },
      {
       "label": "Style",
-      "count": 24
+      "count": 24,
+      "unit": "%"
      },
      {
       "label": "R-Line",
-      "count": 18
+      "count": 18,
+      "unit": "%"
      },
      {
       "label": "Impression",
-      "count": 9
+      "count": 9,
+      "unit": "%"
      }
     ],
     "Bu araçta hangi motor tercih edilmeli?": [
      {
       "label": "1.5 eTSI 116 HP",
-      "count": 70
+      "count": 70,
+      "unit": "%"
      },
      {
       "label": "1.5 eTSI 150 HP",
-      "count": 18
+      "count": 18,
+      "unit": "%"
      },
      {
       "label": "1.5 TSI 116 HP",
-      "count": 12
+      "count": 12,
+      "unit": "%"
      }
     ],
     "Bu aracı neden tercih ettin?": [
      {
       "label": "Konfor",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Tasarım",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Sorunsuzluk",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "İkinci El Değeri",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Güvenlik",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Klima",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Elektrik",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Multimedya",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Rüzgâr Sesi",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "İlk Arabasını Alacaklara",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Gençlere",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Şehir İçi",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "50 – 100 Bin",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ]
    },
@@ -875,19 +919,23 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 40
+       "count": 40,
+       "unit": "%"
       },
       {
        "label": "Evet, değişti / onarıldı",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Belirti var, henüz değişmedi",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 8
+       "count": 8,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -911,23 +959,28 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 67
+       "count": 67,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       },
       {
        "label": "Kavrama (debriyaj) değişti",
-       "count": 3
+       "count": 3,
+       "unit": "%"
       },
       {
        "label": "Titreme / sarsıntı var, henüz onarılmadı",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -971,7 +1024,17 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-150-hp-style-dsg-7-ileri/"
     }
-   ]
+   ],
+   "low_data": [
+    "Bu aracı neden tercih ettin?",
+    "Seni en çok rahatsız eden ne oldu?",
+    "Bu aracı tekrar alır mıydın?",
+    "Kime önerirsin?",
+    "Aracı hangi amaçla kullanıyorsun?",
+    "Şu an kaç kilometrede?",
+    "Gerçek yakıt tüketimin?"
+   ],
+   "pending_faults": []
   },
   "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/": {
    "url": "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/",
@@ -998,33 +1061,40 @@
    "strengths": [
     {
      "label": "Konfor",
-     "count": 71
+     "count": 71,
+     "unit": "%"
     },
     {
      "label": "Fiyat / Performans",
-     "count": 71
+     "count": 71,
+     "unit": "%"
     },
     {
      "label": "Düşük Yakıt",
-     "count": 58
+     "count": 58,
+     "unit": "%"
     },
     {
      "label": "İkinci El Değeri",
-     "count": 48
+     "count": 48,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Trim Sesi",
-     "count": 58
+     "count": 58,
+     "unit": "%"
     },
     {
      "label": "Farlar",
-     "count": 21
+     "count": 21,
+     "unit": "%"
     },
     {
      "label": "Multimedya",
-     "count": 21
+     "count": 21,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -1055,213 +1125,262 @@
     "Bu araçta hangi donanımı önerirsin?": [
      {
       "label": "Life",
-      "count": 48
+      "count": 48,
+      "unit": "%"
      },
      {
       "label": "Style",
-      "count": 24
+      "count": 24,
+      "unit": "%"
      },
      {
       "label": "R-Line",
-      "count": 18
+      "count": 18,
+      "unit": "%"
      },
      {
       "label": "Impression",
-      "count": 9
+      "count": 9,
+      "unit": "%"
      }
     ],
     "Bu araçta hangi motor tercih edilmeli?": [
      {
       "label": "1.5 eTSI 116 HP",
-      "count": 70
+      "count": 70,
+      "unit": "%"
      },
      {
       "label": "1.5 eTSI 150 HP",
-      "count": 18
+      "count": 18,
+      "unit": "%"
      },
      {
       "label": "1.5 TSI 116 HP",
-      "count": 12
+      "count": 12,
+      "unit": "%"
      }
     ],
     "Bu aracı neden tercih ettin?": [
      {
       "label": "Konfor",
-      "count": 71
+      "count": 71,
+      "unit": "%"
      },
      {
       "label": "Fiyat / Performans",
-      "count": 71
+      "count": 71,
+      "unit": "%"
      },
      {
       "label": "Düşük Yakıt",
-      "count": 58
+      "count": 58,
+      "unit": "%"
      },
      {
       "label": "İkinci El Değeri",
-      "count": 48
+      "count": 48,
+      "unit": "%"
      },
      {
       "label": "Güvenlik",
-      "count": 48
+      "count": 48,
+      "unit": "%"
      },
      {
       "label": "Tasarım",
-      "count": 39
+      "count": 39,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 39
+      "count": 39,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 35
+      "count": 35,
+      "unit": "%"
      },
      {
       "label": "Donanım",
-      "count": 35
+      "count": 35,
+      "unit": "%"
      },
      {
       "label": "Sorunsuzluk",
-      "count": 32
+      "count": 32,
+      "unit": "%"
      },
      {
       "label": "Performans",
-      "count": 26
+      "count": 26,
+      "unit": "%"
      },
      {
       "label": "Aile Aracı",
-      "count": 19
+      "count": 19,
+      "unit": "%"
      },
      {
       "label": "Geniş İç Mekân",
-      "count": 6
+      "count": 6,
+      "unit": "%"
      },
      {
       "label": "Bagaj",
-      "count": 3
+      "count": 3,
+      "unit": "%"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Trim Sesi",
-      "count": 58
+      "count": 58,
+      "unit": "%"
      },
      {
       "label": "Farlar",
-      "count": 21
+      "count": 21,
+      "unit": "%"
      },
      {
       "label": "Multimedya",
-      "count": 21
+      "count": 21,
+      "unit": "%"
      },
      {
       "label": "Elektrik",
-      "count": 13
+      "count": 13,
+      "unit": "%"
      },
      {
       "label": "Motor",
-      "count": 13
+      "count": 13,
+      "unit": "%"
      },
      {
       "label": "Süspansiyon",
-      "count": 13
+      "count": 13,
+      "unit": "%"
      },
      {
       "label": "Kaporta / Boya",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "Yalıtım",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "Malzeme Kalitesi",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "Diğer",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "İç Mekân",
-      "count": 4
+      "count": 4,
+      "unit": "%"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 84
+      "count": 84,
+      "unit": "%"
      },
      {
       "label": "Kararsızım",
-      "count": 11
+      "count": 11,
+      "unit": "%"
      },
      {
       "label": "Hayır",
-      "count": 5
+      "count": 5,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Gençlere",
-      "count": 71
+      "count": 71,
+      "unit": "%"
      },
      {
       "label": "Ekonomi Arayanlara",
-      "count": 68
+      "count": 68,
+      "unit": "%"
      },
      {
       "label": "İlk Arabasını Alacaklara",
-      "count": 61
+      "count": 61,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Şehir İçine",
-      "count": 39
+      "count": 39,
+      "unit": "%"
      },
      {
       "label": "Ailelere",
-      "count": 39
+      "count": 39,
+      "unit": "%"
      },
      {
       "label": "Performans Sevenlere",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Karma",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 13
+      "count": 13,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 3
+      "count": 3,
+      "unit": "%"
      },
      {
       "label": "Hafta Sonu",
-      "count": 3
+      "count": 3,
+      "unit": "%"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "0 – 20 Bin",
-      "count": 68
+      "count": 68,
+      "unit": "%"
      },
      {
       "label": "20 – 50 Bin",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "150 – 200 Bin",
-      "count": 3
+      "count": 3,
+      "unit": "%"
      }
     ]
    },
@@ -1276,15 +1395,18 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 20
+       "count": 20,
+       "unit": "%"
       },
       {
        "label": "Evet, değişti / onarıldı",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       }
      ],
      "facts": [],
@@ -1301,23 +1423,28 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 67
+       "count": 67,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       },
       {
        "label": "Kavrama (debriyaj) değişti",
-       "count": 3
+       "count": 3,
+       "unit": "%"
       },
       {
        "label": "Titreme / sarsıntı var, henüz onarılmadı",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -1361,6 +1488,196 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/"
     }
+   ],
+   "low_data": [],
+   "pending_faults": []
+  },
+  "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/": {
+   "url": "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/",
+   "make": "CUPRA Terramar",
+   "trim": "1. Nesil 1.5 eTSI 150 HP Supreme DSG 7 İleri",
+   "carscore": 85,
+   "verdict": "Sahipleri çok memnun",
+   "opinions": 5,
+   "rating": 4.0,
+   "rating_count": 3,
+   "repurchase_pct": null,
+   "meters": {
+    "Sorunsuzluk": 100,
+    "Yorum puanı": 80,
+    "Performans": 70,
+    "Verimlilik": 73,
+    "Kullanışlılık": 56
+   },
+   "sources": {
+    "teknik veri": 67,
+    "kullanıcı görüşü": 92
+   },
+   "strengths": [
+    {
+     "label": "Tasarım",
+     "count": 100,
+     "unit": "%"
+    },
+    {
+     "label": "Düşük Yakıt",
+     "count": 100,
+     "unit": "%"
+    },
+    {
+     "label": "Performans",
+     "count": 100,
+     "unit": "%"
+    },
+    {
+     "label": "Bagaj",
+     "count": 100,
+     "unit": "%"
+    }
+   ],
+   "complaints": [],
+   "specs": {
+    "Motor": "1.5 eTSI",
+    "Yakıt Türü": "Hibrit",
+    "Motor Hacmi": "1,5 L (1.498 cc)",
+    "Motor Gücü": "150 HP",
+    "Maksimum Tork": "250 Nm / 3.500 rpm",
+    "Vites": "DSG (Çift Kavramalı), 7 ileri",
+    "Şanzıman": "DQ381",
+    "Kavrama": "Islak",
+    "Çekiş": "Önden Çekiş",
+    "0-100 km/s": "9,3 saniye",
+    "Üretim Platformu": "MQB EVO",
+    "Segment": "C — Kompakt",
+    "Kasa Tipi": "SUV, 5 kapı",
+    "Bagaj Kapasitesi": "642 L",
+    "Arka Süspansiyon": "Çok Bağlantılı (bağımsız)"
+   },
+   "consumption": {
+    "Ortalama": 7.2,
+    "En düşük": 7.2,
+    "En yüksek": 7.2,
+    "Kayıt": 1
+   },
+   "participants": 5,
+   "stats": {
+    "Bu araçta hangi donanımı önerirsin?": [
+     {
+      "label": "Supreme",
+      "count": 1,
+      "unit": "adet"
+     },
+     {
+      "label": "VZ-Line",
+      "count": 1,
+      "unit": "adet"
+     }
+    ],
+    "Bu aracı neden tercih ettin?": [
+     {
+      "label": "Tasarım",
+      "count": 1,
+      "unit": "adet"
+     },
+     {
+      "label": "Düşük Yakıt",
+      "count": 1,
+      "unit": "adet"
+     },
+     {
+      "label": "Performans",
+      "count": 1,
+      "unit": "adet"
+     },
+     {
+      "label": "Bagaj",
+      "count": 1,
+      "unit": "adet"
+     },
+     {
+      "label": "Fiyat / Performans",
+      "count": 1,
+      "unit": "adet"
+     }
+    ],
+    "Bu aracı tekrar alır mıydın?": [
+     {
+      "label": "Evet",
+      "count": 2,
+      "unit": "adet"
+     }
+    ],
+    "Kime önerirsin?": [
+     {
+      "label": "Performans Sevenlere",
+      "count": 1,
+      "unit": "adet"
+     },
+     {
+      "label": "SUV Sevenlere",
+      "count": 1,
+      "unit": "adet"
+     }
+    ],
+    "Aracı hangi amaçla kullanıyorsun?": [
+     {
+      "label": "Şehir İçi",
+      "count": 1,
+      "unit": "adet"
+     }
+    ],
+    "Şu an kaç kilometrede?": [
+     {
+      "label": "0 – 20 Bin",
+      "count": 1,
+      "unit": "adet"
+     }
+    ]
+   },
+   "faults": [
+    {
+     "unit": "DQ381",
+     "title": "DSG Şanzıman (Mekatronik ve Kavrama)",
+     "intro": "Çift kavramalı kutuda en çok sorulan iki konu: mekatronik ünitesi ve kavrama paketi. Bakım geçmişi de burada toplanıyor — asıl işe yarayan veri o.",
+     "reports": 15,
+     "with_issue": 1,
+     "verified_owners": 1,
+     "outcomes": [
+      {
+       "label": "Hayır, sorun yaşamadım",
+       "count": 12,
+       "unit": "%"
+      },
+      {
+       "label": "Mekatronik onarıldı / değişti",
+       "count": 1,
+       "unit": "%"
+      },
+      {
+       "label": "Bilmiyorum / aracı yeni aldım",
+       "count": 2,
+       "unit": "%"
+      }
+     ],
+     "facts": [
+      {
+       "question": "Şanzıman yağı ve filtresi değişti mi?",
+       "answer": "Hiç değişmedi",
+       "base": 9,
+       "stat": "en sık"
+      }
+     ],
+     "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
+     "source_url": "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/"
+    }
+   ],
+   "low_data": [],
+   "pending_faults": [
+    {
+     "title": "48V Jeneratör (Alternatör)",
+     "collected": 7,
+     "threshold": 12
+    }
    ]
   },
   "https://shiftandtrend.com/arac/cupra-formentor-km7-1-5-tsi-150-hp-formentor-dsg/": {
@@ -1388,37 +1705,45 @@
    "strengths": [
     {
      "label": "Tasarım",
-     "count": 79
+     "count": 79,
+     "unit": "%"
     },
     {
      "label": "Performans",
-     "count": 71
+     "count": 71,
+     "unit": "%"
     },
     {
      "label": "Donanım",
-     "count": 64
+     "count": 64,
+     "unit": "%"
     },
     {
      "label": "Fiyat / Performans",
-     "count": 64
+     "count": 64,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Yalıtım",
-     "count": 58
+     "count": 58,
+     "unit": "%"
     },
     {
      "label": "Rüzgâr Sesi",
-     "count": 42
+     "count": 42,
+     "unit": "%"
     },
     {
      "label": "Süspansiyon",
-     "count": 33
+     "count": 33,
+     "unit": "%"
     },
     {
      "label": "Trim Sesi",
-     "count": 33
+     "count": 33,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -1449,181 +1774,223 @@
     "Bu aracı neden tercih ettin?": [
      {
       "label": "Tasarım",
-      "count": 79
+      "count": 79,
+      "unit": "%"
      },
      {
       "label": "Performans",
-      "count": 71
+      "count": 71,
+      "unit": "%"
      },
      {
       "label": "Donanım",
-      "count": 64
+      "count": 64,
+      "unit": "%"
      },
      {
       "label": "Fiyat / Performans",
-      "count": 64
+      "count": 64,
+      "unit": "%"
      },
      {
       "label": "İkinci El Değeri",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Güvenlik",
-      "count": 36
+      "count": 36,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Sorunsuzluk",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Konfor",
-      "count": 21
+      "count": 21,
+      "unit": "%"
      },
      {
       "label": "Aile Aracı",
-      "count": 21
+      "count": 21,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 21
+      "count": 21,
+      "unit": "%"
      },
      {
       "label": "Yedek Parça",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      },
      {
       "label": "Geniş İç Mekân",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      },
      {
       "label": "Bagaj",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      },
      {
       "label": "Düşük Yakıt",
-      "count": 7
+      "count": 7,
+      "unit": "%"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Yalıtım",
-      "count": 58
+      "count": 58,
+      "unit": "%"
      },
      {
       "label": "Rüzgâr Sesi",
-      "count": 42
+      "count": 42,
+      "unit": "%"
      },
      {
       "label": "Süspansiyon",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Trim Sesi",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Malzeme Kalitesi",
-      "count": 17
+      "count": 17,
+      "unit": "%"
      },
      {
       "label": "Fren",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "Yakıt",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "İç Mekân",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "Multimedya",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      },
      {
       "label": "Diğer",
-      "count": 8
+      "count": 8,
+      "unit": "%"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 87
+      "count": 87,
+      "unit": "%"
      },
      {
       "label": "Kararsızım",
-      "count": 10
+      "count": 10,
+      "unit": "%"
      },
      {
       "label": "Hayır",
-      "count": 3
+      "count": 3,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Performans Sevenlere",
-      "count": 86
+      "count": 86,
+      "unit": "%"
      },
      {
       "label": "Gençlere",
-      "count": 79
+      "count": 79,
+      "unit": "%"
      },
      {
       "label": "İlk Arabasını Alacaklara",
-      "count": 36
+      "count": 36,
+      "unit": "%"
      },
      {
       "label": "SUV Sevenlere",
-      "count": 36
+      "count": 36,
+      "unit": "%"
      },
      {
       "label": "Ailelere",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Şehir İçine",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Karma",
-      "count": 50
+      "count": 50,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Hafta Sonu",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 7
+      "count": 7,
+      "unit": "%"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "20 – 50 Bin",
-      "count": 79
+      "count": 79,
+      "unit": "%"
      },
      {
       "label": "0 – 20 Bin",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      },
      {
       "label": "50 – 100 Bin",
-      "count": 7
+      "count": 7,
+      "unit": "%"
      }
     ]
    },
@@ -1638,15 +2005,18 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 12
+       "count": 12,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -1660,7 +2030,9 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/cupra-formentor-km7-1-5-tsi-150-hp-formentor-dsg/"
     }
-   ]
+   ],
+   "low_data": [],
+   "pending_faults": []
   },
   "https://shiftandtrend.com/arac/volkswagen-tiguan-mk3-1-5-etsi-150-hp-life-dsg-7-ileri/": {
    "url": "https://shiftandtrend.com/arac/volkswagen-tiguan-mk3-1-5-etsi-150-hp-life-dsg-7-ileri/",
@@ -1687,33 +2059,40 @@
    "strengths": [
     {
      "label": "İkinci El Değeri",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "Tasarım",
-     "count": 80
+     "count": 80,
+     "unit": "%"
     },
     {
      "label": "Aile Aracı",
-     "count": 80
+     "count": 80,
+     "unit": "%"
     },
     {
      "label": "Geniş İç Mekân",
-     "count": 80
+     "count": 80,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Multimedya",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     },
     {
      "label": "Yazılım",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     },
     {
      "label": "Elektrik",
-     "count": 33
+     "count": 33,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -1744,131 +2123,160 @@
     "Bu araçta hangi donanımı önerirsin?": [
      {
       "label": "R-Line",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "Elegance",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "Life",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ],
     "Bu aracı neden tercih ettin?": [
      {
       "label": "İkinci El Değeri",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      },
      {
       "label": "Tasarım",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "Aile Aracı",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "Geniş İç Mekân",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 60
+      "count": 60,
+      "unit": "%"
      },
      {
       "label": "Konfor",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "Güvenlik",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "Bagaj",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      },
      {
       "label": "Donanım",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      },
      {
       "label": "Sorunsuzluk",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      },
      {
       "label": "Fiyat / Performans",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Multimedya",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Yazılım",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Elektrik",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Diğer",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 83
+      "count": 83,
+      "unit": "%"
      },
      {
       "label": "Kararsızım",
-      "count": 17
+      "count": 17,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Ailelere",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      },
      {
       "label": "SUV Sevenlere",
-      "count": 60
+      "count": 60,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Karma",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "0 – 20 Bin",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "20 – 50 Bin",
-      "count": 40
+      "count": 40,
+      "unit": "%"
      },
      {
       "label": "50 – 100 Bin",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ]
    },
@@ -1883,19 +2291,23 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 40
+       "count": 40,
+       "unit": "%"
       },
       {
        "label": "Evet, değişti / onarıldı",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Belirti var, henüz değişmedi",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 8
+       "count": 8,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -1919,15 +2331,18 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 12
+       "count": 12,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -1941,7 +2356,9 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/volkswagen-tiguan-mk3-1-5-etsi-150-hp-life-dsg-7-ileri/"
     }
-   ]
+   ],
+   "low_data": [],
+   "pending_faults": []
   },
   "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/": {
    "url": "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/",
@@ -1968,33 +2385,40 @@
    "strengths": [
     {
      "label": "Tasarım",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "Fiyat / Performans",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "Donanım",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     },
     {
      "label": "Uzun Yol",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Süspansiyon",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "Trim Sesi",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "Şanzıman",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -2025,77 +2449,93 @@
     "Bu aracı neden tercih ettin?": [
      {
       "label": "Tasarım",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      },
      {
       "label": "Fiyat / Performans",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      },
      {
       "label": "Donanım",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Uzun Yol",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Performans",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Süspansiyon",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      },
      {
       "label": "Trim Sesi",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      },
      {
       "label": "Şanzıman",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Gençlere",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      },
      {
       "label": "İlk Arabasını Alacaklara",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Performans Sevenlere",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Şehir İçi",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Karma",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "20 – 50 Bin",
-      "count": 2
+      "count": 2,
+      "unit": "adet"
      }
     ]
    },
@@ -2110,19 +2550,23 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 40
+       "count": 40,
+       "unit": "%"
       },
       {
        "label": "Evet, değişti / onarıldı",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Belirti var, henüz değişmedi",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 8
+       "count": 8,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -2146,23 +2590,28 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 67
+       "count": 67,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       },
       {
        "label": "Kavrama (debriyaj) değişti",
-       "count": 3
+       "count": 3,
+       "unit": "%"
       },
       {
        "label": "Titreme / sarsıntı var, henüz onarılmadı",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -2206,6 +2655,263 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/"
     }
+   ],
+   "low_data": [
+    "Bu aracı neden tercih ettin?",
+    "Seni en çok rahatsız eden ne oldu?",
+    "Kime önerirsin?",
+    "Aracı hangi amaçla kullanıyorsun?",
+    "Şu an kaç kilometrede?",
+    "Gerçek yakıt tüketimin?"
+   ],
+   "pending_faults": []
+  },
+  "https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/": {
+   "url": "https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/",
+   "make": "SEAT Leon",
+   "trim": "Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri",
+   "carscore": 78,
+   "verdict": "Genel olarak memnun",
+   "opinions": 10,
+   "rating": 4.8,
+   "rating_count": 8,
+   "repurchase_pct": 80,
+   "meters": {
+    "Tekrar satın alma isteği": 80,
+    "Sorunsuzluk": 60,
+    "Yorum puanı": 95,
+    "Performans": 76,
+    "Verimlilik": 100,
+    "Kullanışlılık": 66
+   },
+   "sources": {
+    "teknik veri": 82,
+    "kullanıcı görüşü": 77
+   },
+   "strengths": [
+    {
+     "label": "Fiyat / Performans",
+     "count": 100,
+     "unit": "%"
+    },
+    {
+     "label": "Şehir İçi",
+     "count": 67,
+     "unit": "%"
+    },
+    {
+     "label": "Düşük Yakıt",
+     "count": 67,
+     "unit": "%"
+    },
+    {
+     "label": "Performans",
+     "count": 67,
+     "unit": "%"
+    }
+   ],
+   "complaints": [
+    {
+     "label": "Trim Sesi",
+     "count": 100,
+     "unit": "%"
+    },
+    {
+     "label": "Yalıtım",
+     "count": 40,
+     "unit": "%"
+    },
+    {
+     "label": "Malzeme Kalitesi",
+     "count": 40,
+     "unit": "%"
+    },
+    {
+     "label": "Fren",
+     "count": 20,
+     "unit": "%"
+    }
+   ],
+   "specs": {
+    "Motor": "1.5 e-Hybrid",
+    "Yakıt Türü": "Şarj Edilebilir Hibrit",
+    "Motor Hacmi": "1,5 L (1.498 cc)",
+    "Motor Gücü": "204 HP",
+    "Maksimum Tork": "350 Nm / 3.000 rpm",
+    "Vites": "DSG (Çift Kavramalı), 6 ileri",
+    "Şanzıman": "DQ400",
+    "Kavrama": "Islak",
+    "Çekiş": "Önden Çekiş",
+    "0-100 km/s": "7,7 saniye",
+    "Üretim Platformu": "MQB EVO",
+    "Segment": "C — Kompakt",
+    "Kasa Tipi": "Hatchback, 5 kapı",
+    "Bagaj Kapasitesi": "380 L",
+    "Arka Süspansiyon": "Çok Bağlantılı (bağımsız)",
+    "Batarya Kapasitesi": "Ekle",
+    "Elektrikli Menzil": "134 km"
+   },
+   "consumption": {
+    "Ortalama": 3.2,
+    "En düşük": 2.7,
+    "En yüksek": 4.0,
+    "Kayıt": 6
+   },
+   "participants": 10,
+   "stats": {
+    "Bu araçta hangi motor tercih edilmeli?": [
+     {
+      "label": "1.5 e-Hybrid 204 HP",
+      "count": 100,
+      "unit": "%"
+     }
+    ],
+    "Bu aracı neden tercih ettin?": [
+     {
+      "label": "Fiyat / Performans",
+      "count": 100,
+      "unit": "%"
+     },
+     {
+      "label": "Şehir İçi",
+      "count": 67,
+      "unit": "%"
+     },
+     {
+      "label": "Düşük Yakıt",
+      "count": 67,
+      "unit": "%"
+     },
+     {
+      "label": "Performans",
+      "count": 67,
+      "unit": "%"
+     },
+     {
+      "label": "Tasarım",
+      "count": 50,
+      "unit": "%"
+     },
+     {
+      "label": "Uzun Yol",
+      "count": 50,
+      "unit": "%"
+     },
+     {
+      "label": "Güvenlik",
+      "count": 33,
+      "unit": "%"
+     }
+    ],
+    "Seni en çok rahatsız eden ne oldu?": [
+     {
+      "label": "Trim Sesi",
+      "count": 100,
+      "unit": "%"
+     },
+     {
+      "label": "Yalıtım",
+      "count": 40,
+      "unit": "%"
+     },
+     {
+      "label": "Malzeme Kalitesi",
+      "count": 40,
+      "unit": "%"
+     },
+     {
+      "label": "Fren",
+      "count": 20,
+      "unit": "%"
+     },
+     {
+      "label": "Diğer",
+      "count": 20,
+      "unit": "%"
+     },
+     {
+      "label": "Süspansiyon",
+      "count": 20,
+      "unit": "%"
+     }
+    ],
+    "Bu aracı tekrar alır mıydın?": [
+     {
+      "label": "Evet",
+      "count": 80,
+      "unit": "%"
+     },
+     {
+      "label": "Hayır",
+      "count": 20,
+      "unit": "%"
+     }
+    ],
+    "Kime önerirsin?": [
+     {
+      "label": "Performans Sevenlere",
+      "count": 83,
+      "unit": "%"
+     },
+     {
+      "label": "Gençlere",
+      "count": 83,
+      "unit": "%"
+     },
+     {
+      "label": "Şehir İçine",
+      "count": 50,
+      "unit": "%"
+     },
+     {
+      "label": "Ekonomi Arayanlara",
+      "count": 33,
+      "unit": "%"
+     },
+     {
+      "label": "Uzun Yol Yapanlara",
+      "count": 33,
+      "unit": "%"
+     },
+     {
+      "label": "İlk Arabasını Alacaklara",
+      "count": 17,
+      "unit": "%"
+     }
+    ],
+    "Aracı hangi amaçla kullanıyorsun?": [
+     {
+      "label": "Karma",
+      "count": 83,
+      "unit": "%"
+     },
+     {
+      "label": "Şehir İçi",
+      "count": 17,
+      "unit": "%"
+     }
+    ],
+    "Şu an kaç kilometrede?": [
+     {
+      "label": "0 – 20 Bin",
+      "count": 50,
+      "unit": "%"
+     },
+     {
+      "label": "20 – 50 Bin",
+      "count": 50,
+      "unit": "%"
+     }
+    ]
+   },
+   "faults": [],
+   "low_data": [],
+   "pending_faults": [
+    {
+     "title": "DSG Şanzıman (Mekatronik ve Kavrama)",
+     "collected": 1,
+     "threshold": 10
+    }
    ]
   },
   "https://shiftandtrend.com/arac/volkswagen-passat-b8-facelift-1-5-tsi-150-hp-bussines-dsg-7-ileri/": {
@@ -2233,33 +2939,40 @@
    "strengths": [
     {
      "label": "İkinci El Değeri",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "Konfor",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     },
     {
      "label": "Tasarım",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     },
     {
      "label": "Uzun Yol",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Yakıt",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     },
     {
      "label": "Farlar",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     },
     {
      "label": "Rüzgâr Sesi",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -2290,133 +3003,162 @@
     "Bu araçta hangi donanımı önerirsin?": [
      {
       "label": "Bussines",
-      "count": 50
+      "count": 50,
+      "unit": "%"
      },
      {
       "label": "R-Line",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      },
      {
       "label": "Elegance",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      }
     ],
     "Bu araçta hangi motor tercih edilmeli?": [
      {
       "label": "1.5 TSI 150 HP",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "2.0 TDI 200 HP",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ],
     "Bu aracı neden tercih ettin?": [
      {
       "label": "İkinci El Değeri",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      },
      {
       "label": "Konfor",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Tasarım",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Fiyat / Performans",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Aile Aracı",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Yedek Parça",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Performans",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Sorunsuzluk",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Güvenlik",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Geniş İç Mekân",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      },
      {
       "label": "Bagaj",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Yakıt",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Farlar",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Rüzgâr Sesi",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 86
+      "count": 86,
+      "unit": "%"
      },
      {
       "label": "Hayır",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      },
      {
       "label": "Ailelere",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Şehir İçine",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Karma",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "50 – 100 Bin",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "150 – 200 Bin",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      }
     ]
    },
@@ -2431,23 +3173,28 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 67
+       "count": 67,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       },
       {
        "label": "Kavrama (debriyaj) değişti",
-       "count": 3
+       "count": 3,
+       "unit": "%"
       },
       {
        "label": "Titreme / sarsıntı var, henüz onarılmadı",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -2491,7 +3238,11 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/volkswagen-passat-b8-facelift-1-5-tsi-150-hp-bussines-dsg-7-ileri/"
     }
-   ]
+   ],
+   "low_data": [
+    "Seni en çok rahatsız eden ne oldu?"
+   ],
+   "pending_faults": []
   },
   "https://shiftandtrend.com/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/": {
    "url": "https://shiftandtrend.com/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/",
@@ -2518,37 +3269,45 @@
    "strengths": [
     {
      "label": "Şehir İçi",
-     "count": 57
+     "count": 57,
+     "unit": "%"
     },
     {
      "label": "Konfor",
-     "count": 57
+     "count": 57,
+     "unit": "%"
     },
     {
      "label": "Uzun Yol",
-     "count": 57
+     "count": 57,
+     "unit": "%"
     },
     {
      "label": "Tasarım",
-     "count": 43
+     "count": 43,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Süspansiyon",
-     "count": 67
+     "count": 67,
+     "unit": "%"
     },
     {
      "label": "Multimedya",
-     "count": 50
+     "count": 50,
+     "unit": "%"
     },
     {
      "label": "Klima",
-     "count": 17
+     "count": 17,
+     "unit": "%"
     },
     {
      "label": "Fren",
-     "count": 17
+     "count": 17,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -2579,161 +3338,198 @@
     "Bu aracı neden tercih ettin?": [
      {
       "label": "Şehir İçi",
-      "count": 57
+      "count": 57,
+      "unit": "%"
      },
      {
       "label": "Konfor",
-      "count": 57
+      "count": 57,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol",
-      "count": 57
+      "count": 57,
+      "unit": "%"
      },
      {
       "label": "Tasarım",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Düşük Yakıt",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Geniş İç Mekân",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Bagaj",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Fiyat / Performans",
-      "count": 43
+      "count": 43,
+      "unit": "%"
      },
      {
       "label": "Aile Aracı",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Performans",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Sorunsuzluk",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Güvenlik",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "Donanım",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Süspansiyon",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Multimedya",
-      "count": 50
+      "count": 50,
+      "unit": "%"
      },
      {
       "label": "Klima",
-      "count": 17
+      "count": 17,
+      "unit": "%"
      },
      {
       "label": "Fren",
-      "count": 17
+      "count": 17,
+      "unit": "%"
      },
      {
       "label": "Elektrik",
-      "count": 17
+      "count": 17,
+      "unit": "%"
      },
      {
       "label": "Trim Sesi",
-      "count": 17
+      "count": 17,
+      "unit": "%"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 82
+      "count": 82,
+      "unit": "%"
      },
      {
       "label": "Hayır",
-      "count": 18
+      "count": 18,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Ailelere",
-      "count": 75
+      "count": 75,
+      "unit": "%"
      },
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 75
+      "count": 75,
+      "unit": "%"
      },
      {
       "label": "Şehir İçine",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      },
      {
       "label": "Ekonomi Arayanlara",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      },
      {
       "label": "Performans Sevenlere",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Karma",
-      "count": 78
+      "count": 78,
+      "unit": "%"
      },
      {
       "label": "Şehir İçi",
-      "count": 22
+      "count": 22,
+      "unit": "%"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "0 – 20 Bin",
-      "count": 57
+      "count": 57,
+      "unit": "%"
      },
      {
       "label": "20 – 50 Bin",
-      "count": 29
+      "count": 29,
+      "unit": "%"
      },
      {
       "label": "50 – 100 Bin",
-      "count": 14
+      "count": 14,
+      "unit": "%"
      }
     ],
     "Kışın menzil ne kadar düşüyor?": [
      {
       "label": "%10'dan az",
-      "count": 50
+      "count": 50,
+      "unit": "%"
      },
      {
       "label": "%10 – %20",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      },
      {
       "label": "%30 – %40",
-      "count": 25
+      "count": 25,
+      "unit": "%"
      }
     ],
     "Bataryanın sağlık durumu (SoH)?": [
      {
       "label": "%95 üzeri",
-      "count": 100
+      "count": 100,
+      "unit": "%"
      }
     ]
    },
-   "faults": []
+   "faults": [],
+   "low_data": [],
+   "pending_faults": []
   },
   "https://shiftandtrend.com/arac/skoda-superb-b9-1-5-etsi-150-hp-prestige-dsg-7-ileri/": {
    "url": "https://shiftandtrend.com/arac/skoda-superb-b9-1-5-etsi-150-hp-prestige-dsg-7-ileri/",
@@ -2759,17 +3555,20 @@
    "strengths": [
     {
      "label": "Konfor",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     },
     {
      "label": "İkinci El Değeri",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     }
    ],
    "complaints": [
     {
      "label": "Multimedya",
-     "count": 100
+     "count": 100,
+     "unit": "%"
     }
    ],
    "specs": {
@@ -2800,77 +3599,92 @@
     "Bu araçta hangi donanımı önerirsin?": [
      {
       "label": "Sportline",
-      "count": 60
+      "count": 60,
+      "unit": "%"
      },
      {
       "label": "L&K",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      },
      {
       "label": "Prestige",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ],
     "Bu araçta hangi motor tercih edilmeli?": [
      {
       "label": "1.5 eTSI 150 HP",
-      "count": 80
+      "count": 80,
+      "unit": "%"
      },
      {
       "label": "2.0 TDI 193 HP",
-      "count": 20
+      "count": 20,
+      "unit": "%"
      }
     ],
     "Bu aracı neden tercih ettin?": [
      {
       "label": "Konfor",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "İkinci El Değeri",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Seni en çok rahatsız eden ne oldu?": [
      {
       "label": "Multimedya",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Diğer",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Bu aracı tekrar alır mıydın?": [
      {
       "label": "Evet",
-      "count": 67
+      "count": 67,
+      "unit": "%"
      },
      {
       "label": "Hayır",
-      "count": 33
+      "count": 33,
+      "unit": "%"
      }
     ],
     "Kime önerirsin?": [
      {
       "label": "Ailelere",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      },
      {
       "label": "Uzun Yol Yapanlara",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Aracı hangi amaçla kullanıyorsun?": [
      {
       "label": "Uzun Yol",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ],
     "Şu an kaç kilometrede?": [
      {
       "label": "100 – 150 Bin",
-      "count": 1
+      "count": 1,
+      "unit": "adet"
      }
     ]
    },
@@ -2885,19 +3699,23 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 40
+       "count": 40,
+       "unit": "%"
       },
       {
        "label": "Evet, değişti / onarıldı",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Belirti var, henüz değişmedi",
-       "count": 1
+       "count": 1,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 8
+       "count": 8,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -2921,23 +3739,28 @@
      "outcomes": [
       {
        "label": "Hayır, sorun yaşamadım",
-       "count": 67
+       "count": 67,
+       "unit": "%"
       },
       {
        "label": "Mekatronik onarıldı / değişti",
-       "count": 2
+       "count": 2,
+       "unit": "%"
       },
       {
        "label": "Kavrama (debriyaj) değişti",
-       "count": 3
+       "count": 3,
+       "unit": "%"
       },
       {
        "label": "Titreme / sarsıntı var, henüz onarılmadı",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       },
       {
        "label": "Bilmiyorum / aracı yeni aldım",
-       "count": 6
+       "count": 6,
+       "unit": "%"
       }
      ],
      "facts": [
@@ -2981,38 +3804,33 @@
      "caveat": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.",
      "source_url": "https://shiftandtrend.com/arac/skoda-superb-b9-1-5-etsi-150-hp-prestige-dsg-7-ileri/"
     }
-   ]
+   ],
+   "low_data": [
+    "Bu aracı neden tercih ettin?",
+    "Seni en çok rahatsız eden ne oldu?",
+    "Kime önerirsin?",
+    "Aracı hangi amaçla kullanıyorsun?",
+    "Şu an kaç kilometrede?",
+    "Gerçek yakıt tüketimin?"
+   ],
+   "pending_faults": []
   }
  },
  "problems": {
   "DQ200": [],
-  "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-150-hp-style-dsg-7-ileri/": [
-   "Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: 'Bu aracı tekrar alır mıydın?' yüzdeleri toplamı 2",
-   "Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: 'Aracı hangi amaçla kullanıyorsun?' yüzdeleri toplamı 1",
-   "Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: 'Şu an kaç kilometrede?' yüzdeleri toplamı 1",
-   "Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: katılımcı 2, görüş 3"
-  ],
+  "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-150-hp-style-dsg-7-ileri/": [],
   "1.5 eTSI 150 HP": [],
   "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/": [],
   "1.5 eTSI 116 HP": [],
   "DQ381": [],
+  "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/": [],
   "https://shiftandtrend.com/arac/cupra-formentor-km7-1-5-tsi-150-hp-formentor-dsg/": [],
   "https://shiftandtrend.com/arac/volkswagen-tiguan-mk3-1-5-etsi-150-hp-life-dsg-7-ileri/": [],
-  "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/": [
-   "CUPRA Leon 1.5 eTSI 150 HP Standart DSG: 'Aracı hangi amaçla kullanıyorsun?' yüzdeleri toplamı 2",
-   "CUPRA Leon 1.5 eTSI 150 HP Standart DSG: 'Şu an kaç kilometrede?' yüzdeleri toplamı 2"
-  ],
+  "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/": [],
+  "https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/": [],
   "https://shiftandtrend.com/arac/volkswagen-passat-b8-facelift-1-5-tsi-150-hp-bussines-dsg-7-ileri/": [],
-  "https://shiftandtrend.com/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/": [
-   "Volkswagen ID.7 1. Nesil APP 550 286 HP Pro S: katılımcı 17, görüş 18"
-  ],
-  "https://shiftandtrend.com/arac/skoda-superb-b9-1-5-etsi-150-hp-prestige-dsg-7-ileri/": [
-   "Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri: 'Aracı hangi amaçla kullanıyorsun?' yüzdeleri toplamı 1",
-   "Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri: 'Şu an kaç kilometrede?' yüzdeleri toplamı 1"
-  ]
+  "https://shiftandtrend.com/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/": [],
+  "https://shiftandtrend.com/arac/skoda-superb-b9-1-5-etsi-150-hp-prestige-dsg-7-ileri/": []
  },
- "errors": [
-  "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/: 'arıza başlığı' bulunamadı (sayfa yapısı değişmiş olabilir; ayrıştırıcı güncellenmeli)",
-  "https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/: 'arıza başlığı' bulunamadı (sayfa yapısı değişmiş olabilir; ayrıştırıcı güncellenmeli)"
- ]
+ "errors": []
 }

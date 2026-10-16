@@ -1,0 +1,129 @@
+Anlık görüntü: data/carscore/2026-10-16.json
+CarScore anlık görüntü 2026-10-16T10:26:54+03:00
+  site: 181 araç, 103 nesil, 329 değerlendirme, 491 sahip anketi
+  [OK ] arıza DQ200: 11/84 (DSG Şanzıman (Mekatronik ve Kavrama))
+  [OK ] arıza 1.5 eTSI 150 HP: 2/50 (48V Jeneratör (Alternatör))
+  [OK ] arıza 1.5 eTSI 116 HP: 1/23 (48V Jeneratör (Alternatör))
+  [OK ] arıza DQ381: 1/15 (DSG Şanzıman (Mekatronik ve Kavrama))
+  [OK ] araç Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: CarScore 83, 3 görüş
+  [OK ] araç Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri: CarScore 82, 72 görüş
+  [OK ] araç CUPRA Terramar 1. Nesil 1.5 eTSI 150 HP Supreme DSG 7 İleri: CarScore 85, 5 görüş
+  [OK ] araç CUPRA Formentor KM7 1.5 TSI 150 HP Formentor DSG: CarScore 79, 31 görüş
+  [OK ] araç Volkswagen Tiguan Mk3 1.5 eTSI 150 HP Life DSG 7 İleri: CarScore 80, 6 görüş
+  [OK ] araç CUPRA Leon 1.5 eTSI 150 HP Standart DSG: CarScore 81, 10 görüş
+  [OK ] araç SEAT Leon Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri: CarScore 78, 10 görüş
+  [OK ] araç Volkswagen Passat B8 Facelift 1.5 TSI 150 HP Bussines DSG 7 İleri: CarScore 86, 8 görüş
+  [OK ] araç Volkswagen ID.7 1. Nesil APP 550 286 HP Pro S: CarScore 82, 18 görüş
+  [OK ] araç Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri: CarScore 79, 5 görüş
+Aday konular: 3 yazılabilir / 13 incelendi
+  [YENİ] ariza: DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği  (84 bildirim, paket 2885 karakter/6 parça)
+  [YENİ] ariza: 1.5 eTSI 150 HP 48V jeneratör: sahiplerin 50 bildiriminin kroniği  (50 bildirim, paket 3027 karakter/6 parça)
+  [YENİ] karsilastirma: Volkswagen Golf Mk8 Facelift 1.5 eTSI Life mi, SEAT Leon Mk4 (KL) 1.5 e-Hybrid FR mi? Sahip verisiyle (Hatchback)  (72 ve 10 görüş, paket 6223 karakter/8 parça)
+  [ELENDİ] ariza: 1.5 eTSI 116 HP 48V jeneratör: sahiplerin 23 bildiriminin kroniği  (23 bildirim < eşik 30)
+  [ELENDİ] ariza: DQ381 DSG arızası: sahiplerin 15 bildiriminin kroniği  (15 bildirim < eşik 30)
+  [ELENDİ] karsilastirma: Volkswagen Golf Mk8 Facelift 1.5 eTSI Life mi, CUPRA Leon 1.5 eTSI Standart mi? Sahip verisiyle (Hatchback)  (anket verisi sitenin yayın eşiği altında: CUPRA Leon 1.5 eTSI 150 HP Standart DSG)
+  [ELENDİ] karsilastirma: CUPRA Leon 1.5 eTSI Standart mi, SEAT Leon Mk4 (KL) 1.5 e-Hybrid FR mi? Sahip verisiyle (Hatchback)  (anket verisi sitenin yayın eşiği altında: CUPRA Leon 1.5 eTSI 150 HP Standart DSG)
+  [ELENDİ] karsilastirma: Volkswagen Passat B8 Facelift 1.5 TSI Bussines mi, Volkswagen ID.7 1. Nesil APP 550 Pro S mi? Sahip verisiyle (Sedan)  (anket verisi sitenin yayın eşiği altında: Volkswagen Passat B8 Facelift 1.5 TSI 150 HP Bussines DSG 7 İleri)
+  [ELENDİ] karsilastirma: CUPRA Terramar 1. Nesil 1.5 eTSI Supreme mi, CUPRA Formentor KM7 1.5 TSI Formentor mi? Sahip verisiyle (SUV)  (anket verisi sitenin yayın eşiği altında: CUPRA Terramar 1. Nesil 1.5 eTSI 150 HP Supreme DSG 7 İleri)
+  [ELENDİ] karsilastirma: CUPRA Terramar 1. Nesil 1.5 eTSI Supreme mi, Volkswagen Tiguan Mk3 (CT) 1.5 eTSI Life mi? Sahip verisiyle (SUV)  (anket verisi sitenin yayın eşiği altında: CUPRA Terramar 1. Nesil 1.5 eTSI 150 HP Supreme DSG 7 İleri)
+  [ELENDİ] karsilastirma: CUPRA Formentor KM7 1.5 TSI Formentor mi, Volkswagen Tiguan Mk3 (CT) 1.5 eTSI Life mi? Sahip verisiyle (SUV)  (en az görüş 6 < eşik 10)
+  [ELENDİ] karsilastirma: Volkswagen Passat B8 Facelift 1.5 TSI Bussines mi, Škoda Superb B9 (3W) 1.5 eTSI Prestige mi? Sahip verisiyle (Sedan)  (anket verisi sitenin yayın eşiği altında: Volkswagen Passat B8 Facelift 1.5 TSI 150 HP Bussines DSG 7 İleri, Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri)
+  [ELENDİ] karsilastirma: Volkswagen ID.7 1. Nesil APP 550 Pro S mi, Škoda Superb B9 (3W) 1.5 eTSI Prestige mi? Sahip verisiyle (Sedan)  (anket verisi sitenin yayın eşiği altında: Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri)
+
+== karsilastirma-volkswagen-golf-mk8-facelift-seat-leon-mk4-kl-d2ce5c56 ==
+[K1] CarScore özeti: Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri (https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/)
+Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri: CarScore 82/100 (Sahipleri çok memnun), 72 kişinin görüşüne göre.
+Kullanıcı puanı 4.7/5, 31 değerlendirme.
+Ankete katılan sahiplerin %84'i aracı tekrar alırdım diyor.
+Puanın kaynakları: teknik veri 55/100; kullanıcı görüşü 85/100.
+Alt puanlar (0-100): Tekrar satın alma isteği 84; Sorunsuzluk 81; Yorum puanı 94; Performans 36; Verimlilik 79; Kullanışlılık 47.
+
+[K2] CarScore sahip anketi: Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri (https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/)
+Sahiplerin en çok övdüğü yönler: Konfor %71; Fiyat / Performans %71; Düşük Yakıt %58; İkinci El Değeri %48.
+Sahiplerin en çok şikâyet ettikleri: Trim Sesi %58; Farlar %21; Multimedya %21.
+Sahiplerin bildirdiği gerçek tüketim: ortalama 5.5 L/100km, en düşük 4.3, en yüksek 6.5 (27 kayıt).
+Bu araçta hangi donanımı önerirsin? Life %48; Style %24; R-Line %18; Impression %9.
+Bu araçta hangi motor tercih edilmeli? 1.5 eTSI 116 HP %70; 1.5 eTSI 150 HP %18; 1.5 TSI 116 HP %12.
+Bu aracı neden tercih ettin? Konfor %71; Fiyat / Performans %71; Düşük Yakıt %58; İkinci El Değeri %48; Güvenlik %48; Tasarım %39; Uzun Yol %39; Şehir İçi %35; Donanım %35; Sorunsuzluk %32; Performans %26; Aile Aracı %19; Geniş İç Mekân %6; Bagaj %3.
+Seni en çok rahatsız eden ne oldu? Trim Sesi %58; Farlar %21; Multimedya %21; Elektrik %13; Motor %13; Süspansiyon %13; Kaporta / Boya %8; Yalıtım %8; Malzeme Kalitesi %8; Diğer %8; İç Mekân %4.
+Bu aracı tekrar alır mıydın? Evet %84; Kararsızım %11; Hayır %5.
+Kime önerirsin? Gençlere %71; Ekonomi Arayanlara %68; İlk Arabasını Alacaklara %61; Uzun Yol Yapanlara %43; Şehir İçine %39; Ailelere %39; Performans Sevenlere %29.
+Aracı hangi amaçla kullanıyorsun? Karma %80; Şehir İçi %13; Uzun Yol %3; Hafta Sonu %3.
+Şu an kaç kilometrede? 0 – 20 Bin %68; 20 – 50 Bin %29; 150 – 200 Bin %3.
+Yüzdeler, aracın sayfasındaki sahip anketine katılanlar arasında o seçeneği işaretleyenlerin payıdır. Sayfa soru başına yanıt sayısını vermez; yüzdeler kişi sayısına çevrilemez. Birden çok seçenek işaretlenebilen sorularda yüzdelerin toplamı 100'ü geçer.
+
+[K3] CarScore teknik özellikler: Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri (https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/)
+Motor: 1.5 eTSI
+Yakıt Türü: Hibrit
+Motor Hacmi: 1,5 L (1.498 cc)
+Motor Gücü: 116 HP
+Maksimum Tork: 220 Nm / 3.000 rpm
+Vites: DSG (Çift Kavramalı), 7 ileri
+Şanzıman: DQ200
+Kavrama: Kuru
+Çekiş: Önden Çekiş
+0-100 km/s: 9,9 saniye
+Üretim Platformu: MQB EVO
+Segment: C — Kompakt
+Kasa Tipi: Hatchback, 5 kapı
+Bagaj Kapasitesi: 381 L
+Arka Süspansiyon: Torsiyon Kirişi (yarı bağımsız)
+
+[K4] CarScore sahip bildirimleri: 1.5 eTSI 116 HP (bu aracın motoru) (https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/)
+Bu bölüm yalnız Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri için değil, 1.5 eTSI 116 HP kullanan TÜM araçların bildirimleridir.
+1.5 eTSI 116 HP kullanan tüm araçlardan 23 bildirimden 1 tanesinde arıza bildirildi (sorun: 48V Jeneratör (Alternatör)).
+Seçeneklere göre bildirimler: Hayır, sorun yaşamadım: 20; Evet, değişti / onarıldı: 1; Bilmiyorum / aracı yeni aldım: 2.
+Bu sayılar gönüllü sahip bildirimidir, temsili bir örneklem değildir; sorun yaşayanların bildirme olasılığı daha yüksektir. Arıza ORANI olarak değil, bildirim ADEDİ olarak okunmalıdır.
+
+[K5] CarScore sahip bildirimleri: DQ200 (bu aracın şanzımanı) (https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/)
+Bu bölüm yalnız Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri için değil, DQ200 kullanan TÜM araçların bildirimleridir.
+DQ200 kullanan tüm araçlardan 84 bildirimden 11 tanesinde arıza bildirildi (sorun: DSG Şanzıman (Mekatronik ve Kavrama)).
+Bunlardan 5 tanesi doğrulanmış sahip.
+Seçeneklere göre bildirimler: Hayır, sorun yaşamadım: 67; Mekatronik onarıldı / değişti: 2; Kavrama (debriyaj) değişti: 3; Titreme / sarsıntı var, henüz onarılmadı: 6; Bilmiyorum / aracı yeni aldım: 6.
+Şanzıman yağı ve filtresi değişti mi? Hiç değişmedi (69 bildirimin en sık cevabı).
+Kaç kilometrede oldu? 80 – 100 Bin (8 bildirimin ortancası).
+Masrafı kim karşıladı? Tamamen cebimden (4 bildirimin en sık cevabı).
+Cebinden çıkan tutar? 50 – 75 Bin TL (4 bildirimin ortancası).
+Hangi yıl yapıldı? 2025 (4 bildirimin ortancası).
+Hangi çözüm uygulandı? Orijinal (yetkili servis parçası) (4 bildirimin en sık cevabı).
+Bu sayılar gönüllü sahip bildirimidir, temsili bir örneklem değildir; sorun yaşayanların bildirme olasılığı daha yüksektir. Arıza ORANI olarak değil, bildirim ADEDİ olarak okunmalıdır.
+
+[K6] CarScore özeti: SEAT Leon Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri (https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/)
+SEAT Leon Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri: CarScore 78/100 (Genel olarak memnun), 10 kişinin görüşüne göre.
+Kullanıcı puanı 4.8/5, 8 değerlendirme.
+Ankete katılan sahiplerin %80'i aracı tekrar alırdım diyor.
+Puanın kaynakları: teknik veri 82/100; kullanıcı görüşü 77/100.
+Alt puanlar (0-100): Tekrar satın alma isteği 80; Sorunsuzluk 60; Yorum puanı 95; Performans 76; Verimlilik 100; Kullanışlılık 66.
+
+[K7] CarScore sahip anketi: SEAT Leon Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri (https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/)
+Sahiplerin en çok övdüğü yönler: Fiyat / Performans %100; Şehir İçi %67; Düşük Yakıt %67; Performans %67.
+Sahiplerin en çok şikâyet ettikleri: Trim Sesi %100; Yalıtım %40; Malzeme Kalitesi %40; Fren %20.
+Sahiplerin bildirdiği gerçek tüketim: ortalama 3.2 L/100km, en düşük 2.7, en yüksek 4 (6 kayıt).
+Bu araçta hangi motor tercih edilmeli? 1.5 e-Hybrid 204 HP %100.
+Bu aracı neden tercih ettin? Fiyat / Performans %100; Şehir İçi %67; Düşük Yakıt %67; Performans %67; Tasarım %50; Uzun Yol %50; Güvenlik %33.
+Seni en çok rahatsız eden ne oldu? Trim Sesi %100; Yalıtım %40; Malzeme Kalitesi %40; Fren %20; Diğer %20; Süspansiyon %20.
+Bu aracı tekrar alır mıydın? Evet %80; Hayır %20.
+Kime önerirsin? Performans Sevenlere %83; Gençlere %83; Şehir İçine %50; Ekonomi Arayanlara %33; Uzun Yol Yapanlara %33; İlk Arabasını Alacaklara %17.
+Aracı hangi amaçla kullanıyorsun? Karma %83; Şehir İçi %17.
+Şu an kaç kilometrede? 0 – 20 Bin %50; 20 – 50 Bin %50.
+DSG Şanzıman (Mekatronik ve Kavrama): 1 bildirim toplandı; site 10 bildirime ulaşmadan dağılım yayınlamıyor (bu konuda sayı verilemez).
+Yüzdeler, aracın sayfasındaki sahip anketine katılanlar arasında o seçeneği işaretleyenlerin payıdır. Sayfa soru başına yanıt sayısını vermez; yüzdeler kişi sayısına çevrilemez. Birden çok seçenek işaretlenebilen sorularda yüzdelerin toplamı 100'ü geçer.
+
+[K8] CarScore teknik özellikler: SEAT Leon Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri (https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/)
+Motor: 1.5 e-Hybrid
+Yakıt Türü: Şarj Edilebilir Hibrit
+Motor Hacmi: 1,5 L (1.498 cc)
+Motor Gücü: 204 HP
+Maksimum Tork: 350 Nm / 3.000 rpm
+Vites: DSG (Çift Kavramalı), 6 ileri
+Şanzıman: DQ400
+Kavrama: Islak
+Çekiş: Önden Çekiş
+0-100 km/s: 7,7 saniye
+Üretim Platformu: MQB EVO
+Segment: C — Kompakt
+Kasa Tipi: Hatchback, 5 kapı
+Bagaj Kapasitesi: 380 L
+Arka Süspansiyon: Çok Bağlantılı (bağımsız)
+Batarya Kapasitesi: Ekle
+Elektrikli Menzil: 134 km
