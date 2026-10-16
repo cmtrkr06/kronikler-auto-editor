@@ -27,7 +27,13 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
   notu) → `Outcome.unit="adet"`, `Vehicle.low_data`; arıza bölümü 10-12 bildirime ulaşmadan dağılım yok
   ("N bildirim toplandı") → `Vehicle.pending_faults`. "N kişinin görüşü" hızlı oyları da sayar; ayrıntılı anket
   yanıtı çok daha az olabilir (CUPRA Leon: 10 görüş, ~2 yanıt) → karşılaştırma `survey_ready` ister.
-- Sıradaki: Adım 2 (yazar/SEO/fact-check uyarlaması + yerel önizleme). Kullanıcı onayı gerekir.
+- Adım 2 KOD TAMAM (2026-10-16, kullanıcı onayı aynı gün): `writer.py` (ortak kurallar + ARIZA/KARŞILAŞTIRMA
+  istemi, kodla "Veri kaynağı" kutusu ve veri tarihi), `seo_check.chronicle_problems` (başlıksız giriş, ≥2 satırlı
+  tablo, "Veri notu" blockquote, başlık ≤70) + `ungrounded_numbers` (başlık ve gövdedeki HER sayı pakette olmalı:
+  oran hesaplama/yuvarlama/yüzdeyi kişiye çevirme engellenir), yasak hükümler ("uzak durun", "kesin arızalı"...),
+  `fact_checker` istemi (oran, birim geneli bildirimi tek modele mal etme, az tabanlı bilgi), `chronicle_pipeline`,
+  `write.py --dry-run` (günde 1 konu, `planner.pick`), Actions "Onizleme yaz" (önce --check-ai). 202 test.
+- Bekleyen: kullanıcı GEMINI_API_KEY secret'ını (ayrı AI Studio projesi) ekleyince ilk önizleme.
 
 ## Kurallar
 - Kullanıcıyla Türkçe konuş. Yazılar Türkçe.
@@ -49,3 +55,4 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
 - AI doğrulama: `python main.py --check-ai` (1 API çağrısı) · Kota: `python main.py --quota`
 - Örnek sayfalar (yerelde): `python fetch_fixtures.py fixtures/raw`
 - Konu planı (AI yok): `python main.py --plan [--snapshot dosya] [--show ariza-dq200]`
+- Önizleme: `python write.py --dry-run [--topic ariza-dq200] [--snapshot dosya]` → data/drafts/<anahtar>.html

@@ -91,37 +91,53 @@ def test_warnings_lengths_slug_headings_density_and_removed():
     assert r.passed  # warnings never block
 
 
-# ---- zapyus project rules (2026-10-14)
-def _guide(body, title="Škoda MIB3 Kablosuz CarPlay Kopuyor: Profil Sıfırlama Çözümü"):
+# ---- Kronikler rules (docs/PLAN.md section 4)
+PACK_TEXT = ["DQ200 kullanan tüm araçlardan 84 bildirimden 11 tanesinde arıza bildirildi. "
+             "Kaç kilometrede oldu? 80 – 100 Bin (8 bildirimin ortancası). Tüketim 5,5 L/100km. Motor 1.498 cc."]
+
+
+def _chron(body, title="DQ200 Kroniği: 84 Bildirimin 11'inde Arıza", sources=PACK_TEXT):
     from seo_check import check
     return check(html=body, seo_title="t", meta_description="m" * 100, slug="a-b", allowed_urls=[],
-                 source_texts=[], claim_ids=[["K1"]], known_ids={"K1"}, kind="guide", title=title)
+                 source_texts=sources, claim_ids=[["K1"]], known_ids={"K1"}, kind="chronicle", title=title)
 
 
-GOOD_GUIDE = ("<p>Kablosuz CarPlay kopuyorsa profili silin.</p><h2>Teşhis</h2><table><tr><th>Belirti</th>"
-              "<th>Olası Neden</th><th>Hızlı Çözüm</th></tr><tr><td>a</td><td>b</td><td>c</td></tr></table>"
-              "<h2>Adımlar</h2><p>Metin.</p><blockquote><p><strong>Pratik Not:</strong> ipucu.</p></blockquote>")
+GOOD_CHRON = ("<p>DQ200 sahiplerinin 84 bildiriminin 11'inde arıza var.</p><h2>Sahipler ne bildirdi</h2><table>"
+        "<tr><th>Durum</th><th>Bildirim</th></tr><tr><td>Arıza</td><td>11</td></tr><tr><td>Toplam</td><td>84</td></tr>"
+        "</table><p>Arızalar genelde 80-100 bin km'de; tüketim 5,5 litre, motor 1.498 cc.</p>"
+        "<blockquote><p><strong>Veri notu:</strong> Bunlar gönüllü bildirimlerdir.</p></blockquote>")
 
 
-def test_good_guide_structure_passes():
-    assert _guide(GOOD_GUIDE).errors == []
+def test_good_chronicle_passes():
+    assert _chron(GOOD_CHRON).errors == []
 
 
-def test_guide_structure_rules():
-    r = _guide("<h2>Giriş</h2><p>Sonuç olarak kusursuz. Test ettiğimizde çalıştı.</p><h2>Sonuç</h2><p>x</p>",
-               title="x" * 70)
+def test_chronicle_structure_rules():
+    r = _chron("<h2>Giriş</h2><p>Sonuç olarak kusursuz. Test ettiğimizde çalıştı.</p><h2>Sonuç</h2><p>x</p>",
+               title="x" * 71)
     joined = " | ".join(r.errors)
-    for part in ("başlık 70", "tablo yok", "Pratik Not", "giriş paragrafıyla", "sonuç olarak", "kusursuz",
+    for part in ("başlık 71", "tablo", "Veri notu", "giriş paragrafıyla", "sonuç olarak", "kusursuz",
                  "uydurma deneyim", "'sonuç' başlığı"):
         assert part in joined, part
 
 
-def test_structure_rules_only_for_guides_but_honesty_rules_for_all():
+def test_computed_rate_or_converted_count_is_blocked():
+    r = _chron(GOOD_CHRON.replace("11'inde arıza var", "%13'ünde arıza var (yaklaşık 42 sahip)"))
+    assert any("paketinde olmayan sayı: 13, 42" in e for e in r.errors)
+    assert any("paketinde olmayan sayı" in e for e in _chron(GOOD_CHRON, title="DQ200: 12 Bildirim").errors)
+
+
+def test_verdicts_the_data_cannot_carry_are_banned():
+    r = _chron(GOOD_CHRON.replace("Bunlar gönüllü", "DQ200'den uzak durun. Bunlar gönüllü"))
+    assert any("uzak durun" in e for e in r.errors)
+
+
+def test_structure_rules_only_for_chronicles_but_honesty_rules_for_all():
     from seo_check import check
-    r = check(html="<p>Haberi denedik.</p>", seo_title="t", meta_description="m" * 100, slug="a",
-              allowed_urls=[], source_texts=[], claim_ids=[["K1"]], known_ids={"K1"}, kind="news")
+    r = check(html="<p>Aracı sürdük.</p>", seo_title="t", meta_description="m" * 100, slug="a",
+              allowed_urls=[], source_texts=[], claim_ids=[["K1"]], known_ids={"K1"}, kind="other")
     assert [e for e in r.errors if "uydurma deneyim" in e] and not [e for e in r.errors if "tablo" in e]
 
 
-def test_third_person_user_reports_are_not_fake_experience():
-    assert _guide(GOOD_GUIDE.replace("ipucu.", "Kullanıcıların denediği yöntem bildiriliyor.")).errors == []
+def test_third_person_owner_reports_are_not_fake_experience():
+    assert _chron(GOOD_CHRON.replace("Bunlar gönüllü", "Sahiplerin denediği çözüm bildiriliyor. Bunlar gönüllü")).errors == []

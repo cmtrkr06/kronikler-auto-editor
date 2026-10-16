@@ -22,21 +22,22 @@ ALLOWED_TAGS = {"p", "h2", "h3", "h4", "ul", "ol", "li", "strong", "em", "b", "i
 VOID_TAGS = {"br", "img"}
 IMG_ATTRS = ("src", "alt", "width", "height", "loading")
 DROP_WITH_CONTENT = {"script", "style", "iframe", "object", "embed", "noscript", "form", "svg"}
-# docs/BRIEF.md section 12 + zapyus proje talimatları (2026-10-14): yapay zeka klişeleri ve dolgu girişleri
+# Zapyus' banned clichés (docs/BRIEF.md section 12, 2026-10-14) + Kronikler: verdicts the owner data can
+# not carry ("kesin arızalı", "asla alınmaz") and rate language (the site: "arıza oranı değildir").
 BANNED_PHRASES = ("devrim niteliğinde", "çağ atlıyor", "benzersiz deneyim", "ezber bozuyor",
                   "çığır açıyor", "teknoloji dünyasını salladı",
                   "sonuç olarak", "özetlemek gerekirse", "unutmayın ki", "kusursuz", "büyüleyici",
-                  "günümüz dünyasında", "adım adım rehberimizde", "günümüzde teknolojinin",
-                  "hayatımızın vazgeçilmez")
-# Blog kendi testini yapmadı: "test ettik / denedik" gibi birinci el deney iddiası uydurmadır (kullanıcı
-# kararı 2026-10-14: sahte bilgi yok). Deneyim dili ancak kaynaktaki kullanıcı/servis bilgisine dayanır.
+                  "günümüz dünyasında", "günümüzde teknolojinin", "hayatımızın vazgeçilmez",
+                  "kesin arızalı", "kesinlikle arıza", "asla alınmaz", "sakın almayın", "uzak durun",
+                  "kronik arızalı", "arıza oranı yüksek", "arıza oranı düşük", "arıza oranı %")
+# Blog kendi testini yapmadı: "test ettik / sürdük" gibi birinci el deney iddiası uydurmadır.
 FAKE_EXPERIENCE = re.compile(
     r"\b(test ettik|test ettiğimizde|test ettiğimiz|denedik|denediğimizde|denediğimiz|kendi aracımızda|"
-    r"kendi aracımda|kendi testlerimizde|testlerimizde|ölçtüğümüzde)\b")
-GUIDE_TITLE_MAX = 65        # proje talimatı: başlık en çok 60-65 karakter
-GUIDE_TABLE_HEADERS = ("belirti", "olası neden", "hızlı çözüm")
-PRACTICAL_NOTE = "pratik not"
+    r"kendi aracımda|kendi testlerimizde|testlerimizde|ölçtüğümüzde|sürdük|sürdüğümüzde)\b")
+TITLE_MAX = 70
+DATA_NOTE = "veri notu"     # the blockquote that says what the numbers are (and are not)
 ENDING_HEADINGS = ("sonuç", "değerlendirme", "özet")
+NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)*")
 COPY_WINDOW = 12            # identical consecutive words with a source passage = copied
 SEO_TITLE_MAX = 60
 META_MIN, META_MAX = 70, 150
@@ -217,20 +218,39 @@ def heading_texts(html: str) -> list[str]:
             for m in re.findall(r"(?is)<h[2-4]>(.*?)</h[2-4]>", html)]
 
 
-def guide_problems(html: str, title: str) -> list[str]:
-    """Proje talimatlarının rehbere özel yapı kuralları (2026-10-14)."""
+def number_tokens(text: str) -> set[str]:
+    """Every number in a text, plus its parts: '1.498' -> {'1.498', '1', '498'}, '5,5' -> {'5,5', '5'}."""
+    out: set[str] = set()
+    for m in NUMBER_RE.findall(text or ""):
+        out.add(m)
+        out.update(x for x in re.split(r"[.,]", m) if x)
+    return out
+
+
+def ungrounded_numbers(text: str, source_texts: Iterable[str]) -> list[str]:
+    """Numbers in the article that appear nowhere in the data pack: a computed rate ("%13"), a converted
+    count ("42 sahip"), a rounded or invented figure. Every number must be the pack's own."""
+    known: set[str] = set()
+    for src in source_texts:
+        known |= number_tokens(src)
+    return sorted({m for m in NUMBER_RE.findall(text or "") if m not in known},
+                  key=lambda x: (len(x), x))
+
+
+def chronicle_problems(html: str, title: str) -> list[str]:
+    """Kronikler yapısı (docs/PLAN.md bölüm 4): başlıksız giriş, veri tablosu, 'Veri notu' kutusu."""
     errors = []
-    if len(title) > GUIDE_TITLE_MAX:
-        errors.append(f"başlık {len(title)} karakter (en çok {GUIDE_TITLE_MAX}); spesifik sorunu kısaca söyle")
+    if len(title) > TITLE_MAX:
+        errors.append(f"başlık {len(title)} karakter (en çok {TITLE_MAX})")
     tables = re.findall(r"(?is)<table>.*?</table>", html)
-    if not any(all(h in turkish_lower(html_text(t)[0]) for h in GUIDE_TABLE_HEADERS) for t in tables):
-        errors.append("Belirti / Olası Neden / Hızlı Çözüm sütunlu özet tablo yok")
+    if not any(len(re.findall(r"(?i)<tr>", t)) >= 3 for t in tables):
+        errors.append("en az iki veri satırı olan bir tablo yok (sahip verisi tabloyla verilmeli)")
     quotes = re.findall(r"(?is)<blockquote>.*?</blockquote>", html)
-    if not any(PRACTICAL_NOTE in turkish_lower(html_text(q)[0]) for q in quotes):
-        errors.append("blockquote içinde 'Pratik Not' kutusu yok")
+    if not any(DATA_NOTE in turkish_lower(html_text(q)[0]) for q in quotes):
+        errors.append("blockquote içinde 'Veri notu' kutusu yok (sayıların gönüllü bildirim olduğu söylenmeli)")
     first_p = re.search(r"(?is)<p>(.*?)</p>", html)
-    if not first_p or re.search(r"(?is)<h[2-4]>", html[:first_p.start()]):
-        errors.append("yazı başlıksız bir giriş paragrafıyla başlamalı (ilk 2-3 cümlede sorun ve çözüm)")
+    if not first_p or re.search(r"(?is)<h[2-4]>|<table>", html[:first_p.start()]):
+        errors.append("yazı başlıksız bir giriş paragrafıyla başlamalı")
     return errors
 
 
@@ -239,7 +259,8 @@ def check(*, html: str, seo_title: str, meta_description: str, slug: str,
           known_ids: set[str], removed_tags: dict[str, int] | None = None,
           kind: str = "", title: str = "") -> SeoReport:
     """`html` must already be sanitized. `claim_ids`: the passage ids each claim cites.
-    `kind` "guide" adds the problem-solving guide structure rules (guide_problems)."""
+    `kind` "chronicle" adds the Kronikler structure rules and the number check (every number in the
+    title and body must come from the data pack)."""
     report = SeoReport(removed_tags=dict(removed_tags or {}))
     text, links, headings = html_text(html)
     w = words(text)
@@ -255,9 +276,14 @@ def check(*, html: str, seo_title: str, meta_description: str, slug: str,
         report.errors.append(f"uydurma deneyim iddiası: '{m}' (blog kendi testini yapmadı)")
     for h in heading_texts(html):
         if h in ENDING_HEADINGS:
-            report.errors.append(f"'{h}' başlığı açma; yazı son teknik adım ya da pratik kontrolle bitsin")
-    if kind == "guide":
-        report.errors += guide_problems(html, title)
+            report.errors.append(f"'{h}' başlığı açma; yazı verinin söylediği son somut noktayla bitsin")
+    source_texts = list(source_texts)
+    if kind == "chronicle":
+        report.errors += chronicle_problems(html, title)
+        stray = ungrounded_numbers(title + " " + text, source_texts)
+        if stray:
+            report.errors.append("veri paketinde olmayan sayı: " + ", ".join(stray[:10])
+                                 + " (oran hesaplama, yuvarlama, yüzdeyi kişiye çevirme yok; yalnız paketteki sayılar)")
     allowed = set(allowed_urls)
     for link in links:
         if link not in allowed:

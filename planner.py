@@ -81,6 +81,7 @@ def candidates(snap: Snapshot, store: Optional[MemoryStore] = None,
             out.append(Candidate(topic, None, False, f"{fault.reports} bildirim < eşik {s.min_fault_reports}"))
             continue
         pack = fault_pack(key, title, spot, fault, snap.units.get(spot.url))
+        pack.created_at = snap.taken_at
         topic.data_hash, topic.sample = pack_hash(pack), fault.reports
         topic.subject_urls = list(dict.fromkeys([spot.url, fault.source_url]))
         action, why = _decide(topic, store)
@@ -110,10 +111,19 @@ def candidates(snap: Snapshot, store: Optional[MemoryStore] = None,
                 out.append(Candidate(topic, None, False, f"en az görüş {low} < eşik {s.min_compare_opinions}"))
                 continue
             pack = compare_pack(key, title, va, vb)
+            pack.created_at = snap.taken_at
             topic.data_hash, topic.sample = pack_hash(pack), low
             action, why = _decide(topic, store)
             out.append(Candidate(topic, pack, action != "skip", why or f"{va.opinions} ve {vb.opinions} görüş", action))
     return out
+
+
+def pick(cands: list[Candidate], prefix: str = "") -> Optional[Candidate]:
+    """The one article to write this run: the given topic, else updates first, then fault chronicles,
+    then comparisons, larger owner samples first."""
+    ok = [c for c in cands if c.ok and c.topic.key.startswith(prefix)]
+    ok.sort(key=lambda c: (c.action != "update", c.topic.type != TopicType.FAULT, -c.topic.sample))
+    return ok[0] if ok else None
 
 
 def print_plan(cands: list[Candidate], out=None) -> None:

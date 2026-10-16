@@ -127,6 +127,19 @@ class FactCheckSettings:
 
 
 @dataclass(frozen=True)
+class WriterSettings:
+    tier: str = "deep"
+    max_seo_revisions: int = 1          # one rewrite with the SEO errors fed back, then give up
+    max_tags: int = 3
+    draft_dir: str = "data/drafts"
+    # target length by data-pack size (chars -> words). The pack is small and numeric: length comes
+    # from explaining what the numbers say, never from filler (plan section 4).
+    length_targets: tuple = ((6000, (700, 1000)), (2500, (500, 750)), (0, (400, 550)))
+    min_words: tuple = (("ariza", 400), ("karsilastirma", 500))
+    labels: tuple = (("ariza", "Arıza Kronikleri"), ("karsilastirma", "Karşılaştırma"))
+
+
+@dataclass(frozen=True)
 class SchemaSettings:
     """BlogPosting JSON-LD on every LIVE post (schema_markup.py). No stars (plan section 6)."""
     site_name: str = "Otomobil Kronikleri"

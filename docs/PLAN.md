@@ -1,6 +1,6 @@
 # Kronikler Auto Editor — plan
 
-Durum: ONAYLANDI (2026-10-16). Adım 0 ve Adım 1 tamam; Adım 2 onay bekliyor.
+Durum: ONAYLANDI (2026-10-16). Adım 0 ve 1 tamam; Adım 2 kodu tamam, ilk önizleme Gemini anahtarını bekliyor.
 Hedef: https://otomobilkronikleri.blogspot.com/ için, yalnız CarScore verisinden (shiftandtrend.com/araclar/)
 yazı üreten ve Blogger'a TASLAK gönderen otomatik hat. Zapyus hattının (cmtrkr06/zapyus-auto-editor,
 commit e193136) kanıtlanmış parçaları kopyalanır; ayrı depo, ayrı state dalı, ayrı Gemini anahtarı.

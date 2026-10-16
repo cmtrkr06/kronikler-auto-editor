@@ -1,0 +1,71 @@
+# Adım 2: bir yazıyı yerel ÖNİZLEME olarak yazar (Blogger'a gitmez). Önce Gemini anahtarını ve modelleri
+# doğrular (1 istek), sonra CarScore'u okur, en iyi adayı yazar ve fact-check yapar. Önizleme ve taslak
+# "state" dalında data/drafts/ altına yazılır. Telefondan: Actions -> "Onizleme yaz" -> Run workflow.
+name: Onizleme yaz
+
+on:
+  workflow_dispatch:
+    inputs:
+      konu:
+        description: "Konu anahtarı başı (örn. ariza-dq200); boş = günün en iyi adayı"
+        required: false
+        default: ""
+
+concurrency:
+  group: state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  yaz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: Europe/Istanbul
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Durumu çek (state dalı -> data/)
+        run: |
+          if git ls-remote --exit-code --heads origin state >/dev/null; then
+            git clone -q --depth 1 --branch state "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
+          else
+            mkdir -p data && git -C data init -q -b state
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Gemini anahtarı ve modeller
+        run: python main.py --check-ai
+
+      - name: Önizleme yaz
+        env:
+          KONU: ${{ inputs.konu }}
+        run: |
+          mkdir -p data/logs
+          python write.py --dry-run --topic "$KONU" | tee "data/logs/onizleme-$(date +%F-%H%M).log"
+          python main.py --quota | tee -a "data/logs/onizleme-$(date +%F-%H%M).log"
+
+      - name: Özet
+        if: always()
+        run: |
+          log=$(ls -t data/logs/onizleme-*.log 2>/dev/null | head -1)
+          [ -n "$log" ] && { echo '```'; cat "$log"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Durumu geri yaz
+        if: always()
+        working-directory: data
+        run: |
+          git config user.name "kronikler-bot"
+          git config user.email "kronikler-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "önizleme $(date '+%F %H:%M')"
+          git push -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:state
