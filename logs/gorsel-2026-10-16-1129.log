@@ -1,0 +1,21 @@
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+ERROR kronikler.ai: AI call failed - server: InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+WARNING kronikler.images: görsel etiketlenemedi: server: InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+Görsel arşivi: 16 resim, 0 etiketli
+  - IMG_8936.png                                       alt='' · etiketsiz
+  - pexels-pixabay-327540.jpg                          alt='' · etiketsiz
+  - IMG_0525.jpeg                                      alt='' · etiketsiz
+  - IMG_9132.png                                       alt='' · etiketsiz
+  - IMG_9188.jpeg                                      alt='' · etiketsiz
+  - 11973a_dbeea11deab74d40a3b433ffba72b83c~mv2.webp   alt='' · etiketsiz
+  - pexels-luke-miller-17540266.jpg                    alt='' · etiketsiz
+  - IMG_9666.jpeg                                      alt='' · etiketsiz
+  - IMG_9667.jpeg                                      alt='' · etiketsiz
+  - IMG_8936.jpeg                                      alt='' · etiketsiz
+  - IMG_8900.jpeg                                      alt='' · etiketsiz
+  - IMG_1517.JPG                                       alt='' · etiketsiz
+  - IMG_1840.HEIC                                      alt='' · etiketsiz
+  - skoda scala safe cp hatası-min.jpg                 alt='' · etiketsiz
+  - IMG_9438-min.jpg                                   alt='' · etiketsiz
+  - IMG_9437-min.jpg                                   alt='' · etiketsiz
