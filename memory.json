@@ -19,9 +19,9 @@
      "exhausted": false
     },
     "gemini-3.5-flash-lite": {
-     "total": 1,
+     "total": 16,
      "steps": {
-      "image_label": 1
+      "image_label": 16
      },
      "exhausted": false
     }
