@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 
 from ai_client import AIClient
 from config import WriterSettings
-from data_pack import ResearchPack
+from data_pack import NAME_LIST, ResearchPack
 from models import ChronicleTopic, TopicType
 from normalizer import topic_key
 from seo_check import SeoReport, check, sanitize_html, title_problems
@@ -183,7 +183,8 @@ def evaluate(topic: ChronicleTopic, pack: ResearchPack, draft: Draft, settings: 
     report = check(html=body, seo_title=draft.seo_title.strip(), meta_description=draft.meta_description.strip(),
                    slug=slug, allowed_urls=[], source_texts=[p.text for p in pack.passages],
                    claim_ids=claim_ids, known_ids=known, removed_tags=removed,
-                   kind=topic.kind, title=draft.title.strip())
+                   kind=topic.kind, title=draft.title.strip(),
+                   copy_texts=[p.text for p in pack.passages if not p.title.endswith(NAME_LIST)])
     floor = dict(settings.min_words).get(topic.type.value, 0)
     if report.word_count < floor:
         report.errors.append(f"yazı çok kısa: {report.word_count} kelime (en az {floor}); paketteki verinin "

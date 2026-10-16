@@ -272,8 +272,10 @@ def chronicle_problems(html: str, title: str) -> list[str]:
 def check(*, html: str, seo_title: str, meta_description: str, slug: str,
           allowed_urls: Iterable[str], source_texts: Iterable[str], claim_ids: list[list[str]],
           known_ids: set[str], removed_tags: dict[str, int] | None = None,
-          kind: str = "", title: str = "") -> SeoReport:
-    """`html` must already be sanitized. `claim_ids`: the passage ids each claim cites.
+          kind: str = "", title: str = "", copy_texts: Iterable[str] | None = None) -> SeoReport:
+    """`copy_texts`: the sources the copy check compares with (default: `source_texts`); lists of proper
+    names (model lists) are left out by the caller - they cannot be said in other words.
+    `html` must already be sanitized. `claim_ids`: the passage ids each claim cites.
     `kind` "chronicle" adds the Kronikler structure rules and the number check (every number in the
     title and body must come from the data pack)."""
     report = SeoReport(removed_tags=dict(removed_tags or {}))
@@ -303,7 +305,7 @@ def check(*, html: str, seo_title: str, meta_description: str, slug: str,
     for link in links:
         if link not in allowed:
             report.errors.append(f"kaynak pakette olmayan link: {link}")
-    for span in copied_spans(text, source_texts):
+    for span in copied_spans(text, source_texts if copy_texts is None else list(copy_texts)):
         report.errors.append(f"kaynaktan aynen alınmış: '{span}'")
     if not claim_ids:
         report.errors.append("iddia listesi boş: hiçbir bilgi kaynağa bağlanmamış")

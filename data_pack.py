@@ -65,6 +65,9 @@ def tr(x: float) -> str:
     return f"{x:g}".replace(".", ",")
 
 
+NAME_LIST = "kullanan modellerden bazıları"   # passage title suffix: a list of model names (no copy check)
+
+
 class _Builder:
     def __init__(self, key: str, title: str) -> None:
         self.pack = ResearchPack(key, title)
@@ -109,7 +112,7 @@ def fault_pack(key: str, title: str, spot, fault, unit=None) -> ResearchPack:
             # names only: the cars' CarScores are not about this fault, and a list of scores invites a
             # ranking paragraph (2026-10-16 preview) that tells the reader nothing about the fault
             names = list(dict.fromkeys(c.title for c in unit.vehicles))
-            b.add("carscore:" + unit.code, unit.url, f"{unit.code} kullanan modellerden bazıları",
+            b.add("carscore:" + unit.code, unit.url, f"{unit.code} {NAME_LIST}",
                   ["; ".join(names) + ".", unit.vehicle_note])
     return b.pack
 

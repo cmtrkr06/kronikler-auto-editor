@@ -189,6 +189,42 @@ def dry_run(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipelin
     return 0 if done else 1
 
 
+def recheck(key_prefix: str, checker=None, store=None, ws: WriterSettings = WriterSettings()) -> int:
+    """A saved draft that is not READY: code checks again (rules may have been fixed) and, if SEO now
+    passes, ONE fact-check request on another model than the writer's. The writer is not called."""
+    from ai_client import AIError, create_ai_client
+    from quota import QuotaLedger
+    paths = sorted(Path(ws.draft_dir).glob(f"{key_prefix}*.json"))
+    if len(paths) != 1:
+        print(f"[HATA] '{key_prefix}' için {len(paths)} taslak var (tek olmalı)")
+        return 1
+    saved = json.loads(paths[0].read_text(encoding="utf-8"))
+    if saved.get("ready"):
+        print("[ZATEN HAZIR] yeniden kontrol gerekmiyor")
+        return 0
+    topic, pack = ChronicleTopic.from_dict(saved["topic"]), ResearchPack.from_dict(saved["pack"])
+    result = evaluate(topic, pack, Draft.model_validate(saved["draft"]), ws)
+    result.model = saved.get("writer_model", "")
+    if not result.seo.passed:
+        print("[HAZIR DEĞİL] SEO: " + "; ".join(result.seo.errors))
+        return 1
+    store = store if store is not None else create_store(load_settings())
+    try:
+        if checker is None:
+            ai = create_ai_client(load_ai_settings(), os.environ.get("GEMINI_API_KEY"), ledger=QuotaLedger(store))
+            checker = FactChecker(ai, FactCheckSettings())
+        fc = checker.check(result.draft.title, result.body, pack, result.model)
+    except AIError as exc:
+        print(f"[HATA] fact-check çalışmadı: {exc}")
+        return 1
+    finally:
+        store.flush()
+    outcome = ChronicleOutcome(result, fc, [fc.to_dict()])
+    save_draft(topic, pack, result, ws.draft_dir, outcome, saved.get("data"))
+    print(f"[{'HAZIR' if outcome.ready else 'HAZIR DEĞİL'}] {result.draft.title}" + ("" if outcome.ready else f": {outcome.reason}"))
+    return 0 if outcome.ready else 1
+
+
 # ------------------------------------------------------------------ Blogger
 EDITOR_NOTE_MARK = "kronikler-editor-note"
 
@@ -317,12 +353,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--snapshot", help="canlı site yerine kayıtlı anlık görüntü")
     ap.add_argument("--send", metavar="KONU", help="kayıtlı HAZIR taslağı Blogger'a TASLAK olarak gönder")
     ap.add_argument("--daily", action="store_true", help="zamanlanmış çalıştırma (haftalık tavan, yaz, gönder)")
+    ap.add_argument("--recheck", metavar="KONU", help="kayıtlı taslağı yazarı çağırmadan yeniden kontrol et (1 fact-check)")
     args = ap.parse_args(argv)
     logging.basicConfig(level=getattr(logging, load_settings().log_level, logging.INFO),
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
     if args.dry_run:
         return dry_run(args.topic, args.snapshot)
+    if args.recheck:
+        return recheck(args.recheck)
     if not (args.send or args.daily):
         ap.print_help()
         return 2

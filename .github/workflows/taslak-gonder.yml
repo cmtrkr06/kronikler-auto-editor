@@ -1,5 +1,5 @@
-# Kayıtlı HAZIR bir taslağı (Onizleme yaz ile yazılmış) Blogger'a TASLAK olarak gönderir; Gemini harcamaz
-# (yalnız arşivdeki yeni fotoğrafların etiketi için hızlı model). Actions -> "Taslak gonder" -> konu anahtarı.
+# Kayıtlı bir taslağı Blogger'a TASLAK olarak gönderir. HAZIR değilse önce yazarı çağırmadan yeniden kontrol
+# eder (kod + tek fact-check isteği); arşivdeki yeni fotoğraflar hızlı modelle bir kez etiketlenir. Actions -> "Taslak gonder" -> konu anahtarı.
 name: Taslak gonder
 
 on:
@@ -52,6 +52,7 @@ jobs:
           mkdir -p data/logs
           log="data/logs/gonder-$(date +%F-%H%M).log"
           python image_library.py 2>&1 | tee "$log"
+          python write.py --recheck "$KONU" 2>&1 | tee -a "$log" || true     # not READY -> code check + 1 fact-check
           python write.py --send "$KONU" 2>&1 | tee -a "$log"
           tail -20 "$log" | sed 's/^/    /' >> "$GITHUB_STEP_SUMMARY"
 

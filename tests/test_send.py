@@ -152,3 +152,33 @@ def test_schema_only_touches_our_posts():
     c = Client()
     sm.apply(c, {}, only_ids={"777"})
     assert c.updated == ["777"]
+
+
+def test_model_name_list_is_not_a_copy():
+    from writer import Draft, evaluate
+    names = next(p for p in PACK.passages if p.title.endswith("modellerden bazıları")).text.split(".")[0]
+    body = draft(html_body=json.loads(draft())["html_body"].replace("</blockquote>", f"</blockquote><p>{names}.</p>"))
+    r = evaluate(TOPIC, PACK, Draft.model_validate_json(body), WriterSettings())
+    assert not any("aynen alınmış" in e for e in r.seo.errors), r.seo.errors
+
+
+def test_recheck_runs_only_the_fact_check(tmp_path, monkeypatch):
+    import write
+    from ai_client import AIClient
+    from config import AISettings
+    from fact_checker import FactChecker
+    from fakes import FakeBackend
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    bad = draft(html_body=json.loads(draft())["html_body"] + "<p>çığır açıyor</p>")
+    p, _, _ = pipeline(bad, bad)
+    write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
+    path = tmp_path / "drafts" / "ariza-dq200.json"
+    saved = json.loads(path.read_text(encoding="utf-8"))
+    assert saved["ready"] is False
+    saved["draft"]["html_body"] = json.loads(draft())["html_body"]          # e.g. a rule was fixed
+    path.write_text(json.dumps(saved, ensure_ascii=False), encoding="utf-8")
+    backend = FakeBackend(generate=[CLEAN])
+    checker = FactChecker(AIClient(AISettings(), backend, sleep=lambda s: None))
+    assert write.recheck("ariza-dq200", checker, InMemoryStore(), ws) == 0
+    assert len(backend.prompts) == 1 and backend.prompts[0][0] == AISettings().check_model
+    assert json.loads(path.read_text(encoding="utf-8"))["ready"] is True
