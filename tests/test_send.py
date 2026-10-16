@@ -241,3 +241,26 @@ def test_daily_skips_quietly_when_todays_budget_is_spent(tmp_path, monkeypatch):
     assert write.daily(client, store, None, ws, today=date(2026, 10, 19), snapshot_path=snap_path) == 0
     assert client.inserted == []
     assert write.writer_budget_left(InMemoryStore()) is True
+
+
+def test_failed_fact_check_goes_only_on_request_with_findings_in_the_note(tmp_path, monkeypatch):
+    import write
+    from test_writer import DIRTY
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    p, _, _ = pipeline(draft(), DIRTY, draft(), DIRTY)
+    write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
+    client = FakeClient()
+    assert write.send("ariza-dq200", client, InMemoryStore(), [], ws) == 1 and client.inserted == []
+    assert write.send("ariza-dq200", client, InMemoryStore(), [], ws, with_findings=True) == 0
+    html = client.inserted[0][1]
+    assert "DÜZELT (fact-check)" in html and "%13 arıza" in html.split("</div>")[0]
+
+
+def test_code_check_failure_never_goes_even_with_findings(tmp_path, monkeypatch):
+    import write
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    bad = draft(html_body="<p>çığır açıyor</p>")
+    p, _, _ = pipeline(bad, bad)
+    write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
+    client = FakeClient()
+    assert write.send("ariza-dq200", client, InMemoryStore(), [], ws, with_findings=True) == 1 and client.inserted == []

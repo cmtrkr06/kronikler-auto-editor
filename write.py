@@ -299,18 +299,22 @@ def editor_note(saved: dict, notes: list[str]) -> str:
             + "<br>".join(items) + "</div>")
 
 
-def final_html(saved: dict, library, with_note: bool = True) -> tuple[str, list[str]]:
+def final_html(saved: dict, library, with_note: bool = True, extra_notes=()) -> tuple[str, list[str]]:
     from visuals import decorate
     kind = saved["topic"]["type"]
     html, report = decorate(kind, saved.get("data") or {}, saved["html"], library)
-    notes = list(report.notes)
+    notes = list(extra_notes) + list(report.notes)
     if report.photo is not None:
         notes.append(f"Görsel: {report.photo.reason}")
     return (editor_note(saved, notes) if with_note else "") + html, notes
 
 
-def send(key_prefix: str, client, store, library=None, ws: WriterSettings = WriterSettings()) -> int:
-    """A saved READY draft -> Blogger DRAFT (new) or update of our unedited Blogger draft."""
+def send(key_prefix: str, client, store, library=None, ws: WriterSettings = WriterSettings(),
+         with_findings: bool = False) -> int:
+    """A saved READY draft -> Blogger DRAFT (new) or update of our unedited Blogger draft.
+    `with_findings` (editor's choice, 2026-10-16): a draft that passed every code check but not the
+    fact-check may still go to Blogger as a DRAFT, its findings listed in the red editor note to fix
+    before publishing. A draft that failed the code checks (numbers, structure) never goes."""
     from blogger import send_draft, update_draft
     from image_library import load as load_library
     from config import ImageSettings
@@ -322,8 +326,17 @@ def send(key_prefix: str, client, store, library=None, ws: WriterSettings = Writ
     saved = json.loads(path.read_text(encoding="utf-8"))
     topic = ChronicleTopic.from_dict(saved["topic"])
     library = library if library is not None else load_library(ImageSettings().store_path)
-    html, notes = final_html(saved, library)
-    outgoing = dict(saved, html=html)
+    findings = []
+    if not saved.get("ready"):
+        fc = saved.get("fact_check") or {}
+        code_ok = not (saved.get("seo") or {}).get("errors")
+        if not (with_findings and code_ok and fc):
+            print(f"[GÖNDERİLMEDİ] {saved['draft']['title']}: taslak HAZIR değil"
+                  + ("" if code_ok else " (kod kontrolleri geçmedi)"))
+            return 1
+        findings = ["DÜZELT (fact-check): " + e for e in fc.get("critical_errors", []) + fc.get("unsupported_claims", [])]
+    html, notes = final_html(saved, library, extra_notes=findings)
+    outgoing = dict(saved, html=html, ready=True)
     if (saved.get("blogger") or {}).get("post_id"):
         r = update_draft(topic, outgoing, client, store)
     else:
@@ -412,6 +425,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--send", metavar="KONU", help="kayıtlı HAZIR taslağı Blogger'a TASLAK olarak gönder")
     ap.add_argument("--daily", action="store_true", help="zamanlanmış çalıştırma (haftalık tavan, yaz, gönder)")
     ap.add_argument("--recheck", metavar="KONU", help="kayıtlı taslağı yazarı çağırmadan yeniden kontrol et (1 fact-check)")
+    ap.add_argument("--with-findings", action="store_true",
+                    help="--send ile: fact-check bulgusu olan taslağı, bulgular editör notunda olarak gönder")
     ap.add_argument("--rewrite", metavar="KONU", help="fact-check'te kalan taslağı bulgularla bir kez yeniden yaz (2 istek)")
     args = ap.parse_args(argv)
     logging.basicConfig(level=getattr(logging, load_settings().log_level, logging.INFO),
@@ -434,7 +449,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 1
     store = create_store(load_settings())
     if args.send:
-        return send(args.send, client, store)
+        return send(args.send, client, store, with_findings=args.with_findings)
     ai = fetch = None
     if os.environ.get("GEMINI_API_KEY"):
         from ai_client import create_ai_client
