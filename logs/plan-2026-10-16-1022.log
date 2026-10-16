@@ -1,0 +1,77 @@
+Anlık görüntü: data/carscore/2026-10-16.json
+CarScore anlık görüntü 2026-10-16T10:22:41+03:00
+  site: 181 araç, 103 nesil, 329 değerlendirme, 491 sahip anketi
+  [OK ] arıza DQ200: 11/84 (DSG Şanzıman (Mekatronik ve Kavrama))
+  [OK ] arıza 1.5 eTSI 150 HP: 2/50 (48V Jeneratör (Alternatör))
+  [OK ] arıza 1.5 eTSI 116 HP: 1/23 (48V Jeneratör (Alternatör))
+  [OK ] arıza DQ381: 1/15 (DSG Şanzıman (Mekatronik ve Kavrama))
+  [SORUN] araç Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: CarScore 83, 3 görüş
+  [OK ] araç Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri: CarScore 82, 72 görüş
+  [OK ] araç CUPRA Formentor KM7 1.5 TSI 150 HP Formentor DSG: CarScore 79, 31 görüş
+  [OK ] araç Volkswagen Tiguan Mk3 1.5 eTSI 150 HP Life DSG 7 İleri: CarScore 80, 6 görüş
+  [SORUN] araç CUPRA Leon 1.5 eTSI 150 HP Standart DSG: CarScore 81, 10 görüş
+  [OK ] araç Volkswagen Passat B8 Facelift 1.5 TSI 150 HP Bussines DSG 7 İleri: CarScore 86, 8 görüş
+  [SORUN] araç Volkswagen ID.7 1. Nesil APP 550 286 HP Pro S: CarScore 82, 18 görüş
+  [SORUN] araç Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri: CarScore 79, 5 görüş
+  [SORUN] Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: 'Bu aracı tekrar alır mıydın?' yüzdeleri toplamı 2
+  [SORUN] Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: 'Aracı hangi amaçla kullanıyorsun?' yüzdeleri toplamı 1
+  [SORUN] Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: 'Şu an kaç kilometrede?' yüzdeleri toplamı 1
+  [SORUN] Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri: katılımcı 2, görüş 3
+  [SORUN] CUPRA Leon 1.5 eTSI 150 HP Standart DSG: 'Aracı hangi amaçla kullanıyorsun?' yüzdeleri toplamı 2
+  [SORUN] CUPRA Leon 1.5 eTSI 150 HP Standart DSG: 'Şu an kaç kilometrede?' yüzdeleri toplamı 2
+  [SORUN] Volkswagen ID.7 1. Nesil APP 550 286 HP Pro S: katılımcı 17, görüş 18
+  [SORUN] Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri: 'Aracı hangi amaçla kullanıyorsun?' yüzdeleri toplamı 1
+  [SORUN] Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri: 'Şu an kaç kilometrede?' yüzdeleri toplamı 1
+  [HATA] https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/: 'arıza başlığı' bulunamadı (sayfa yapısı değişmiş olabilir; ayrıştırıcı güncellenmeli)
+  [HATA] https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/: 'arıza başlığı' bulunamadı (sayfa yapısı değişmiş olabilir; ayrıştırıcı güncellenmeli)
+Aday konular: 2 yazılabilir / 13 incelendi
+  [YENİ] ariza: DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği  (84 bildirim, paket 2885 karakter/6 parça)
+  [YENİ] ariza: 1.5 eTSI 150 HP 48V jeneratör: sahiplerin 50 bildiriminin kroniği  (50 bildirim, paket 3027 karakter/6 parça)
+  [ELENDİ] ariza: 1.5 eTSI 116 HP 48V jeneratör: sahiplerin 23 bildiriminin kroniği  (23 bildirim < eşik 30)
+  [ELENDİ] ariza: DQ381 DSG arızası: sahiplerin 15 bildiriminin kroniği  (15 bildirim < eşik 30)
+  [ELENDİ] karsilastirma: Volkswagen Golf Mk8 Facelift 1.5 eTSI Life mi, CUPRA Leon 1.5 eTSI Standart mi? Sahip verisiyle (Hatchback)  (veri yok/sorunlu: CUPRA Leon)
+  [ELENDİ] karsilastirma: Volkswagen Golf Mk8 Facelift 1.5 eTSI Life mi, SEAT Leon Mk4 (KL) 1.5 e-Hybrid FR mi? Sahip verisiyle (Hatchback)  (veri yok/sorunlu: SEAT Leon Mk4 (KL))
+  [ELENDİ] karsilastirma: CUPRA Leon 1.5 eTSI Standart mi, SEAT Leon Mk4 (KL) 1.5 e-Hybrid FR mi? Sahip verisiyle (Hatchback)  (veri yok/sorunlu: CUPRA Leon, SEAT Leon Mk4 (KL))
+  [ELENDİ] karsilastirma: Volkswagen Passat B8 Facelift 1.5 TSI Bussines mi, Volkswagen ID.7 1. Nesil APP 550 Pro S mi? Sahip verisiyle (Sedan)  (veri yok/sorunlu: Volkswagen ID.7 1. Nesil)
+  [ELENDİ] karsilastirma: CUPRA Terramar 1. Nesil 1.5 eTSI Supreme mi, CUPRA Formentor KM7 1.5 TSI Formentor mi? Sahip verisiyle (SUV)  (veri yok/sorunlu: CUPRA Terramar 1. Nesil)
+  [ELENDİ] karsilastirma: CUPRA Terramar 1. Nesil 1.5 eTSI Supreme mi, Volkswagen Tiguan Mk3 (CT) 1.5 eTSI Life mi? Sahip verisiyle (SUV)  (veri yok/sorunlu: CUPRA Terramar 1. Nesil)
+  [ELENDİ] karsilastirma: CUPRA Formentor KM7 1.5 TSI Formentor mi, Volkswagen Tiguan Mk3 (CT) 1.5 eTSI Life mi? Sahip verisiyle (SUV)  (en az görüş 6 < eşik 10)
+  [ELENDİ] karsilastirma: Volkswagen Passat B8 Facelift 1.5 TSI Bussines mi, Škoda Superb B9 (3W) 1.5 eTSI Prestige mi? Sahip verisiyle (Sedan)  (veri yok/sorunlu: Škoda Superb B9 (3W))
+  [ELENDİ] karsilastirma: Volkswagen ID.7 1. Nesil APP 550 Pro S mi, Škoda Superb B9 (3W) 1.5 eTSI Prestige mi? Sahip verisiyle (Sedan)  (veri yok/sorunlu: Volkswagen ID.7 1. Nesil, Škoda Superb B9 (3W))
+
+== ariza-dq200 ==
+[K1] CarScore sahip bildirimleri: DQ200 DSG arızası (https://shiftandtrend.com/sanziman/dq200/)
+DQ200 kullanan tüm araçlardan 84 bildirimden 11 tanesinde arıza bildirildi (sorun: DSG Şanzıman (Mekatronik ve Kavrama)).
+Bunlardan 5 tanesi doğrulanmış sahip.
+Seçeneklere göre bildirimler: Hayır, sorun yaşamadım: 67; Mekatronik onarıldı / değişti: 2; Kavrama (debriyaj) değişti: 3; Titreme / sarsıntı var, henüz onarılmadı: 6; Bilmiyorum / aracı yeni aldım: 6.
+Şanzıman yağı ve filtresi değişti mi? Hiç değişmedi (69 bildirimin en sık cevabı).
+Kaç kilometrede oldu? 80 – 100 Bin (8 bildirimin ortancası).
+Masrafı kim karşıladı? Tamamen cebimden (4 bildirimin en sık cevabı).
+Cebinden çıkan tutar? 50 – 75 Bin TL (4 bildirimin ortancası).
+Hangi yıl yapıldı? 2025 (4 bildirimin ortancası).
+Hangi çözüm uygulandı? Orijinal (yetkili servis parçası) (4 bildirimin en sık cevabı).
+
+[K2] CarScore notu: bildirim adedi, arıza oranı değil (https://shiftandtrend.com/sanziman/dq200/)
+Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.
+Bu sayılar gönüllü sahip bildirimidir, temsili bir örneklem değildir; sorun yaşayanların bildirme olasılığı daha yüksektir. Arıza ORANI olarak değil, bildirim ADEDİ olarak okunmalıdır.
+
+[K3] CarScore: DSG Şanzıman (Mekatronik ve Kavrama) (https://shiftandtrend.com/sanziman/dq200/)
+Çift kavramalı kutuda en çok sorulan iki konu: mekatronik ünitesi ve kavrama paketi. Bakım geçmişi de burada toplanıyor — asıl işe yarayan veri o.
+
+[K4] CarScore teknik künye: DQ200 (Şanzıman) (https://shiftandtrend.com/sanziman/dq200/)
+DSG (Çift Kavramalı) · Kuru Kavrama
+Vites Tipi: DSG (Çift Kavramalı)
+Kavrama Tipi: Kuru Kavrama
+Dahili Kod: 0AM
+Üretici: Volkswagen Group
+Volkswagen Grubu'nun geliştirdiği DQ200, maksimum 250 Nm tork kapasitesine sahip, 7 ileri, kuru çift kavramalı ve mekatronik hidrolik kontrollü bir otomatik şanzımandır. Düşük hacimli benzinli motorlarla (1.0 TSI, 1.2 TSI, 1.4 TSI gibi) yüksek yakıt verimliliği ve hızlı vites geçişi sağlamak için tasarlanmıştır
+
+[K5] CarScore özeti: DQ200 kullanan araçlar (https://shiftandtrend.com/sanziman/dq200/)
+Ortalama CarScore: 71 · 18 araç üzerinden
+En yüksek puan: 86 · Aşağıdaki listenin ilk aracı
+Kullanıcı puanı: 4,4 / 5 · 217 oy
+DQ200 kullanan araçların sahip anketi - En çok bildirilen sorun: Trim Sesi — %44 (70 / 159 katılımcı).
+
+[K6] DQ200 kullanan araçlardan bazıları (https://shiftandtrend.com/sanziman/dq200/)
+Volkswagen Passat B8 Facelift 1.5 TSI Bussines (CarScore 86); Volkswagen Passat Variant B 8.5 1.5 TSI Bussines (CarScore 84); Volkswagen Golf Mk8 Facelift 1.5 eTSI Style (CarScore 83); Volkswagen Golf Mk8 Facelift 1.5 eTSI Life (CarScore 82); Volkswagen Golf Mk8 1.0 eTSI R-Line (CarScore 82); CUPRA Leon 1.5 eTSI Standart (CarScore 81); Škoda Superb B9 (3W) 1.5 eTSI Prestige (CarScore 79); Škoda Octavia Mk4 (A8) 1.0 TSI e-TEC Elite (CarScore 74); Škoda Kamiq 1. Nesil Facelift 1.0 TSI Premium (CarScore 72); Volkswagen T-Roc MK 2 1.5 eTSI Life (CarScore 71); Škoda Fabia Mk4 (PJ) 1.0 TSI Premium (CarScore 68); Škoda Scala 1. Nesil 1.0 TSI Premium (CarScore 68).
+En yüksek CarScore puanlı 12 araç gösteriliyor; bu şanzıman toplam 138 araçta kullanılıyor. Tamamı için yukarıdaki nesil bağlantılarını izleyin.
