@@ -1,0 +1,39 @@
+# Kronikler Auto Editor — proje talimatları
+
+Otomobil Kronikleri (https://otomobilkronikleri.blogspot.com/) için, yalnız CarScore verisinden
+(https://shiftandtrend.com/araclar/) yazı üreten ve Blogger'a TASLAK gönderen otomatik hat.
+Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-editor, e193136) kopyası
+üzerine kurulu; iki depo bağımsız, birindeki değişiklik diğerine otomatik geçmez.
+
+## Kararlar (2026-10-16, kullanıcı)
+- Ayrı depo. Veri: CarScore'un herkese açık sayfaları okunur (eklentiye dokunulmaz).
+- Haftada 3 yazı, günde en çok 1. Önce TASLAK; yayın elle.
+- Blogger: Zapyus ile aynı Google hesabı (aynı OAuth istemcisi, farklı blog ID).
+- İlk sürümde yazı türleri: arıza kroniği + karşılaştırma. Araç sahip kroniği ve ay kroniği sonra.
+- Yıldız/aggregateRating YOK; yalnız BlogPosting (puanlar shiftandtrend'de toplanıyor).
+
+## Durum
+- Adım 0 TAMAM (2026-10-16): Zapyus'tan ai_client, quota, memory (sade), models (ChronicleTopic),
+  normalizer, fetcher (crawler'ın Fetcher'ı), fact_checker, seo_check, blogger, blogger_reauth,
+  schema_markup (yalnız BlogPosting), data_pack (ResearchPack şekli). 161 test.
+- Sıradaki: Adım 1. İlk iş Actions → "CarScore ornek sayfalar" (`fetch_fixtures.py`): sunucudan erişim
+  kontrolü + ham sayfalar `fixtures` dalına. Sonra `carscore_source.py` ayrıştırıcı + tutarlılık kapıları.
+
+## Kurallar
+- Kullanıcıyla Türkçe konuş. Yazılar Türkçe.
+- URL, model adı, API parametresi UYDURMA; resmi dokümandan doğrula.
+- Çalıştırmadığın testi "geçti" diye raporlama.
+- Etik okuma: sabit UA, robots.txt, nazik bekleme, 401/403/challenge → atla, bypass yok.
+- Yazıdaki HER sayı veri paketinden gelir; fact-check aynı pakete bakar. Pakette yoksa yazılmaz.
+- Ayrıştırıcı bir zorunlu alanı bulamazsa o sayfa HATA, konu yazılmaz. Tahmin/varsayılan sayı yok.
+- Örneklem eşiği altındaki konu yazılmaz; her oranın yanında taban sayı ("72 sahipten 42'si").
+- Fiyat yazılmaz. Tamir masrafı yalnız sahip bildirimi aralığı olarak.
+- Secret'lar sadece .env / GitHub Secrets'ta. Blogger'a yalnız TASLAK (isDraft=true).
+- HTML gövdede H1 yok (H2-H4). Model adları, kotalar, eşikler config'de.
+- Her büyük adımdan önce kullanıcı onayı al.
+
+## Komutlar
+- Kurulum: `python -m venv .venv` → aktive et → `pip install -r requirements.txt`
+- Test: `pytest`
+- AI doğrulama: `python main.py --check-ai` (1 API çağrısı) · Kota: `python main.py --quota`
+- Örnek sayfalar (yerelde): `python fetch_fixtures.py fixtures/raw`

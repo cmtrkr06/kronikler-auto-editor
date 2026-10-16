@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+*.json.corrupt
+data/
+credentials/
+*service-account*.json
+client_secret*.json
+token*.json
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+firebase-credentials*.json

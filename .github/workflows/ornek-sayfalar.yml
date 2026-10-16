@@ -1,0 +1,44 @@
+# Adım 1'in ilk kontrolü: GitHub sunucularından CarScore sayfaları nazikçe okunabiliyor mu?
+# Okunan ham sayfalar "fixtures" dalına yazılır (ayrıştırıcı testleri bunlarla kurulur).
+# Blogger'a yazmaz, yapay zeka çağırmaz. Telefondan: Actions -> "CarScore ornek sayfalar" -> Run workflow.
+name: CarScore ornek sayfalar
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  oku:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Sayfaları oku
+        run: python fetch_fixtures.py out
+
+      - name: Özet
+        if: always()
+        run: |
+          [ -f out/report.json ] && python3 -c "import json; [print(r['outcome'], r.get('status'), r['url']) for r in json.load(open('out/report.json'))]" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: fixtures dalına yaz
+        if: always()
+        run: |
+          [ -d out ] || exit 0
+          cd out
+          git init -q -b fixtures
+          git config user.name "kronikler-bot"
+          git config user.email "kronikler-bot@users.noreply.github.com"
+          git add -A
+          git commit -q -m "CarScore örnek sayfalar $(date -u '+%F %H:%M')"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" fixtures
