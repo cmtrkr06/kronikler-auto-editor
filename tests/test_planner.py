@@ -95,3 +95,11 @@ def test_thin_survey_blocks_a_comparison():
     finally:
         del FILES[LEON]
     assert not c.ok and "yayın eşiği altında" in c.reason and "CUPRA Leon" in c.reason
+
+
+def test_pack_numbers_use_turkish_decimal_comma():
+    s = snap()
+    s.hub.leads[1].body = "Hatchback"
+    c = next(x for x in candidates(s) if set(x.topic.subject_urls) == {GOLF, FORMENTOR})
+    text = c.pack.render()
+    assert "ortalama 5,5 L/100km" in text and "Kullanıcı puanı 4,7/5" in text and "5.5" not in text

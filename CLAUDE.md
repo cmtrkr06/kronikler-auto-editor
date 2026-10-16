@@ -20,7 +20,7 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
   açık seçiciler, ParseError; tutarlılık: seçenek toplamı = bildirim, arızalı = sorun seçenekleri toplamı,
   tek seçimli anket ~%100, ana sayfa kartı = ayrıntı sayfası, araç sayfasındaki birim bölümü = birim sayfası;
   anlık görüntü data/carscore/<gün>.json, bir önceki güne göre gerileme → o konu bekler), `data_pack.py`
-  kurucuları, `planner.py` (AI yok), `python main.py --plan`, Actions "Konu plani (AI yok)". 188 test.
+  kurucuları, `planner.py` (AI yok), `python main.py --plan`, Actions "Konu plani (AI yok)". 189 test.
 - Site gerçekleri (2026-10-16): motor sayfasında arıza bölümü YOK (araç sayfasından okunur); araç sayfasındaki
   arıza bölümü birimi kullanan TÜM araçların toplamı; anket yüzdelerinin soru başına tabanı sayfada yok.
   Sitenin kendi eşikleri: anket sorusu 3 katılımcıdan azsa yüzde yerine KİŞİ SAYISI gösterilir ("Henüz az veri"

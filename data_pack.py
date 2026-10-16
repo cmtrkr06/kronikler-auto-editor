@@ -60,6 +60,11 @@ PERCENT_NOTE = ("Yüzdeler, aracın sayfasındaki sahip anketine katılanlar ara
                 "seçenek işaretlenebilen sorularda yüzdelerin toplamı 100'ü geçer.")
 
 
+def tr(x: float) -> str:
+    """Turkish decimal comma, as on the site: 5.5 -> '5,5'."""
+    return f"{x:g}".replace(".", ",")
+
+
 class _Builder:
     def __init__(self, key: str, title: str) -> None:
         self.pack = ResearchPack(key, title)
@@ -107,7 +112,7 @@ def fault_pack(key: str, title: str, spot, fault, unit=None) -> ResearchPack:
 def _vehicle_lines(v) -> list[list[str]]:
     head = [f"{v.name}: CarScore {v.carscore}/100 ({v.verdict}), {v.opinions} kişinin görüşüne göre."]
     if v.rating is not None:
-        head.append(f"Kullanıcı puanı {v.rating:g}/5" + (f", {v.rating_count} değerlendirme." if v.rating_count else "."))
+        head.append(f"Kullanıcı puanı {tr(v.rating)}/5" + (f", {v.rating_count} değerlendirme." if v.rating_count else "."))
     if v.repurchase_pct is not None:
         head.append(f"Ankete katılan sahiplerin %{v.repurchase_pct}'i aracı tekrar alırdım diyor.")
     if v.sources:
@@ -122,8 +127,8 @@ def _vehicle_lines(v) -> list[list[str]]:
         survey.append("Sahiplerin en çok şikâyet ettikleri: " + "; ".join(f"{o.label} %{o.count}" for o in v.complaints) + ".")
     c = v.consumption
     if c.get("Ortalama") is not None:
-        survey.append(f"Sahiplerin bildirdiği gerçek tüketim: ortalama {c['Ortalama']:g} L/100km, en düşük "
-                      f"{c.get('En düşük', 0):g}, en yüksek {c.get('En yüksek', 0):g}"
+        survey.append(f"Sahiplerin bildirdiği gerçek tüketim: ortalama {tr(c['Ortalama'])} L/100km, en düşük "
+                      f"{tr(c.get('En düşük', 0))}, en yüksek {tr(c.get('En yüksek', 0))}"
                       + (f" ({int(c['Kayıt'])} kayıt)." if c.get("Kayıt") else "."))
     for q, opts in v.stats.items():
         if q in v.low_data:
