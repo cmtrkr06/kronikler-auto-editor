@@ -13,6 +13,10 @@ concurrency:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash        # -eo pipefail: a failing command before "| tee" fails the step
+
 jobs:
   arsiv:
     runs-on: ubuntu-latest
@@ -44,7 +48,9 @@ jobs:
         run: bash blogger_login.sh
 
       - name: Arşivi oku ve etiketle
-        run: python image_library.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          mkdir -p data/logs
+          python image_library.py 2>&1 | tee "data/logs/gorsel-$(date +%F-%H%M).log" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Durumu geri yaz
         if: always()

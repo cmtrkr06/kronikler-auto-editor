@@ -14,6 +14,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash        # -eo pipefail: a failing command before "| tee" fails the step
+
 jobs:
   oku:
     runs-on: ubuntu-latest

@@ -24,6 +24,10 @@ concurrency:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash        # -eo pipefail: a failing command before "| tee" fails the step
+
 jobs:
   giris:
     runs-on: ubuntu-latest
