@@ -2,7 +2,7 @@
 raw HTML look like? Saves the pages to fixtures/raw/ for the parser tests. Run by the
 "CarScore ornek sayfalar" workflow; nothing here writes to Blogger or calls AI.
 
-    python fetch_fixtures.py [out_dir]
+    python fetch_fixtures.py [out_dir] [extra_url ...]
 """
 from __future__ import annotations
 
@@ -41,7 +41,8 @@ def main(argv: list[str]) -> int:
 
     robots = fetcher.fetch(f"{BASE}/robots.txt")
     report.append({"url": robots.url, "outcome": robots.outcome.value, "status": robots.status_code})
-    urls = list(PAGES)
+    extra = [u for u in argv[2:] if u.startswith(BASE + "/")]   # only CarScore's own site
+    urls = list(PAGES) + extra
     if robots.ok:
         (out / "robots.txt").write_bytes(robots.content)
         urls += SITEMAP_RE.findall(robots.content.decode("utf-8", "replace"))[:3]

@@ -5,6 +5,11 @@ name: CarScore ornek sayfalar
 
 on:
   workflow_dispatch:
+    inputs:
+      adresler:
+        description: "Ek shiftandtrend.com adresleri (boşlukla ayrılmış), boş bırakılabilir"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -24,7 +29,9 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Sayfaları oku
-        run: python fetch_fixtures.py out
+        env:
+          ADRESLER: ${{ inputs.adresler }}
+        run: python fetch_fixtures.py out $ADRESLER
 
       - name: Özet
         if: always()
