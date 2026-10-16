@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "topics": {},
+ "meta": {
+  "quota": {
+   "2026-10-16": {
+    "gemini-3.8-flash": {
+     "total": 2,
+     "steps": {
+      "writer": 2
+     },
+     "exhausted": false
+    },
+    "gemini-3.7-flash": {
+     "total": 1,
+     "steps": {
+      "fact_check": 1
+     },
+     "exhausted": false
+    }
+   }
+  }
+ },
+ "logs": []
+}

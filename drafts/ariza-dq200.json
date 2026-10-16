@@ -1,0 +1,274 @@
+{
+ "blogger": null,
+ "topic": {
+  "key": "ariza-dq200",
+  "title": "DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği",
+  "type": "ariza",
+  "status": "PROPOSED",
+  "subject_urls": [
+   "https://shiftandtrend.com/sanziman/dq200/"
+  ],
+  "sample": 84,
+  "data_hash": "af000bd2ced0c357",
+  "reason": "",
+  "editor_note": "",
+  "created_at": "2026-10-16T07:46:06.355492+00:00",
+  "updated_at": "2026-10-16T07:46:06.355497+00:00"
+ },
+ "pack": {
+  "subject_key": "ariza-dq200",
+  "subject_title": "DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği",
+  "passages": [
+   {
+    "id": "K1",
+    "reference_id": "carscore:DQ200",
+    "url": "https://shiftandtrend.com/sanziman/dq200/",
+    "title": "CarScore sahip bildirimleri: DQ200 DSG arızası",
+    "text": "DQ200 kullanan tüm araçlardan 84 bildirimden 11 tanesinde arıza bildirildi (sorun: DSG Şanzıman (Mekatronik ve Kavrama)).\nBunlardan 5 tanesi doğrulanmış sahip.\nSeçeneklere göre bildirimler: Hayır, sorun yaşamadım: 67; Mekatronik onarıldı / değişti: 2; Kavrama (debriyaj) değişti: 3; Titreme / sarsıntı var, henüz onarılmadı: 6; Bilmiyorum / aracı yeni aldım: 6.\nŞanzıman yağı ve filtresi değişti mi? Hiç değişmedi (69 bildirimin en sık cevabı).\nKaç kilometrede oldu? 80 – 100 Bin (8 bildirimin ortancası).\nMasrafı kim karşıladı? Tamamen cebimden (4 bildirimin en sık cevabı).\nCebinden çıkan tutar? 50 – 75 Bin TL (4 bildirimin ortancası).\nHangi yıl yapıldı? 2025 (4 bildirimin ortancası).\nHangi çözüm uygulandı? Orijinal (yetkili servis parçası) (4 bildirimin en sık cevabı)."
+   },
+   {
+    "id": "K2",
+    "reference_id": "carscore:DQ200",
+    "url": "https://shiftandtrend.com/sanziman/dq200/",
+    "title": "CarScore notu: bildirim adedi, arıza oranı değil",
+    "text": "Bildirim adedidir, arıza oranı değildir — neden? Bu veri gönüllü bildirimdir, temsili bir örneklem değildir: sorun yaşayanların bildirme olasılığı, yaşamayanlara göre daha yüksektir. Bu yüzden sayılar oran olarak değil bildirim adedi olarak okunur ve eşik altında hiçbir dağılım yayınlanmaz.\nBu sayılar gönüllü sahip bildirimidir, temsili bir örneklem değildir; sorun yaşayanların bildirme olasılığı daha yüksektir. Arıza ORANI olarak değil, bildirim ADEDİ olarak okunmalıdır."
+   },
+   {
+    "id": "K3",
+    "reference_id": "carscore:DQ200",
+    "url": "https://shiftandtrend.com/sanziman/dq200/",
+    "title": "CarScore: DSG Şanzıman (Mekatronik ve Kavrama)",
+    "text": "Çift kavramalı kutuda en çok sorulan iki konu: mekatronik ünitesi ve kavrama paketi. Bakım geçmişi de burada toplanıyor — asıl işe yarayan veri o."
+   },
+   {
+    "id": "K4",
+    "reference_id": "carscore:DQ200",
+    "url": "https://shiftandtrend.com/sanziman/dq200/",
+    "title": "CarScore teknik künye: DQ200 (Şanzıman)",
+    "text": "DSG (Çift Kavramalı) · Kuru Kavrama\nVites Tipi: DSG (Çift Kavramalı)\nKavrama Tipi: Kuru Kavrama\nDahili Kod: 0AM\nÜretici: Volkswagen Group\nVolkswagen Grubu'nun geliştirdiği DQ200, maksimum 250 Nm tork kapasitesine sahip, 7 ileri, kuru çift kavramalı ve mekatronik hidrolik kontrollü bir otomatik şanzımandır. Düşük hacimli benzinli motorlarla (1.0 TSI, 1.2 TSI, 1.4 TSI gibi) yüksek yakıt verimliliği ve hızlı vites geçişi sağlamak için tasarlanmıştır"
+   },
+   {
+    "id": "K5",
+    "reference_id": "carscore:DQ200",
+    "url": "https://shiftandtrend.com/sanziman/dq200/",
+    "title": "CarScore özeti: DQ200 kullanan araçlar",
+    "text": "Ortalama CarScore: 71 · 18 araç üzerinden\nEn yüksek puan: 86 · Aşağıdaki listenin ilk aracı\nKullanıcı puanı: 4,4 / 5 · 217 oy\nDQ200 kullanan araçların sahip anketi - En çok bildirilen sorun: Trim Sesi — %44 (70 / 159 katılımcı)."
+   },
+   {
+    "id": "K6",
+    "reference_id": "carscore:DQ200",
+    "url": "https://shiftandtrend.com/sanziman/dq200/",
+    "title": "DQ200 kullanan araçlardan bazıları",
+    "text": "Volkswagen Passat B8 Facelift 1.5 TSI Bussines (CarScore 86); Volkswagen Passat Variant B 8.5 1.5 TSI Bussines (CarScore 84); Volkswagen Golf Mk8 Facelift 1.5 eTSI Style (CarScore 83); Volkswagen Golf Mk8 Facelift 1.5 eTSI Life (CarScore 82); Volkswagen Golf Mk8 1.0 eTSI R-Line (CarScore 82); CUPRA Leon 1.5 eTSI Standart (CarScore 81); Škoda Superb B9 (3W) 1.5 eTSI Prestige (CarScore 79); Škoda Octavia Mk4 (A8) 1.0 TSI e-TEC Elite (CarScore 74); Škoda Kamiq 1. Nesil Facelift 1.0 TSI Premium (CarScore 72); Volkswagen T-Roc MK 2 1.5 eTSI Life (CarScore 71); Škoda Fabia Mk4 (PJ) 1.0 TSI Premium (CarScore 68); Škoda Scala 1. Nesil 1.0 TSI Premium (CarScore 68).\nEn yüksek CarScore puanlı 12 araç gösteriliyor; bu şanzıman toplam 138 araçta kullanılıyor. Tamamı için yukarıdaki nesil bağlantılarını izleyin."
+   }
+  ],
+  "missing": [],
+  "created_at": "2026-10-16T10:45:35+03:00"
+ },
+ "topic_key": "ariza-dq200",
+ "draft": {
+  "title": "DQ200 DSG Arızası: 84 Sahip Bildiriminin Kroniği",
+  "seo_title": "DQ200 DSG Arızası: 84 Sahip Bildirimi",
+  "meta_description": "DQ200 kuru kavramalı DSG için paylaşılan 84 bildirimin 11'inde mekatronik ve kavrama sorunu aktarıldı. İşte masraf ve kilometre verileri.",
+  "slug": "dq200-dsg-arizasi-sahip-bildirimleri",
+  "tags": [
+   "Volkswagen",
+   "DSG",
+   "DQ200"
+  ],
+  "html_body": "<p>Volkswagen Grubu'nun yaygın kuru çift kavramalı şanzımanı DQ200 için toplanan 84 sahip bildiriminden 11 tanesinde DSG mekatronik ve kavrama kaynaklı arıza paylaşıldı. Arıza aktaran bu 11 kaydın 5 tanesi doğrulanmış araç sahiplerinden oluşuyor. Geriye kalan 67 bildirimde ise herhangi bir problem yaşanmadığı belirtildi.</p><h2>DSG Mekatronik ve Kavrama Bildirim Dağılımı</h2><p>Çift kavramalı sistemlerde kullanıcıların en sık gündeme getirdiği iki ana unsur mekatronik ünitesi ile kavrama paketi olarak öne çıkıyor. Sahiplerin aktardığı bildirimlerin dağılımı şu şekildedir:</p><table><thead><tr><th>Bildirilen Durum</th><th>Bildirim Sayısı</th></tr></thead><tbody><tr><td>Hayır, sorun yaşamadım</td><td>67</td></tr><tr><td>Titreme / sarsıntı var, henüz onarılmadı</td><td>6</td></tr><tr><td>Bilmiyorum / aracı yeni aldım</td><td>6</td></tr><tr><td>Kavrama (debriyaj) değişti</td><td>3</td></tr><tr><td>Mekatronik onarıldı / değişti</td><td>2</td></tr></tbody></table><p>Mevcut yanıtlara bakıldığında, sorun yaşamadığını belirten 67 kişinin ardından en büyük grubu henüz servise girmemiş titreme ve sarsıntı şikayetleri oluşturuyor. Mekatronik değişimi veya onarımı 2 bildirimde kalırken, kavrama değişimi 3 bildirimde kayıtlara geçmiş durumda.</p><h2>Onarım Detayları, Masraflar ve Bakım Geçmişi</h2><p>Arızanın ortaya çıktığı kilometre aralığı, sisteme girilen 8 bildirimin ortancasına göre 80 – 100 Bin bandında yer alıyor. Onarımın yapıldığı dönem olarak 4 bildirimin ortancası 2025 yılını işaret ediyor.</p><p>Masraf paylaşımında 4 bildirimin en sık cevabı, harcamanın tamamen araç sahibinin cebinden çıktığı yönünde. Cebinden ödeme yapan kullanıcılar için maliyet tutarı, yine 4 bildirimin ortancasına göre 50 – 75 Bin TL arasında kaydedildi. Tercih edilen müdahale yönteminde ise 4 bildirimin en sık cevabı orijinal parça, yani yetkili servis parçası kullanımı oldu.</p><p>Bakım geçmişi tarafında önemli bir veri dikkat çekiyor: Şanzıman yağı ve filtresinin değişip değişmediği sorusuna verilen 69 bildirimin en sık cevabı \"Hiç değişmedi\" olarak kaydedildi.</p><blockquote><p><strong>Veri notu:</strong> Buradaki sayılar CarScore üzerindeki gönüllü sahip bildirimleridir ve temsili bir örneklemi yansıtmaz. Sorun tecrübe eden araç sahiplerinin sisteme bildirimde bulunma olasılığı daha yüksek olduğundan, bu veriler bir arıza oranı değil, doğrudan bildirim adedi olarak okunmalıdır. Eşik altında kalan dağılımlar yayınlanmamaktadır.</p></blockquote><h2>DQ200 Künyesi ve Kullanıldığı Modeller</h2><p>Dahili kodu 0AM olan DQ200, Volkswagen Grubu tarafından üretilen, mekatronik hidrolik kontrollü ve kuru çift kavramalı 7 ileri bir otomatik şanzımandır. Maksimum 250 Nm tork kapasitesine sahip olan bu ünite; 1.0 TSI, 1.2 TSI ve 1.4 TSI gibi düşük hacimli benzinli motorlarda hızlı vites değişimi ile yakıt verimliliği sunmak amacıyla tasarlanmıştır.</p><p>Sistemde DQ200 şanzımanı taşıyan toplam 138 araç yer alıyor. 18 araç üzerinden hesaplanan ortalama CarScore puanı 71 seviyesinde. Şanzımanın yer aldığı modeller 217 oy üzerinden 4,4 / 5 kullanıcı puanı almış durumda. Bu araçların sahip anketinde en çok bildirilen sorun ise 159 katılımcıdan 70'inin (%44) işaret ettiği trim sesi oldu.</p><p>DQ200 ünitesine yer veren modeller arasında en yüksek CarScore değerine 86 puanla Passat B8 Facelift 1.5 TSI Bussines ulaşıyor. Listede onu 84 puanla Passat Variant B 8.5 1.5 TSI Bussines ve 83 puanla Golf Mk8 Facelift 1.5 eTSI Style takip ediyor. Benzer şekilde Golf Mk8 platformunun Life ve R-Line donanımları 82 puan seviyesinde sıralanırken; CUPRA Leon 1.5 eTSI Standart 81, Škoda Superb B9 1.5 eTSI Prestige ise 79 puana sahip. Diğer taraftan Škoda Octavia Mk4 1.0 TSI e-TEC Elite 74, Škoda Kamiq 1. Nesil Facelift 1.0 TSI Premium 72, Volkswagen T-Roc MK 2 1.5 eTSI Life 71; Škoda Fabia Mk4 ile Škoda Scala 1.0 TSI Premium seçenekleri ise 68 puanla kayıtlarda yer buluyor.</p>",
+  "image_query": "Volkswagen Golf DSG transmission interior",
+  "claims": [
+   {
+    "iddia": "DQ200 için 84 bildirimden 11'inde arıza bildirildi (sorun: DSG Şanzıman (Mekatronik ve Kavrama)).",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "11 arıza bildiriminden 5 tanesi doğrulanmış sahip.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Hayır, sorun yaşamadım cevabı 67 bildirim.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Mekatronik onarıldı / değişti cevabı 2 bildirim.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Kavrama (debriyaj) değişti cevabı 3 bildirim.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Titreme / sarsıntı var, henüz onarılmadı cevabı 6 bildirim.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Bilmiyorum / aracı yeni aldım cevabı 6 bildirim.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Şanzıman yağı ve filtresi değişti mi sorusuna 69 bildirimin en sık cevabı hiç değişmedi.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Arızanın kaç kilometrede olduğu 8 bildirimin ortancasına göre 80 – 100 Bin.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Masrafı kim karşıladı sorusuna 4 bildirimin en sık cevabı tamamen cebimden.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Cebinden çıkan tutar 4 bildirimin ortancasına göre 50 – 75 Bin TL.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Onarımın hangi yıl yapıldığı 4 bildirimin ortancasına göre 2025.",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Hangi çözüm uygulandı sorusuna 4 bildirimin en sık cevabı orijinal (yetkili servis parçası).",
+    "kaynaklar": [
+     "K1"
+    ]
+   },
+   {
+    "iddia": "Sayılar gönüllü sahip bildirimidir, temsili bir örneklem değildir; sorun yaşayanların bildirme olasılığı daha yüksektir ve arıza oranı değil bildirim adedidir, eşik altında dağılım yayınlanmaz.",
+    "kaynaklar": [
+     "K2"
+    ]
+   },
+   {
+    "iddia": "Çift kavramalı kutuda en çok sorulan iki konu: mekatronik ünitesi ve kavrama paketi.",
+    "kaynaklar": [
+     "K3"
+    ]
+   },
+   {
+    "iddia": "DQ200 teknik künye: DSG (Çift Kavramalı), Kuru Kavrama, Dahili Kod 0AM, Üretici Volkswagen Group.",
+    "kaynaklar": [
+     "K4"
+    ]
+   },
+   {
+    "iddia": "DQ200 maksimum 250 Nm tork kapasitesine sahip, 7 ileri, kuru çift kavramalı ve mekatronik hidrolik kontrollü bir otomatik şanzımandır.",
+    "kaynaklar": [
+     "K4"
+    ]
+   },
+   {
+    "iddia": "Düşük hacimli benzinli motorlarla (1.0 TSI, 1.2 TSI, 1.4 TSI gibi) yüksek yakıt verimliliği ve hızlı vites geçişi için tasarlanmıştır.",
+    "kaynaklar": [
+     "K4"
+    ]
+   },
+   {
+    "iddia": "Ortalama CarScore 18 araç üzerinden 71, en yüksek puan 86, kullanıcı puanı 217 oy ile 4,4 / 5.",
+    "kaynaklar": [
+     "K5"
+    ]
+   },
+   {
+    "iddia": "En çok bildirilen sorun Trim Sesi — %44 (70 / 159 katılımcı).",
+    "kaynaklar": [
+     "K5"
+    ]
+   },
+   {
+    "iddia": "DQ200 şanzımanı toplam 138 araçta kullanılıyor.",
+    "kaynaklar": [
+     "K6"
+    ]
+   },
+   {
+    "iddia": "En yüksek CarScore puanlı araçlar arasında Passat B8 Facelift 1.5 TSI Bussines (86), Passat Variant B 8.5 1.5 TSI Bussines (84), Golf Mk8 Facelift 1.5 eTSI Style (83), Golf Mk8 Facelift 1.5 eTSI Life (82), Golf Mk8 1.0 eTSI R-Line (82), CUPRA Leon 1.5 eTSI Standart (81), Škoda Superb B9 (3W) 1.5 eTSI Prestige (79), Škoda Octavia Mk4 (A8) 1.0 TSI e-TEC Elite (74), Škoda Kamiq 1. Nesil Facelift 1.0 TSI Premium (72), Volkswagen T-Roc MK 2 1.5 eTSI Life (71), Škoda Fabia Mk4 (PJ) 1.0 TSI Premium (68), Škoda Scala 1. Nesil 1.0 TSI Premium (68) yer alıyor.",
+    "kaynaklar": [
+     "K6"
+    ]
+   }
+  ],
+  "internal_link_ideas": [
+   "DSG Şanzıman Bakımı ve Yağ Değişimi Periyotları",
+   "Volkswagen Passat B8 1.5 TSI Sahip Deneyimleri",
+   "Kuru Kavrama vs Islak Kavrama DSG Farkları"
+  ]
+ },
+ "html": "<p>Volkswagen Grubu'nun yaygın kuru çift kavramalı şanzımanı DQ200 için toplanan 84 sahip bildiriminden 11 tanesinde DSG mekatronik ve kavrama kaynaklı arıza paylaşıldı. Arıza aktaran bu 11 kaydın 5 tanesi doğrulanmış araç sahiplerinden oluşuyor. Geriye kalan 67 bildirimde ise herhangi bir problem yaşanmadığı belirtildi.</p><h2>DSG Mekatronik ve Kavrama Bildirim Dağılımı</h2><p>Çift kavramalı sistemlerde kullanıcıların en sık gündeme getirdiği iki ana unsur mekatronik ünitesi ile kavrama paketi olarak öne çıkıyor. Sahiplerin aktardığı bildirimlerin dağılımı şu şekildedir:</p><table><thead><tr><th>Bildirilen Durum</th><th>Bildirim Sayısı</th></tr></thead><tbody><tr><td>Hayır, sorun yaşamadım</td><td>67</td></tr><tr><td>Titreme / sarsıntı var, henüz onarılmadı</td><td>6</td></tr><tr><td>Bilmiyorum / aracı yeni aldım</td><td>6</td></tr><tr><td>Kavrama (debriyaj) değişti</td><td>3</td></tr><tr><td>Mekatronik onarıldı / değişti</td><td>2</td></tr></tbody></table><p>Mevcut yanıtlara bakıldığında, sorun yaşamadığını belirten 67 kişinin ardından en büyük grubu henüz servise girmemiş titreme ve sarsıntı şikayetleri oluşturuyor. Mekatronik değişimi veya onarımı 2 bildirimde kalırken, kavrama değişimi 3 bildirimde kayıtlara geçmiş durumda.</p><h2>Onarım Detayları, Masraflar ve Bakım Geçmişi</h2><p>Arızanın ortaya çıktığı kilometre aralığı, sisteme girilen 8 bildirimin ortancasına göre 80 – 100 Bin bandında yer alıyor. Onarımın yapıldığı dönem olarak 4 bildirimin ortancası 2025 yılını işaret ediyor.</p><p>Masraf paylaşımında 4 bildirimin en sık cevabı, harcamanın tamamen araç sahibinin cebinden çıktığı yönünde. Cebinden ödeme yapan kullanıcılar için maliyet tutarı, yine 4 bildirimin ortancasına göre 50 – 75 Bin TL arasında kaydedildi. Tercih edilen müdahale yönteminde ise 4 bildirimin en sık cevabı orijinal parça, yani yetkili servis parçası kullanımı oldu.</p><p>Bakım geçmişi tarafında önemli bir veri dikkat çekiyor: Şanzıman yağı ve filtresinin değişip değişmediği sorusuna verilen 69 bildirimin en sık cevabı \"Hiç değişmedi\" olarak kaydedildi.</p><blockquote><p><strong>Veri notu:</strong> Buradaki sayılar CarScore üzerindeki gönüllü sahip bildirimleridir ve temsili bir örneklemi yansıtmaz. Sorun tecrübe eden araç sahiplerinin sisteme bildirimde bulunma olasılığı daha yüksek olduğundan, bu veriler bir arıza oranı değil, doğrudan bildirim adedi olarak okunmalıdır. Eşik altında kalan dağılımlar yayınlanmamaktadır.</p></blockquote><h2>DQ200 Künyesi ve Kullanıldığı Modeller</h2><p>Dahili kodu 0AM olan DQ200, Volkswagen Grubu tarafından üretilen, mekatronik hidrolik kontrollü ve kuru çift kavramalı 7 ileri bir otomatik şanzımandır. Maksimum 250 Nm tork kapasitesine sahip olan bu ünite; 1.0 TSI, 1.2 TSI ve 1.4 TSI gibi düşük hacimli benzinli motorlarda hızlı vites değişimi ile yakıt verimliliği sunmak amacıyla tasarlanmıştır.</p><p>Sistemde DQ200 şanzımanı taşıyan toplam 138 araç yer alıyor. 18 araç üzerinden hesaplanan ortalama CarScore puanı 71 seviyesinde. Şanzımanın yer aldığı modeller 217 oy üzerinden 4,4 / 5 kullanıcı puanı almış durumda. Bu araçların sahip anketinde en çok bildirilen sorun ise 159 katılımcıdan 70'inin (%44) işaret ettiği trim sesi oldu.</p><p>DQ200 ünitesine yer veren modeller arasında en yüksek CarScore değerine 86 puanla Passat B8 Facelift 1.5 TSI Bussines ulaşıyor. Listede onu 84 puanla Passat Variant B 8.5 1.5 TSI Bussines ve 83 puanla Golf Mk8 Facelift 1.5 eTSI Style takip ediyor. Benzer şekilde Golf Mk8 platformunun Life ve R-Line donanımları 82 puan seviyesinde sıralanırken; CUPRA Leon 1.5 eTSI Standart 81, Škoda Superb B9 1.5 eTSI Prestige ise 79 puana sahip. Diğer taraftan Škoda Octavia Mk4 1.0 TSI e-TEC Elite 74, Škoda Kamiq 1. Nesil Facelift 1.0 TSI Premium 72, Volkswagen T-Roc MK 2 1.5 eTSI Life 71; Škoda Fabia Mk4 ile Škoda Scala 1.0 TSI Premium seçenekleri ise 68 puanla kayıtlarda yer buluyor.</p><h2>Veri kaynağı</h2><p>Bu yazıdaki tüm sayılar CarScore (shiftandtrend.com) sahip anketi ve arıza bildirimlerinden 16.10.2026 tarihinde alınmıştır. Sayılar yeni bildirimlerle değişebilir; güncel hâli için:</p><ul><li><a href=\"https://shiftandtrend.com/sanziman/dq200/\">DQ200 DSG arızası</a></li></ul>",
+ "slug": "dq200-dsg-arizasi-sahip-bildirimleri",
+ "labels": [
+  "Arıza Kronikleri",
+  "Volkswagen",
+  "DSG",
+  "DQ200"
+ ],
+ "source_urls": [
+  "https://shiftandtrend.com/sanziman/dq200/"
+ ],
+ "revisions": 1,
+ "history": [
+  [
+   "kaynaktan aynen alınmış: 'volkswagen passat b8 facelift 1 5 tsi bussines carscore 86 volkswagen passat'",
+   "kaynaktan aynen alınmış: 'variant b 8 5 1 5 tsi bussines carscore 84 volkswagen golf'",
+   "kaynaktan aynen alınmış: 'mk8 facelift 1 5 etsi style carscore 83 volkswagen golf mk8 facelift'",
+   "kaynaktan aynen alınmış: '1 5 etsi life carscore 82 volkswagen golf mk8 1 0 etsi'",
+   "kaynaktan aynen alınmış: 'r line carscore 82 cupra leon 1 5 etsi standart carscore 81'",
+   "kaynaktan aynen alınmış: 'skoda superb b9 3w 1 5 etsi prestige carscore 79 skoda octavia'",
+   "kaynaktan aynen alınmış: 'mk4 a8 1 0 tsi e tec elite carscore 74 skoda kamiq'",
+   "kaynaktan aynen alınmış: '1 nesil facelift 1 0 tsi premium carscore 72 volkswagen t roc'",
+   "kaynaktan aynen alınmış: 'mk 2 1 5 etsi life carscore 71 skoda fabia mk4 pj'",
+   "kaynaktan aynen alınmış: '1 0 tsi premium carscore 68 skoda scala 1 nesil 1 0'"
+  ]
+ ],
+ "writer_model": "gemini-3.8-flash",
+ "seo": {
+  "errors": [],
+  "warnings": [],
+  "word_count": 523
+ },
+ "ready": true,
+ "pending_check": false,
+ "fact_check": {
+  "passed": true,
+  "critical_errors": [],
+  "warnings": [],
+  "unsupported_claims": [],
+  "summary": "Yazıdaki tüm teknik bilgiler, bildirim sayıları, puanlar ve model verileri veri paketiyle eksiksiz olarak örtüşmektedir.",
+  "model": "gemini-3.7-flash"
+ },
+ "fact_check_rounds": [
+  {
+   "passed": true,
+   "critical_errors": [],
+   "warnings": [],
+   "unsupported_claims": [],
+   "summary": "Yazıdaki tüm teknik bilgiler, bildirim sayıları, puanlar ve model verileri veri paketiyle eksiksiz olarak örtüşmektedir.",
+   "model": "gemini-3.7-flash"
+  }
+ ],
+ "body": "<p>Volkswagen Grubu'nun yaygın kuru çift kavramalı şanzımanı DQ200 için toplanan 84 sahip bildiriminden 11 tanesinde DSG mekatronik ve kavrama kaynaklı arıza paylaşıldı. Arıza aktaran bu 11 kaydın 5 tanesi doğrulanmış araç sahiplerinden oluşuyor. Geriye kalan 67 bildirimde ise herhangi bir problem yaşanmadığı belirtildi.</p><h2>DSG Mekatronik ve Kavrama Bildirim Dağılımı</h2><p>Çift kavramalı sistemlerde kullanıcıların en sık gündeme getirdiği iki ana unsur mekatronik ünitesi ile kavrama paketi olarak öne çıkıyor. Sahiplerin aktardığı bildirimlerin dağılımı şu şekildedir:</p><table><thead><tr><th>Bildirilen Durum</th><th>Bildirim Sayısı</th></tr></thead><tbody><tr><td>Hayır, sorun yaşamadım</td><td>67</td></tr><tr><td>Titreme / sarsıntı var, henüz onarılmadı</td><td>6</td></tr><tr><td>Bilmiyorum / aracı yeni aldım</td><td>6</td></tr><tr><td>Kavrama (debriyaj) değişti</td><td>3</td></tr><tr><td>Mekatronik onarıldı / değişti</td><td>2</td></tr></tbody></table><p>Mevcut yanıtlara bakıldığında, sorun yaşamadığını belirten 67 kişinin ardından en büyük grubu henüz servise girmemiş titreme ve sarsıntı şikayetleri oluşturuyor. Mekatronik değişimi veya onarımı 2 bildirimde kalırken, kavrama değişimi 3 bildirimde kayıtlara geçmiş durumda.</p><h2>Onarım Detayları, Masraflar ve Bakım Geçmişi</h2><p>Arızanın ortaya çıktığı kilometre aralığı, sisteme girilen 8 bildirimin ortancasına göre 80 – 100 Bin bandında yer alıyor. Onarımın yapıldığı dönem olarak 4 bildirimin ortancası 2025 yılını işaret ediyor.</p><p>Masraf paylaşımında 4 bildirimin en sık cevabı, harcamanın tamamen araç sahibinin cebinden çıktığı yönünde. Cebinden ödeme yapan kullanıcılar için maliyet tutarı, yine 4 bildirimin ortancasına göre 50 – 75 Bin TL arasında kaydedildi. Tercih edilen müdahale yönteminde ise 4 bildirimin en sık cevabı orijinal parça, yani yetkili servis parçası kullanımı oldu.</p><p>Bakım geçmişi tarafında önemli bir veri dikkat çekiyor: Şanzıman yağı ve filtresinin değişip değişmediği sorusuna verilen 69 bildirimin en sık cevabı \"Hiç değişmedi\" olarak kaydedildi.</p><blockquote><p><strong>Veri notu:</strong> Buradaki sayılar CarScore üzerindeki gönüllü sahip bildirimleridir ve temsili bir örneklemi yansıtmaz. Sorun tecrübe eden araç sahiplerinin sisteme bildirimde bulunma olasılığı daha yüksek olduğundan, bu veriler bir arıza oranı değil, doğrudan bildirim adedi olarak okunmalıdır. Eşik altında kalan dağılımlar yayınlanmamaktadır.</p></blockquote><h2>DQ200 Künyesi ve Kullanıldığı Modeller</h2><p>Dahili kodu 0AM olan DQ200, Volkswagen Grubu tarafından üretilen, mekatronik hidrolik kontrollü ve kuru çift kavramalı 7 ileri bir otomatik şanzımandır. Maksimum 250 Nm tork kapasitesine sahip olan bu ünite; 1.0 TSI, 1.2 TSI ve 1.4 TSI gibi düşük hacimli benzinli motorlarda hızlı vites değişimi ile yakıt verimliliği sunmak amacıyla tasarlanmıştır.</p><p>Sistemde DQ200 şanzımanı taşıyan toplam 138 araç yer alıyor. 18 araç üzerinden hesaplanan ortalama CarScore puanı 71 seviyesinde. Şanzımanın yer aldığı modeller 217 oy üzerinden 4,4 / 5 kullanıcı puanı almış durumda. Bu araçların sahip anketinde en çok bildirilen sorun ise 159 katılımcıdan 70'inin (%44) işaret ettiği trim sesi oldu.</p><p>DQ200 ünitesine yer veren modeller arasında en yüksek CarScore değerine 86 puanla Passat B8 Facelift 1.5 TSI Bussines ulaşıyor. Listede onu 84 puanla Passat Variant B 8.5 1.5 TSI Bussines ve 83 puanla Golf Mk8 Facelift 1.5 eTSI Style takip ediyor. Benzer şekilde Golf Mk8 platformunun Life ve R-Line donanımları 82 puan seviyesinde sıralanırken; CUPRA Leon 1.5 eTSI Standart 81, Škoda Superb B9 1.5 eTSI Prestige ise 79 puana sahip. Diğer taraftan Škoda Octavia Mk4 1.0 TSI e-TEC Elite 74, Škoda Kamiq 1. Nesil Facelift 1.0 TSI Premium 72, Volkswagen T-Roc MK 2 1.5 eTSI Life 71; Škoda Fabia Mk4 ile Škoda Scala 1.0 TSI Premium seçenekleri ise 68 puanla kayıtlarda yer buluyor.</p>"
+}
