@@ -1,0 +1,43 @@
+Görsel arşivi: 16 resim, 16 etiketli
+  - IMG_8936.png                                       alt='' · (%0)
+  - pexels-pixabay-327540.jpg                          alt='' · araç yok
+  - IMG_0525.jpeg                                      alt='' · Škoda Scala (%95)
+  - IMG_9132.png                                       alt='' · Škoda Scala (%100)
+  - IMG_9188.jpeg                                      alt='' · Audi A3 (%90)
+  - 11973a_dbeea11deab74d40a3b433ffba72b83c~mv2.webp   alt='' · (%0)
+  - pexels-luke-miller-17540266.jpg                    alt='' · Volkswagen Golf (%90)
+  - IMG_9666.jpeg                                      alt='' · Škoda  (%40)
+  - IMG_9667.jpeg                                      alt='' · (%0)
+  - IMG_8936.jpeg                                      alt='' · (%0)
+  - IMG_8900.jpeg                                      alt='' · Škoda Scala (%90)
+  - IMG_1517.JPG                                       alt='' · Nissan GT-R (%95)
+  - IMG_1840.HEIC                                      alt='' · Škoda Scala (%95)
+  - skoda scala safe cp hatası-min.jpg                 alt='' · Škoda Scala (%80)
+  - IMG_9438-min.jpg                                   alt='' · Škoda Scala (%85)
+  - IMG_9437-min.jpg                                   alt='' · Škoda  (%70)
+2026-10-16 11:52:48,711 ERROR kronikler.ai: AI call failed - budget: gemini-3.8-flash / writer: günlük üst sınır 4 doldu
+2026-10-16 11:52:48,711 WARNING kronikler.ai: gemini-3.8-flash unusable (budget), falling back to gemini-3.7-flash
+2026-10-16 11:53:20,083 ERROR kronikler.ai: AI call failed - server: InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.7-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+2026-10-16 11:53:20,083 WARNING kronikler.ai: gemini-3.7-flash unusable (server), falling back to gemini-3.5-flash
+2026-10-16 11:53:20,084 ERROR kronikler.ai: AI call failed - budget: gemini-3.5-flash / writer: günlük üst sınır 3 doldu
+2026-10-16 11:53:20,084 WARNING kronikler.ai: gemini-3.5-flash unusable (budget), falling back to gemini-3.6-flash
+2026-10-16 11:53:20,085 ERROR kronikler.ai: AI call failed - budget: gemini-3.6-flash / writer: günlük üst sınır 3 doldu
+2026-10-16 11:53:20,085 WARNING kronikler.ai: gemini-3.6-flash unusable (budget), falling back to gemini-3-flash-preview
+2026-10-16 11:53:37,896 WARNING kronikler.writer: draft for ariza-dq200 rejected by SEO check, rewriting: ['yazı çok kısa: 354 kelime (en az 400); paketteki verinin ne anlattığını eksiksiz açıkla (dolgu değil, veri)']
+2026-10-16 11:53:37,897 ERROR kronikler.ai: AI call failed - budget: gemini-3.8-flash / writer: günlük üst sınır 4 doldu
+2026-10-16 11:53:37,898 WARNING kronikler.ai: gemini-3.8-flash unusable (budget), falling back to gemini-3.7-flash
+2026-10-16 11:53:37,898 ERROR kronikler.ai: AI call failed - budget: gemini-3.7-flash / writer: günlük üst sınır 4 doldu
+2026-10-16 11:53:37,898 WARNING kronikler.ai: gemini-3.7-flash unusable (budget), falling back to gemini-3.5-flash
+2026-10-16 11:53:37,899 ERROR kronikler.ai: AI call failed - budget: gemini-3.5-flash / writer: günlük üst sınır 3 doldu
+2026-10-16 11:53:37,899 WARNING kronikler.ai: gemini-3.5-flash unusable (budget), falling back to gemini-3.6-flash
+2026-10-16 11:53:37,899 ERROR kronikler.ai: AI call failed - budget: gemini-3.6-flash / writer: günlük üst sınır 3 doldu
+2026-10-16 11:53:37,900 WARNING kronikler.ai: gemini-3.6-flash unusable (budget), falling back to gemini-3-flash-preview
+2026-10-16 11:53:55,720 ERROR kronikler.ai: AI call failed - budget: gemini-3.7-flash / fact_check: günlük üst sınır 4 doldu
+2026-10-16 11:53:55,720 WARNING kronikler.ai: gemini-3.7-flash unusable (budget), falling back to gemini-3.8-flash
+2026-10-16 11:53:55,721 ERROR kronikler.ai: AI call failed - budget: gemini-3.8-flash / fact_check: günlük üst sınır 4 doldu
+2026-10-16 11:53:55,721 WARNING kronikler.ai: gemini-3.8-flash unusable (budget), falling back to gemini-3.5-flash
+2026-10-16 11:53:55,722 ERROR kronikler.ai: AI call failed - budget: gemini-3.5-flash / fact_check: günlük üst sınır 3 doldu
+2026-10-16 11:53:55,722 WARNING kronikler.ai: gemini-3.5-flash unusable (budget), falling back to gemini-3.6-flash
+2026-10-16 11:53:55,722 ERROR kronikler.ai: AI call failed - budget: gemini-3.6-flash / fact_check: günlük üst sınır 3 doldu
+[HATA] yeniden yazım çalışmadı: budget: gemini-3.6-flash / fact_check: günlük üst sınır 3 doldu
+[GÖNDERİLMEDİ] DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza Kaydı: taslak HAZIR değil (SEO veya fact-check'ten geçmemiş)

@@ -12,10 +12,10 @@
      "exhausted": false
     },
     "gemini-3.7-flash": {
-     "total": 3,
+     "total": 4,
      "steps": {
       "fact_check": 2,
-      "writer": 1
+      "writer": 2
      },
      "exhausted": false
     },
@@ -41,9 +41,10 @@
      "exhausted": false
     },
     "gemini-3-flash-preview": {
-     "total": 1,
+     "total": 3,
      "steps": {
-      "fact_check": 1
+      "fact_check": 1,
+      "writer": 2
      },
      "exhausted": false
     }
