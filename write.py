@@ -310,7 +310,7 @@ def final_html(saved: dict, library, with_note: bool = True, extra_notes=()) -> 
 
 
 def send(key_prefix: str, client, store, library=None, ws: WriterSettings = WriterSettings(),
-         with_findings: bool = False) -> int:
+         with_findings: bool = False, alt_title: int = 0) -> int:
     """A saved READY draft -> Blogger DRAFT (new) or update of our unedited Blogger draft.
     `with_findings` (editor's choice, 2026-10-16): a draft that passed every code check but not the
     fact-check may still go to Blogger as a DRAFT, its findings listed in the red editor note to fix
@@ -335,6 +335,14 @@ def send(key_prefix: str, client, store, library=None, ws: WriterSettings = Writ
                   + ("" if code_ok else " (kod kontrolleri geçmedi)"))
             return 1
         findings = ["DÜZELT (fact-check): " + e for e in fc.get("critical_errors", []) + fc.get("unsupported_claims", [])]
+    if alt_title:                     # explicit editor choice only: the duplicate-title guard stays on by default
+        options = saved.get("title_options") or []
+        if alt_title > len(options):
+            print(f"[HATA] {alt_title}. alternatif başlık yok ({len(options)} seçenek var)")
+            return 1
+        main_title = saved["draft"]["title"]
+        saved["draft"]["title"] = options[alt_title - 1]
+        saved["title_options"] = [main_title] + [t for i, t in enumerate(options) if i != alt_title - 1]
     html, notes = final_html(saved, library, extra_notes=findings)
     outgoing = dict(saved, html=html, ready=True)
     if (saved.get("blogger") or {}).get("post_id"):
@@ -427,6 +435,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--recheck", metavar="KONU", help="kayıtlı taslağı yazarı çağırmadan yeniden kontrol et (1 fact-check)")
     ap.add_argument("--with-findings", action="store_true",
                     help="--send ile: fact-check bulgusu olan taslağı, bulgular editör notunda olarak gönder")
+    ap.add_argument("--alt-title", type=int, default=0, help="--send ile: N. alternatif başlıkla gönder")
     ap.add_argument("--rewrite", metavar="KONU", help="fact-check'te kalan taslağı bulgularla bir kez yeniden yaz (2 istek)")
     args = ap.parse_args(argv)
     logging.basicConfig(level=getattr(logging, load_settings().log_level, logging.INFO),
@@ -449,7 +458,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 1
     store = create_store(load_settings())
     if args.send:
-        return send(args.send, client, store, with_findings=args.with_findings)
+        return send(args.send, client, store, with_findings=args.with_findings, alt_title=args.alt_title)
     ai = fetch = None
     if os.environ.get("GEMINI_API_KEY"):
         from ai_client import create_ai_client

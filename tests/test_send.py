@@ -264,3 +264,16 @@ def test_code_check_failure_never_goes_even_with_findings(tmp_path, monkeypatch)
     write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
     client = FakeClient()
     assert write.send("ariza-dq200", client, InMemoryStore(), [], ws, with_findings=True) == 1 and client.inserted == []
+
+
+def test_alternative_title_is_an_explicit_choice(tmp_path, monkeypatch):
+    import write
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    d = draft(title_alternatives=["DQ200'de Arıza Kaçıncı Kilometrede?"])
+    p, _, _ = pipeline(d, CLEAN)
+    write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
+    client = FakeClient()
+    assert write.send("ariza-dq200", client, InMemoryStore(), [], ws, alt_title=2) == 1
+    assert write.send("ariza-dq200", client, InMemoryStore(), [], ws, alt_title=1) == 0
+    assert client.inserted[0][0] == "DQ200'de Arıza Kaçıncı Kilometrede?"
+    assert "DQ200 Kroniği: 84 Bildirimin 11" in client.inserted[0][1]             # main title kept as an option

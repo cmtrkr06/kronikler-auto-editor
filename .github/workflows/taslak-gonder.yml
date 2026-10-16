@@ -12,6 +12,10 @@ on:
         description: "Fact-check'te kaldıysa yine de TASLAK olarak gönder; bulgular kırmızı editör notunda"
         type: boolean
         default: false
+      alternatif_baslik:
+        description: "0 = ana başlık; 1 veya 2 = yazarın alternatif başlığıyla gönder"
+        required: false
+        default: "0"
       yeniden_yaz:
         description: "Fact-check'te kaldıysa bulgularla bir kez yeniden yazdır (2 Gemini isteği)"
         type: boolean
@@ -65,7 +69,7 @@ jobs:
           else
             python write.py --recheck "$KONU" 2>&1 | tee -a "$log" || true    # not READY -> code check + 1 fact-check
           fi
-          extra=""; [ "${{ inputs.bulgularla }}" = "true" ] && extra="--with-findings"
+          extra="--alt-title ${{ inputs.alternatif_baslik }}"; [ "${{ inputs.bulgularla }}" = "true" ] && extra="$extra --with-findings"
           python write.py --send "$KONU" $extra 2>&1 | tee -a "$log"
           tail -20 "$log" | sed 's/^/    /' >> "$GITHUB_STEP_SUMMARY"
 
