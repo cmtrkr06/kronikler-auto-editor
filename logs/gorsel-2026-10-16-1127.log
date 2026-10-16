@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/runner/work/kronikler-auto-editor/kronikler-auto-editor/image_library.py", line 210, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/runner/work/kronikler-auto-editor/kronikler-auto-editor/image_library.py", line 197, in main
+    refresh(client, s.store_path, ai, fetch, s)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/kronikler-auto-editor/kronikler-auto-editor/image_library.py", line 163, in refresh
+    post = client.find_draft(settings.archive_title)
+           ^^^^^^^^^^^^^^^^^
+AttributeError: 'GoogleBloggerClient' object has no attribute 'find_draft'
