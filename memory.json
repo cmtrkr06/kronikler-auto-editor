@@ -1,6 +1,22 @@
 {
  "version": 1,
- "topics": {},
+ "topics": {
+  "ariza-dq200": {
+   "key": "ariza-dq200",
+   "title": "DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği",
+   "type": "ariza",
+   "status": "DRAFTED",
+   "subject_urls": [
+    "https://shiftandtrend.com/sanziman/dq200/"
+   ],
+   "sample": 84,
+   "data_hash": "777bdf58a53e14fe",
+   "reason": "",
+   "editor_note": "Blogger taslak 3135823769419974378",
+   "created_at": "2026-10-16T08:41:54.569853+00:00",
+   "updated_at": "2026-10-16T09:18:10.248225+00:00"
+  }
+ },
  "meta": {
   "quota": {
    "2026-10-16": {
@@ -51,5 +67,17 @@
    }
   }
  },
- "logs": []
+ "logs": [
+  {
+   "timestamp": "2026-10-16T09:18:10.248236+00:00",
+   "module": "blogger",
+   "level": "INFO",
+   "message": "ariza-dq200: taslak oluşturuldu",
+   "topic_key": null,
+   "details": {
+    "post_id": "3135823769419974378",
+    "status": "DRAFT"
+   }
+  }
+ ]
 }

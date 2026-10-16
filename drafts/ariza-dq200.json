@@ -1,5 +1,9 @@
 {
- "blogger": null,
+ "blogger": {
+  "post_id": "3135823769419974378",
+  "sent_at": "2026-10-16T02:18:10-07:00",
+  "updated_at": "2026-10-16T02:18:10-07:00"
+ },
  "topic": {
   "key": "ariza-dq200",
   "title": "DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği",
@@ -67,7 +71,7 @@
  },
  "topic_key": "ariza-dq200",
  "draft": {
-  "title": "DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza Kaydı",
+  "title": "DQ200 DSG Ne Zaman Sorun Çıkarıyor? 84 Bildirimin Detayı",
   "title_alternatives": [
    "DQ200 DSG Ne Zaman Sorun Çıkarıyor? 84 Bildirimin Detayı",
    "DQ200 Şanzımanda 84 Bildirimin 11'inde Mekatronik ve Kavrama Kaydı"
@@ -261,7 +265,7 @@
  "history": [],
  "writer_model": "gemini-3.8-flash",
  "title_options": [
-  "DQ200 DSG Ne Zaman Sorun Çıkarıyor? 84 Bildirimin Detayı",
+  "DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza Kaydı",
   "DQ200 Şanzımanda 84 Bildirimin 11'inde Mekatronik ve Kavrama Kaydı"
  ],
  "data": {
