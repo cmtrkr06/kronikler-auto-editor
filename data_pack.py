@@ -79,8 +79,12 @@ def _fault_lines(f) -> list[str]:
     lines = [f"{f.unit} kullanan tüm araçlardan {f.reports} bildirimden {f.with_issue} tanesinde arıza bildirildi"
              f" (sorun: {f.title})."]
     if f.verified_owners is not None:
-        lines.append(f"Bunlardan {f.verified_owners} tanesi doğrulanmış sahip.")
+        lines.append(f"Sayfada bunun ardından 'Bunlardan {f.verified_owners} tanesi doğrulanmış sahip.' yazıyor; "
+                     f"{f.verified_owners} sayısının {f.reports} bildirimin mi yoksa {f.with_issue} arızalı bildirimin mi "
+                     "içinden olduğu sayfada belirtilmiyor.")
     lines.append("Seçeneklere göre bildirimler: " + "; ".join(f"{o.label}: {o.count}" for o in f.outcomes) + ".")
+    lines.append(f"Bu {len(f.outcomes)} seçeneğin toplamı {f.reports} bildirimdir; arıza sayılan {f.with_issue} bildirim, "
+                 "'sorun yaşamadım' ve 'bilmiyorum' dışındaki seçeneklerin toplamıdır.")
     for x in f.facts:
         lines.append(f"{x.question} {x.answer} ({x.base} bildirimin {'ortancası' if x.stat == 'ortanca' else 'en sık cevabı'}).")
     return lines
@@ -102,9 +106,10 @@ def fault_pack(key: str, title: str, spot, fault, unit=None) -> ResearchPack:
             summary.append(f"{unit.code} kullanan araçların sahip anketi - {unit.top_complaint}.")
         b.add("carscore:" + unit.code, unit.url, f"CarScore özeti: {unit.code} kullanan araçlar", summary)
         if unit.vehicles:
-            names = [f"{c.title} {c.config}".strip() + (f" (CarScore {c.carscore})" if c.carscore is not None else "")
-                     for c in unit.vehicles]
-            b.add("carscore:" + unit.code, unit.url, f"{unit.code} kullanan araçlardan bazıları",
+            # names only: the cars' CarScores are not about this fault, and a list of scores invites a
+            # ranking paragraph (2026-10-16 preview) that tells the reader nothing about the fault
+            names = list(dict.fromkeys(c.title for c in unit.vehicles))
+            b.add("carscore:" + unit.code, unit.url, f"{unit.code} kullanan modellerden bazıları",
                   ["; ".join(names) + ".", unit.vehicle_note])
     return b.pack
 

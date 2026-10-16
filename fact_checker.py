@@ -49,6 +49,10 @@ PAKETİ verilecek. Paket, CarScore'daki (shiftandtrend.com) sahip anketi ve arı
    - Anket yüzdesini kişi sayısına çevirmek → desteklenmiyor.
    - Bir motor/şanzımanı kullanan TÜM araçların bildirimini tek bir modele mal etmek → celisiyor.
    - Az bildirime dayanan bir bilgiyi (ör. "4 bildirimin ortancası") genel gerçek gibi sunmak → celisiyor.
+   - Sayılar arasında kurulan her ilişkiyi ("geri kalan 67", "toplam", "çoğunluk", "en büyük grup") paketteki
+     sayılarla HESAPLAYARAK kontrol et; tutmuyorsa → celisiyor (ör. 84 bildirimin 11'i arızalıysa geri kalan 73'tür).
+   - Paketin belirsiz bıraktığı bir şeyi kesinleştirmek (ör. bir sayının hangi gruba ait olduğu) → desteklenmiyor.
+   - Bir seçeneğin anlamını değiştirmek (ör. "henüz onarılmadı" → "servise girmedi") → celisiyor.
 4. Doğru ve pakette karşılığı olan ifadeleri yazma. Üslup, akış ve dilbilgisiyle ilgilenme. Ondalıkta virgül ya da
    nokta farkı (5,5 / 5.5) bulgu değildir.
 Uydurma bulgu yazma; emin değilsen yazma."""

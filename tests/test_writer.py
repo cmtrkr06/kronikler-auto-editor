@@ -142,3 +142,17 @@ def test_pick_prefers_fault_chronicles_and_respects_prefix():
     cands = candidates(snap())
     assert pick(cands).topic.key == fault_key("DQ200")
     assert pick(cands, "yok-boyle") is None
+
+
+def test_pack_states_what_the_site_leaves_open_and_lists_no_scores():
+    text = PACK.render()
+    assert "84 bildirimin mi yoksa 11 arızalı bildirimin mi" in text
+    assert "toplamı 84 bildirimdir" in text
+    models = next(p for p in PACK.passages if "modellerden bazıları" in p.title).text
+    assert "CarScore 86" not in models and "Volkswagen Passat B8 Facelift" in models
+
+
+def test_prompts_carry_the_arithmetic_rule():
+    from fact_checker import SYSTEM as CHECK
+    from writer import COMMON
+    assert "geri kalan" in COMMON and "geri kalan 73" in CHECK

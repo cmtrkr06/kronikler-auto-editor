@@ -33,7 +33,11 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
   tablo, "Veri notu" blockquote, başlık ≤70) + `ungrounded_numbers` (başlık ve gövdedeki HER sayı pakette olmalı:
   oran hesaplama/yuvarlama/yüzdeyi kişiye çevirme engellenir), yasak hükümler ("uzak durun", "kesin arızalı"...),
   `fact_checker` istemi (oran, birim geneli bildirimi tek modele mal etme, az tabanlı bilgi), `chronicle_pipeline`,
-  `write.py --dry-run` (günde 1 konu, `planner.pick`), Actions "Onizleme yaz" (önce --check-ai). 202 test.
+  `write.py --dry-run` (günde 1 konu, `planner.pick`), Actions "Onizleme yaz" (önce --check-ai). 204 test.
+- İlk önizleme (2026-10-16, DQ200): kapılardan geçti ama elle okumada 2 hata: "geri kalan 67" (doğrusu 73:
+  67 sorunsuz + 6 bilmiyorum) ve "5 doğrulanmış sahip" 11 arızalıya bağlandı (sayfa belirsiz). Düzeltme: pakette
+  seçenek toplamı ve belirsizlik açıkça yazılı, yazar + fact-check istemine hesap/belirsizlik/seçenek anlamı
+  kuralları; araç listesinde CarScore yok (sıralama paragrafı üretiyordu).
 - ORTAK ANAHTAR (kullanıcı kararı 2026-10-16): AI Studio'da yeni proje açılamadı ("Failed to create project"),
   Zapyus projesinde üretilen ikinci anahtar kullanılıyor → ücretsiz kota İKİ blogla paylaşılıyor. Kronikler'in
   yerel tavanları küçük (3.8/3.7-flash 4, zincirin diğerleri 3); günlük çalıştırma Zapyus'un saatlerinden sonra

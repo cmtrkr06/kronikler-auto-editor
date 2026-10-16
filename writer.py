@@ -56,6 +56,9 @@ DOĞRULUK (en önemli kural)
    Oran HESAPLAMA (84'te 11 → "%13" YASAK), yuvarlama yapma, yüzdeyi kişi sayısına ÇEVİRME (yüzdelerin soru
    başına tabanı yok), paket dışı fiyat, model yılı, teknik değer, servis bülteni, geri çağırma YAZMA.
    Pakette olmayan bir şeyi tahminle doldurma; bilmiyorsan yazma.
+   Sayılar arasında ilişki kurarken ("geri kalan", "toplam", "çoğunluk", "en büyük grup") hesabı paketteki
+   sayılarla tek tek doğrula; seçenek adlarını paketteki gibi kullan, başka anlama kaydırma ("henüz onarılmadı"
+   ≠ "servise girmedi"). Paket bir şeyin belirsiz olduğunu söylüyorsa sen de belirsiz bırak.
 2. Arıza verisi gönüllü sahip BİLDİRİMİDİR, temsili değildir: "84 bildirimden 11'inde arıza bildirildi" diye ADET
    olarak yaz; "arıza oranı", "arızalı çıkıyor", "kesin arızalı", "uzak durun", "asla alınmaz" gibi hüküm YOK.
    Az bildirime dayanan bir bilgiyi (ör. "4 bildirimin ortancası") tabanıyla birlikte ver.
