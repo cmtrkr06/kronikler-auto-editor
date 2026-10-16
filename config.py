@@ -105,15 +105,20 @@ def load_ai_settings(env: Optional[Mapping[str, str]] = None) -> AISettings:
 
 @dataclass(frozen=True)
 class QuotaSettings:
-    """Daily request budgets per Pacific-time day (the API's reset). Our caps stay below the
-    provider's free-tier limits measured on Zapyus' project (AI Studio, 2026-10-03): 3.8-flash 20,
-    3.7-flash 20, 3.5-flash-lite 500, embedding-2 1000 (per input text). No planner step uses AI,
-    so there are no step shares to protect the writer."""
+    """Daily request budgets per Pacific-time day (the API's reset, 10:00 Türkiye).
+    SHARED KEY (user decision 2026-10-16): a separate AI Studio project could not be created, so Kronikler
+    uses a key of Zapyus' project - the provider's free-tier limits (3.8-flash 20/day, 3.7-flash 20/day,
+    measured 2026-10-03) are shared by BOTH blogs, and this ledger only sees Kronikler's own requests.
+    Kronikler's caps are therefore small (one article = 1-2 writer + 1-2 check requests) and its daily
+    run is scheduled after Zapyus' runs. When a separate project exists, only the key changes."""
     daily_limits: dict = field(default_factory=lambda: {
-        "gemini-3.8-flash": 18,
-        "gemini-3.7-flash": 18,
-        "gemini-3.5-flash-lite": 450,
-        "gemini-embedding-2": 900,
+        "gemini-3.8-flash": 4,
+        "gemini-3.7-flash": 4,
+        "gemini-3.5-flash": 3,
+        "gemini-3.6-flash": 3,
+        "gemini-3-flash-preview": 3,
+        "gemini-3.5-flash-lite": 20,
+        "gemini-embedding-2": 0,
     })
     step_limits: dict = field(default_factory=dict)
     history_days: int = 7

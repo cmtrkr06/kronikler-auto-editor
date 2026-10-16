@@ -9,6 +9,7 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
 - Ayrı depo. Veri: CarScore'un herkese açık sayfaları okunur (eklentiye dokunulmaz).
 - Haftada 3 yazı, günde en çok 1. Önce TASLAK; yayın elle.
 - Blogger: Zapyus ile aynı Google hesabı (aynı OAuth istemcisi, farklı blog ID).
+- Gemini: Zapyus projesinin ikinci anahtarı, kota paylaşımlı (aşağıda ORTAK ANAHTAR).
 - İlk sürümde yazı türleri: arıza kroniği + karşılaştırma. Araç sahip kroniği ve ay kroniği sonra.
 - Yıldız/aggregateRating YOK; yalnız BlogPosting (puanlar shiftandtrend'de toplanıyor).
 
@@ -33,7 +34,10 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
   oran hesaplama/yuvarlama/yüzdeyi kişiye çevirme engellenir), yasak hükümler ("uzak durun", "kesin arızalı"...),
   `fact_checker` istemi (oran, birim geneli bildirimi tek modele mal etme, az tabanlı bilgi), `chronicle_pipeline`,
   `write.py --dry-run` (günde 1 konu, `planner.pick`), Actions "Onizleme yaz" (önce --check-ai). 202 test.
-- Bekleyen: kullanıcı GEMINI_API_KEY secret'ını (ayrı AI Studio projesi) ekleyince ilk önizleme.
+- ORTAK ANAHTAR (kullanıcı kararı 2026-10-16): AI Studio'da yeni proje açılamadı ("Failed to create project"),
+  Zapyus projesinde üretilen ikinci anahtar kullanılıyor → ücretsiz kota İKİ blogla paylaşılıyor. Kronikler'in
+  yerel tavanları küçük (3.8/3.7-flash 4, zincirin diğerleri 3); günlük çalıştırma Zapyus'un saatlerinden sonra
+  (~21:30 TR) kurulacak. Ayrı proje açılınca yalnız GEMINI_API_KEY secret'ı değişir.
 
 ## Kurallar
 - Kullanıcıyla Türkçe konuş. Yazılar Türkçe.

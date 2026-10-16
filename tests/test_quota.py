@@ -127,10 +127,12 @@ def test_model_listing_does_not_touch_ledger():
     assert q.usage() == {}
 
 
-def test_default_settings_leave_the_writer_whole_day():
+def test_shared_key_caps_leave_zapyus_most_of_the_day():
     s = QuotaSettings()
-    assert s.daily_limits["gemini-3.8-flash"] < 20         # below the provider's free-tier limit
-    assert s.step_limits == {}                             # no AI step besides writer and fact-check
+    assert s.daily_limits["gemini-3.8-flash"] <= 4 and s.daily_limits["gemini-3.7-flash"] <= 4
+    chain = {m for _, models in AISettings().fallback_models for m in models}
+    assert chain <= set(s.daily_limits)                    # every fallback model has a cap too
+    assert s.step_limits == {}
 
 
 def test_print_quota(capsys):
@@ -140,7 +142,7 @@ def test_print_quota(capsys):
     q.record("gemini-3.8-flash", "writer")
     main.print_quota(store)
     out = capsys.readouterr().out
-    assert "gemini-3.8-flash: 1 / 18  (writer 1)" in out
+    assert "gemini-3.8-flash: 1 / 4  (writer 1)" in out
 
 
 def test_every_server_retry_is_recorded_in_the_ledger():
@@ -166,4 +168,4 @@ def test_default_caps_stay_below_provider_free_tier_limits():
     provider = {"gemini-3.8-flash": 20, "gemini-3.7-flash": 20, "gemini-3.5-flash-lite": 500,
                 "gemini-embedding-2": 1000}
     caps = QuotaSettings().daily_limits
-    assert set(caps) == set(provider) and all(caps[m] < provider[m] for m in provider)
+    assert all(caps[m] < provider[m] for m in provider)

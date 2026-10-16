@@ -67,7 +67,8 @@ Araç sahip kroniği ve ay kroniği sonraki sürüme kaldı.
 ## 5. Ritim ve kota
 - Haftada 3 yazı (karar 2026-10-16), günde en çok 1 (Google'ın toplu üretim içerik politikasına karşı düşük hız). Önce TASLAK,
   yayın elle.
-- Ayrı Gemini projesi/anahtarı: Zapyus'un ücretsiz kotasını yemez. Yazı başına 1-2 yazar + 1-2 fact-check isteği.
+- Gemini: ayrı proje açılamadı (2026-10-16); Zapyus projesinin ikinci anahtarı, kota paylaşımlı. Kronikler'in
+  günlük tavanı küçük, çalıştırma Zapyus'tan sonra. Yazı başına 1-2 yazar + 1-2 fact-check isteği.
 - Yazmaya değer veri yoksa 0 yazı geçerli sonuçtur.
 
 ## 6. Yapılandırılmış veri
