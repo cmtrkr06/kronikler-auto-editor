@@ -1,0 +1,115 @@
+# Blogger girişini telefondan kurmak / yenilemek (Zapyus'taki akışın aynısı).
+#  0) Bir kez: BLOGGER_TOKEN_JSON secret'ı. Zapyus klasöründeki token.json'ın tamamı, ya da yalnız
+#     {"client_id":"...","client_secret":"..."} (Google Cloud > APIs & Services > Credentials'taki OAuth istemcisi).
+#  1) "Run workflow" kod BOŞ  -> özet sayfasında izin bağlantısı çıkar. Aç, Otomobil Kronikleri'nin sahibi
+#     olan Google hesabıyla izin ver.
+#  2) Tarayıcı http://127.0.0.1:8080/?code=... adresine gider, sayfa açılmaz; adres çubuğundaki adresin
+#     tamamını kopyala, "Run workflow" kod kutusuna yapıştır (birkaç dakika içinde, kod tek kullanımlık).
+# Yeni giriş state dalına ŞİFRELİ yazılır (blogger-token.enc, anahtar BLOGGER_TOKEN_JSON secret'ı) ve
+# Blogger'a erişim BLOGGER_ID ile denenir (yalnız okuma: blogdaki yazı başlıkları sayılır).
+name: Blogger girisi yenile
+
+on:
+  workflow_dispatch:
+    inputs:
+      kod:
+        description: "Boş bırak = bağlantı al. Sonra 127.0.0.1 adresinin tamamını yapıştır."
+        required: false
+        default: ""
+
+concurrency:
+  group: state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  giris:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: Europe/Istanbul
+      BLOGGER_TOKEN_JSON: ${{ secrets.BLOGGER_TOKEN_JSON }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Secret var mı
+        run: |
+          if [ -z "$BLOGGER_TOKEN_JSON" ]; then
+            echo "::error::BLOGGER_TOKEN_JSON secret'ı yok (adım 0)"; exit 1
+          fi
+
+      - name: Durumu çek (state dalı -> data/)
+        run: |
+          if git ls-remote --exit-code --heads origin state >/dev/null; then
+            git clone -q --depth 1 --branch state "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
+          else
+            mkdir -p data && git -C data init -q -b state
+          fi
+
+      - name: İstemci bilgisi
+        run: printf '%s' "$BLOGGER_TOKEN_JSON" > token.json
+
+      - name: İzin bağlantısı
+        if: ${{ inputs.kod == '' }}
+        run: |
+          url=$(python3 blogger_reauth.py url)
+          echo "::notice title=Google izin bağlantısı::$url"   # yalnız client_id içerir, sır yok
+          {
+            echo "### 1) Bu bağlantıyı aç ve Google hesabınla izin ver"
+            echo
+            echo "[Google izin sayfası]($url)"
+            echo
+            echo "### 2) Açılmayan 127.0.0.1 sayfasının adresini kopyala"
+            echo "Actions → Blogger girisi yenile → Run workflow → **kod** kutusuna yapıştır."
+          } >> "$GITHUB_STEP_SUMMARY"
+          rm -f token.json
+
+      - uses: actions/setup-python@v5
+        if: ${{ inputs.kod != '' }}
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - name: Kodu girişe çevir
+        if: ${{ inputs.kod != '' }}
+        env:
+          KOD: ${{ inputs.kod }}
+        run: |
+          echo "::add-mask::$(python3 -c 'import sys,urllib.parse as u; v=sys.argv[1]; q=u.urlparse(v).query; print((u.parse_qs(q).get("code") or [v])[0])' "$KOD")"
+          python3 blogger_reauth.py exchange "$KOD"
+          openssl enc -aes-256-cbc -pbkdf2 -salt -in token.json -out data/blogger-token.enc -pass env:BLOGGER_TOKEN_JSON
+          echo "### Blogger girişi yenilendi" >> "$GITHUB_STEP_SUMMARY"
+
+      - run: pip install -r requirements.txt
+        if: ${{ inputs.kod != '' }}
+
+      - name: Bloga erişim denemesi (yalnız okuma)
+        if: ${{ inputs.kod != '' }}
+        env:
+          BLOGGER_ID: ${{ secrets.BLOGGER_ID }}
+        run: |
+          python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import os
+          from blogger import BloggerError, GoogleBloggerClient
+          blog = os.environ.get("BLOGGER_ID", "")
+          if not blog:
+              raise SystemExit("BLOGGER_ID secret'ı yok: giriş tamam, blog kimliği eklenince gönderim çalışır")
+          try:
+              titles = GoogleBloggerClient(blog).existing_titles()
+          except BloggerError as exc:
+              raise SystemExit(f"Bloga erişilemedi: {exc}")
+          print(f"Bloga erişim tamam: blogda {len(titles)} yazı (yayında + taslak) görüldü")
+          PY
+
+      - name: Durumu geri yaz
+        if: ${{ always() && inputs.kod != '' }}
+        working-directory: data
+        run: |
+          rm -f ../token.json
+          git config user.name "kronikler-bot"
+          git config user.email "kronikler-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "blogger girişi yenilendi $(date '+%F %H:%M')"
+          git push -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:state
