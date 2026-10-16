@@ -1,0 +1,22 @@
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+Görsel arşivi: 16 resim, 16 etiketli
+  - IMG_8936.png                                       alt='' · (%0)
+  - pexels-pixabay-327540.jpg                          alt='' · araç yok
+  - IMG_0525.jpeg                                      alt='' · Škoda Scala (%95)
+  - IMG_9132.png                                       alt='' · Škoda Scala (%100)
+  - IMG_9188.jpeg                                      alt='' · Audi A3 (%90)
+  - 11973a_dbeea11deab74d40a3b433ffba72b83c~mv2.webp   alt='' · (%0)
+  - pexels-luke-miller-17540266.jpg                    alt='' · Volkswagen Golf (%90)
+  - IMG_9666.jpeg                                      alt='' · Škoda  (%40)
+  - IMG_9667.jpeg                                      alt='' · (%0)
+  - IMG_8936.jpeg                                      alt='' · (%0)
+  - IMG_8900.jpeg                                      alt='' · Škoda Scala (%90)
+  - IMG_1517.JPG                                       alt='' · Nissan GT-R (%95)
+  - IMG_1840.HEIC                                      alt='' · Škoda Scala (%95)
+  - skoda scala safe cp hatası-min.jpg                 alt='' · Škoda Scala (%80)
+  - IMG_9438-min.jpg                                   alt='' · Škoda Scala (%85)
+  - IMG_9437-min.jpg                                   alt='' · Škoda  (%70)
+2026-10-16 11:49:20,838 ERROR kronikler.ai: AI call failed - server: InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.7-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+2026-10-16 11:49:20,838 WARNING kronikler.ai: gemini-3.7-flash unusable (server), falling back to gemini-3-flash-preview
+[HAZIR DEĞİL] DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza Kaydı: fact-check: 'bildirilen arızaların 80 – 100 Bin kilometre bandında yoğunlaştığı görülüyor.' - Paket, bu verinin sadece 8 bildirimin ortancası olduğunu belirtir. 8 bildirim gibi çok az sayıdaki veriyi 'yoğunlaştığı görülüyor' şeklinde genel bir eğilim veya gerçeklik gibi sunmak Madde 3 uyarınca çelişmektedir.; 'onarım masrafını kimin üstlendiği... en sık tercihi 'Tamamen cebimden' seçeneği oldu.' - Yalnızca 4 bildirimin en sık cevabı olan bir veri, genel bir başlık altında modelin/şanzımanın genel masraf tablosuymuş gibi sunulamaz (Madde 3).; 'araç sahiplerinin cebinden çıkan tutar... 50 – 75 Bin TL aralığında kaydedildi.' - Sadece 4 bildirimin ortancası olan bir değer, 'araç sahiplerinin cebinden çıkan tutar' şeklinde genel bir sonuç olarak paylaşılamaz (Madde 3).; 'Uygulanan yöntem tarafında ise 4 bildirimin en sık cevabı 'Orijinal (yetkili servis parçası)' yönünde paylaşıldı.' - 4 bildirim gibi istatistiksel değeri düşük bir verinin en sık cevabını genel bir onarım yöntemi gerçeği gibi sunmak Madde 3 ile çelişmektedir.
+[GÖNDERİLMEDİ] DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza Kaydı: taslak HAZIR değil (SEO veya fact-check'ten geçmemiş)

@@ -257,18 +257,8 @@
  "source_urls": [
   "https://shiftandtrend.com/sanziman/dq200/"
  ],
- "revisions": 1,
- "history": [
-  [
-   "blockquote içinde 'Veri notu' kutusu yok (sayıların gönüllü bildirim olduğu söylenmeli)",
-   "kaynaktan aynen alınmış: '7 ileri kuru cift kavramali ve mekatronik hidrolik kontrollu bir otomatik sanzimandir'",
-   "kaynaktan aynen alınmış: 'volkswagen passat b8 facelift volkswagen passat variant b 8 5 volkswagen golf'",
-   "kaynaktan aynen alınmış: 'mk8 facelift volkswagen golf mk8 cupra leon skoda superb b9 3w skoda'",
-   "kaynaktan aynen alınmış: 'octavia mk4 a8 skoda kamiq 1 nesil facelift volkswagen t roc mk'",
-   "kaynaktan aynen alınmış: '5 sayisinin 84 bildirimin mi yoksa 11 arizali bildirimin mi icinden oldugu'",
-   "kaynaktan aynen alınmış: 'tamamen cebimden 4 bildirimin en sik cevabi cebinden cikan tutar 50 75'"
-  ]
- ],
+ "revisions": 0,
+ "history": [],
  "writer_model": "gemini-3.8-flash",
  "title_options": [
   "DQ200 DSG Ne Zaman Sorun Çıkarıyor? 84 Bildirimin Detayı",
@@ -375,15 +365,39 @@
   ]
  },
  "seo": {
-  "errors": [
-   "kaynaktan aynen alınmış: 'cupra leon skoda superb b9 3w skoda octavia mk4 a8 skoda kamiq'"
-  ],
+  "errors": [],
   "warnings": [],
   "word_count": 518
  },
  "ready": false,
  "pending_check": false,
- "fact_check": null,
- "fact_check_rounds": [],
+ "fact_check": {
+  "passed": false,
+  "critical_errors": [
+   "'bildirilen arızaların 80 – 100 Bin kilometre bandında yoğunlaştığı görülüyor.' - Paket, bu verinin sadece 8 bildirimin ortancası olduğunu belirtir. 8 bildirim gibi çok az sayıdaki veriyi 'yoğunlaştığı görülüyor' şeklinde genel bir eğilim veya gerçeklik gibi sunmak Madde 3 uyarınca çelişmektedir.",
+   "'onarım masrafını kimin üstlendiği... en sık tercihi 'Tamamen cebimden' seçeneği oldu.' - Yalnızca 4 bildirimin en sık cevabı olan bir veri, genel bir başlık altında modelin/şanzımanın genel masraf tablosuymuş gibi sunulamaz (Madde 3).",
+   "'araç sahiplerinin cebinden çıkan tutar... 50 – 75 Bin TL aralığında kaydedildi.' - Sadece 4 bildirimin ortancası olan bir değer, 'araç sahiplerinin cebinden çıkan tutar' şeklinde genel bir sonuç olarak paylaşılamaz (Madde 3).",
+   "'Uygulanan yöntem tarafında ise 4 bildirimin en sık cevabı 'Orijinal (yetkili servis parçası)' yönünde paylaşıldı.' - 4 bildirim gibi istatistiksel değeri düşük bir verinin en sık cevabını genel bir onarım yöntemi gerçeği gibi sunmak Madde 3 ile çelişmektedir."
+  ],
+  "warnings": [],
+  "unsupported_claims": [],
+  "summary": "Yazıdaki sayısal veriler paketle uyumlu olsa da, 4 ve 8 bildirim gibi çok düşük sayıdaki verilerle genel arıza eğilimleri ve maliyet sonuçları çıkarılarak Madde 3 ihlal edilmiştir.",
+  "model": "gemini-3-flash-preview"
+ },
+ "fact_check_rounds": [
+  {
+   "passed": false,
+   "critical_errors": [
+    "'bildirilen arızaların 80 – 100 Bin kilometre bandında yoğunlaştığı görülüyor.' - Paket, bu verinin sadece 8 bildirimin ortancası olduğunu belirtir. 8 bildirim gibi çok az sayıdaki veriyi 'yoğunlaştığı görülüyor' şeklinde genel bir eğilim veya gerçeklik gibi sunmak Madde 3 uyarınca çelişmektedir.",
+    "'onarım masrafını kimin üstlendiği... en sık tercihi 'Tamamen cebimden' seçeneği oldu.' - Yalnızca 4 bildirimin en sık cevabı olan bir veri, genel bir başlık altında modelin/şanzımanın genel masraf tablosuymuş gibi sunulamaz (Madde 3).",
+    "'araç sahiplerinin cebinden çıkan tutar... 50 – 75 Bin TL aralığında kaydedildi.' - Sadece 4 bildirimin ortancası olan bir değer, 'araç sahiplerinin cebinden çıkan tutar' şeklinde genel bir sonuç olarak paylaşılamaz (Madde 3).",
+    "'Uygulanan yöntem tarafında ise 4 bildirimin en sık cevabı 'Orijinal (yetkili servis parçası)' yönünde paylaşıldı.' - 4 bildirim gibi istatistiksel değeri düşük bir verinin en sık cevabını genel bir onarım yöntemi gerçeği gibi sunmak Madde 3 ile çelişmektedir."
+   ],
+   "warnings": [],
+   "unsupported_claims": [],
+   "summary": "Yazıdaki sayısal veriler paketle uyumlu olsa da, 4 ve 8 bildirim gibi çok düşük sayıdaki verilerle genel arıza eğilimleri ve maliyet sonuçları çıkarılarak Madde 3 ihlal edilmiştir.",
+   "model": "gemini-3-flash-preview"
+  }
+ ],
  "body": "<p>Volkswagen Grubu'nun 0AM kodlu kuru çift kavramalı şanzımanı DQ200 için sisteme aktarılan 84 sahip bildiriminin 11 tanesinde mekatronik ve kavrama kaynaklı arıza paylaşıldı. Ankete katılan araç sahiplerinin 67'si herhangi bir problem yaşamadığını belirtirken, bildirilen arızaların 80 – 100 Bin kilometre bandında yoğunlaştığı görülüyor.</p><blockquote><p><strong>Veri notu:</strong> Buradaki sayılar CarScore platformuna iletilen gönüllü sahip bildirimlerini yansıtmaktadır; istatistiksel açıdan temsili bir örneklem değildir. Arıza yaşayan araç sahiplerinin bildirimde bulunma olasılığı daha yüksek olduğundan, bu veriler bir arıza oranı olarak değil adet bazında değerlendirilmelidir. Sistem kayıtlarında bildirimlerin 5 tanesinin doğrulanmış sahiplerden geldiği ifade edilmekle birlikte, bu 5 sayısının toplam 84 bildirimi mi yoksa 11 arıza kaydını mı temsil ettiği sayfada açıkça belirtilmemiştir.</p></blockquote><h2>DQ200 Bildirim Dağılımı ve Arıza Türleri</h2><p>Çift kavramalı sistemlerde kullanıcıların en çok merak ettiği parçaların başında mekatronik ünitesi ile kavrama paketi geliyor. 84 bildirimin tamamı incelendiğinde, sürücülerin büyük kısmının sorun bildirmediği, arıza işaret eden 11 bildirimin ise onarım gören veya henüz tamir edilmemiş araçlardan oluştuğu anlaşılıyor.</p><table><thead><tr><th>Bildirilen Durum</th><th>Bildirim Sayısı</th></tr></thead><tbody><tr><td>Hayır, sorun yaşamadım</td><td>67</td></tr><tr><td>Titreme / sarsıntı var, henüz onarılmadı</td><td>6</td></tr><tr><td>Kavrama (debriyaj) değişti</td><td>3</td></tr><tr><td>Mekatronik onarıldı / değişti</td><td>2</td></tr><tr><td>Bilmiyorum / aracı yeni aldım</td><td>6</td></tr></tbody></table><p>Sistemde arıza kabul edilen 11 bildirim; sorun yaşamadığını belirten 67 kişi ile aracını yeni aldığı için bilmediğini aktaran 6 kişi haricindeki diğer üç seçeneğin toplamından meydana geliyor.</p><h2>Arıza Kaçıncı Kilometrede Oldu ve Masrafı Kim Ödedi?</h2><p>Sorun yaşadığını bildiren araç sahiplerinin ilettiği detaylar, masraf ve kilometre süreçlerine ışık tutuyor. Arızanın gerçekleştiği kilometre sorusuna yanıt veren 8 bildirimin ortancası 80 – 100 Bin aralığını gösteriyor. Yapılan işlemlerin onarım yılı incelendiğinde ise 4 bildirimin ortanca değerinin 2025 yılı olduğu görülüyor.</p><p>Maddi boyut tarafında, onarım masrafını kimin üstlendiği sorusuna yanıt veren 4 bildirimin en sık tercihi 'Tamamen cebimden' seçeneği oldu. Bu doğrultuda araç sahiplerinin cebinden çıkan tutar, yine 4 bildirimin ortancasına göre 50 – 75 Bin TL aralığında kaydedildi. Uygulanan yöntem tarafında ise 4 bildirimin en sık cevabı 'Orijinal (yetkili servis parçası)' yönünde paylaşıldı.</p><h2>Şanzıman Bakımı ve Yağ Değişim Durumu</h2><p>Kuru kavramalı kutularda bakım süreçlerinin ne sıklıkla yapıldığı sorusu da bildirimler arasında yer alıyor. 'Şanzıman yağı ve filtresi değişti mi?' sorusunu yanıtlayan 69 bildirimin en sık cevabı 'Hiç değişmedi' şeklinde kayıtlara geçti.</p><h2>DQ200 Teknik Yapısı ve Yer Aldığı Araçlar</h2><p>Volkswagen Grubu tarafından geliştirilen ve dahili kodu 0AM olan DQ200; 7 ileri vites oranına, kuru çift kavramaya ve mekatronik hidrolik kontrol mimarisine sahip. Azami 250 Nm tork kapasitesi bulunan ünite; 1.0 TSI, 1.2 TSI ve 1.4 TSI gibi düşük hacimli benzinli motor seçeneklerinde seri vites değişimi ve yakıt tasarrufu sağlamak hedefiyle konumlandırılıyor.</p><p>DQ200 şanzıman toplamda 138 farklı araçta görev yapıyor. Sistemde listelenen modeller arasında Volkswagen Golf Mk8, Volkswagen Golf Mk8 Facelift, Volkswagen Passat B8 Facelift, Volkswagen Passat Variant B 8.5, CUPRA Leon, Škoda Superb B9 (3W), Škoda Octavia Mk4 (A8), Škoda Kamiq 1. Nesil Facelift, Škoda Scala 1. Nesil, Škoda Fabia Mk4 (PJ) ve Volkswagen T-Roc MK 2 yer alıyor. 18 araç üzerinden hesaplanan ortalama CarScore 71 iken, sistemdeki en yüksek puan 86 olarak görünüyor. 217 oy üzerinden sağlanan kullanıcı puanı ise 4,4 / 5 seviyesinde. Ayrıca DQ200 barındıran araçların sahip anketine katılan 159 kişinin %44'ü (70 katılımcı), araçlarındaki en belirgin problem olarak trim sesini işaret ediyor.</p>"
 }

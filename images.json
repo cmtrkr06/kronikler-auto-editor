@@ -184,7 +184,13 @@
    "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7bEPYrjH5-C5ZhPQYKO5H6hvPqEfUSuBQS9Dpcl5YOeTEv45Hej9Rv5g5rw7Vo76_kfqfdqpSS8TSmkvKKwKP27h5E85Jej81j2IokkWGgDhvFaoaDIyIISk447v05tNKHxWkRV52rkPVVx6ZQbIjzZ-tNN3XFZBpgRDot9y_pl80FkLY1QL44Z5BQJk/s1600/IMG_9437-min.jpg",
    "alt": "",
    "file": "IMG_9437-min.jpg",
-   "label": {}
+   "label": {
+    "arac": true,
+    "marka": "Škoda",
+    "model": "",
+    "guven": 70,
+    "gorulen": "Otomobilin içinden, direksiyondaki Škoda logosu ve orta konsoldaki bilgi-eğlence ekranı görünen bir sürüş anı"
+   }
   }
  ]
 }
