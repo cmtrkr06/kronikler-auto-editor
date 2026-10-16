@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-10-16T10:45:35+03:00",
+ "taken_at": "2026-10-16T11:41:23+03:00",
  "hub": {
   "url": "https://shiftandtrend.com/araclar/",
   "stats": {
@@ -1034,6 +1034,14 @@
     "Şu an kaç kilometrede?",
     "Gerçek yakıt tüketimin?"
    ],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/pexels-yoshi-lye-1597507927-27412625-1-768x1024.jpg",
+    "alt": "Volkswagen Golf Mk8 Facelift 1.5 eTSI 150 HP Style DSG 7 İleri",
+    "author": "Yoshi Lye",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source_url": "https://images.pexels.com/photos/27412625/pexels-photo-27412625.jpeg?cs=srgb&dl=pexels-yoshi-lye-1597507927-27412625.jpg&fm=jpg&_gl=1*3g38ar*_ga*MjA1ODA4MTE0Ny4xNzg3MjU3MTM1*_ga_8JE65Q40S6*czE3ODcyNTcxMzQkbzEkZzEkdDE3ODcyNTcyMzckajQzJGwwJGgw"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/": {
@@ -1490,6 +1498,14 @@
     }
    ],
    "low_data": [],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/pexels-yoshi-lye-1597507927-27412625-1-768x1024.jpg",
+    "alt": "Volkswagen Golf Mk8 Facelift 1.5 eTSI 116 HP Life DSG 7 İleri",
+    "author": "Yoshi Lye",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source_url": "https://images.pexels.com/photos/27412625/pexels-photo-27412625.jpeg?cs=srgb&dl=pexels-yoshi-lye-1597507927-27412625.jpg&fm=jpg&_gl=1*3g38ar*_ga*MjA1ODA4MTE0Ny4xNzg3MjU3MTM1*_ga_8JE65Q40S6*czE3ODcyNTcxMzQkbzEkZzEkdDE3ODcyNTcyMzckajQzJGwwJGgw"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/": {
@@ -1672,6 +1688,7 @@
     }
    ],
    "low_data": [],
+   "photo": {},
    "pending_faults": [
     {
      "title": "48V Jeneratör (Alternatör)",
@@ -2032,6 +2049,14 @@
     }
    ],
    "low_data": [],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/Cupra_Formentor_VZ5_BAT_1X7A1849.jpg",
+    "alt": "CUPRA Formentor KM7 1.5 TSI 150 HP Formentor DSG",
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cupra_Formentor_VZ5_BAT_1X7A1849.jpg"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/volkswagen-tiguan-mk3-1-5-etsi-150-hp-life-dsg-7-ileri/": {
@@ -2358,6 +2383,14 @@
     }
    ],
    "low_data": [],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/1920px-Volkswagen_Tiguan_III_IAA_2023_1X7A0489-1024x829.jpg",
+    "alt": "Volkswagen Tiguan Mk3 1.5 eTSI 150 HP Life DSG 7 İleri",
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Volkswagen_Tiguan_III_IAA_2023_1X7A0489.jpg"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/": {
@@ -2664,6 +2697,14 @@
     "Şu an kaç kilometrede?",
     "Gerçek yakıt tüketimin?"
    ],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/Cupra_Leon_Mk4_IMG_0036.jpg",
+    "alt": "CUPRA Leon 1.5 eTSI 150 HP Standart DSG",
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cupra_Leon_Mk4_IMG_0036.jpg"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/": {
@@ -2906,6 +2947,14 @@
    },
    "faults": [],
    "low_data": [],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/IMG_5320-1024x564.jpeg",
+    "alt": "SEAT Leon Mk4 1.5 e-Hybrid 204 HP FR DSG 6 İleri",
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:SEAT_Leon_Mk4_1X7A5844.jpg"
+   },
    "pending_faults": [
     {
      "title": "DSG Şanzıman (Mekatronik ve Kavrama)",
@@ -3242,6 +3291,14 @@
    "low_data": [
     "Seni en çok rahatsız eden ne oldu?"
    ],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/1920px-2020_Volkswagen_Passat_GTE_facelift_1.4_Front-1024x566.jpg",
+    "alt": "Volkswagen Passat B8 Facelift 1.5 TSI 150 HP Bussines DSG 7 İleri",
+    "author": "Vauxford",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:2020_Volkswagen_Passat_GTE_facelift_1.4_Front.jpg"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/": {
@@ -3529,6 +3586,14 @@
    },
    "faults": [],
    "low_data": [],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/1920px-2024_Volkswagen_ID.7_Pro_Launch_Edition_1_-_77kWh_28285PS29_Electric_-_Aquamarine_Blue_-_01-20242C_Front-1024x627.jpg",
+    "alt": "Volkswagen ID.7 1. Nesil APP 550 286 HP Pro S",
+    "author": "Harvey Bold",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:2024_Volkswagen_ID.7_Pro_Launch_Edition_1_-_77kWh_(285PS)_Electric_-_Aquamarine_Blue_-_01-2024,_Front.jpg"
+   },
    "pending_faults": []
   },
   "https://shiftandtrend.com/arac/skoda-superb-b9-1-5-etsi-150-hp-prestige-dsg-7-ileri/": {
@@ -3813,6 +3878,14 @@
     "Şu an kaç kilometrede?",
     "Gerçek yakıt tüketimin?"
    ],
+   "photo": {
+    "src": "https://shiftandtrend.com/wp-content/uploads/2026/08/Skoda_Superb_IV_Combi_Automesse_Ludwigsburg_2024_IMG_1400.jpg",
+    "alt": "Škoda Superb B9 1.5 eTSI 150 HP Prestige DSG 7 İleri",
+    "author": "Alexander-93",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Superb_IV_Combi_Automesse_Ludwigsburg_2024_IMG_1400.jpg"
+   },
    "pending_faults": []
   }
  },

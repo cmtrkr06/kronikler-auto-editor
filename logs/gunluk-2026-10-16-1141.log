@@ -1,0 +1,15 @@
+2026-10-16 11:42:25,854 ERROR kronikler.ai: AI call failed - server: InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+2026-10-16 11:42:25,854 WARNING kronikler.ai: gemini-3.8-flash unusable (server), falling back to gemini-3.7-flash
+2026-10-16 11:42:56,875 ERROR kronikler.ai: AI call failed - server: InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.7-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+2026-10-16 11:42:56,875 WARNING kronikler.ai: gemini-3.7-flash unusable (server), falling back to gemini-3.5-flash
+2026-10-16 11:42:57,090 WARNING kronikler.ai: rate limited, waiting 30s (1/2)
+2026-10-16 11:43:27,319 WARNING kronikler.ai: rate limited, waiting 30s (2/2)
+2026-10-16 11:43:57,584 ERROR kronikler.ai: AI call failed - rate_limited: RateLimitError: Error code: 429 - {'error': {'message': 'Your project has exceeded a quota. See https://ai.dev/rate-limit to manage your rate limits.', 'code': 'too_many_requests'}}
+2026-10-16 11:43:57,584 WARNING kronikler.ai: gemini-3.5-flash unusable (rate_limited), falling back to gemini-3.6-flash
+2026-10-16 11:43:57,819 WARNING kronikler.ai: rate limited, waiting 30s (1/2)
+2026-10-16 11:44:28,056 WARNING kronikler.ai: rate limited, waiting 30s (2/2)
+2026-10-16 11:45:58,256 WARNING kronikler.writer: draft for ariza-dq200 rejected by SEO check, rewriting: ["blockquote içinde 'Veri notu' kutusu yok (sayıların gönüllü bildirim olduğu söylenmeli)", "kaynaktan aynen alınmış: '7 ileri kuru cift kavramali ve mekatronik hidrolik kontrollu bir otomatik sanzimandir'", "kaynaktan aynen alınmış: 'volkswagen passat b8 facelift volkswagen passat variant b 8 5 volkswagen golf'", "kaynaktan aynen alınmış: 'mk8 facelift volkswagen golf mk8 cupra leon skoda superb b9 3w skoda'", "kaynaktan aynen alınmış: 'octavia mk4 a8 skoda kamiq 1 nesil facelift volkswagen t roc mk'", "kaynaktan aynen alınmış: '5 sayisinin 84 bildirimin mi yoksa 11 arizali bildirimin mi icinden oldugu'", "kaynaktan aynen alınmış: 'tamamen cebimden 4 bildirimin en sik cevabi cebinden cikan tutar 50 75'"]
+[KONU] DQ200 DSG arızası: sahiplerin 84 bildiriminin kroniği (84 bildirim)
+[HAZIR DEĞİL] DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza Kaydı · 518 kelime · data/drafts/ariza-dq200.html
+   neden: SEO: kaynaktan aynen alınmış: 'cupra leon skoda superb b9 3w skoda octavia mk4 a8 skoda kamiq'
+[ŞEMA] yazılan 0, değişmeyen 0, hata 0

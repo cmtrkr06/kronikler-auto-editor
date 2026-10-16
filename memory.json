@@ -5,16 +5,17 @@
   "quota": {
    "2026-10-16": {
     "gemini-3.8-flash": {
-     "total": 2,
+     "total": 4,
      "steps": {
-      "writer": 2
+      "writer": 4
      },
      "exhausted": false
     },
     "gemini-3.7-flash": {
-     "total": 1,
+     "total": 2,
      "steps": {
-      "fact_check": 1
+      "fact_check": 1,
+      "writer": 1
      },
      "exhausted": false
     },
@@ -22,6 +23,20 @@
      "total": 16,
      "steps": {
       "image_label": 16
+     },
+     "exhausted": false
+    },
+    "gemini-3.5-flash": {
+     "total": 3,
+     "steps": {
+      "writer": 3
+     },
+     "exhausted": false
+    },
+    "gemini-3.6-flash": {
+     "total": 3,
+     "steps": {
+      "writer": 3
      },
      "exhausted": false
     }
