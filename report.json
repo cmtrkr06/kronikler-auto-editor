@@ -1,0 +1,102 @@
+[
+ {
+  "url": "https://shiftandtrend.com/robots.txt",
+  "outcome": "ok",
+  "status": 200
+ },
+ {
+  "url": "https://shiftandtrend.com/araclar/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 248309,
+  "detail": "",
+  "file": "araclar.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/sanziman/dq200/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 170208,
+  "detail": "",
+  "file": "sanziman_dq200.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/sanziman/dq381/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 183782,
+  "detail": "",
+  "file": "sanziman_dq381.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/motor/1-5-etsi-150-hp/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 183292,
+  "detail": "",
+  "file": "motor_1_5_etsi_150_hp.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/arac/volkswagen-golf-mk8-facelift-1-5-etsi-116-hp-life-dsg-7-ileri/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 278939,
+  "detail": "",
+  "file": "arac_volkswagen_golf_mk8_facelift_1_5_etsi_116_hp_life_dsg_7_ileri.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/arac/cupra-formentor-km7-1-5-tsi-150-hp-formentor-dsg/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 261911,
+  "detail": "",
+  "file": "arac_cupra_formentor_km7_1_5_tsi_150_hp_formentor_dsg.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 219091,
+  "detail": "",
+  "file": "arac_cupra_terramar_1_nesil_1_5_etsi_150_hp_supreme_dsg_7_ileri.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 226398,
+  "detail": "",
+  "file": "arac_seat_leon_mk4_1_5_e_hybrid_204_hp_fr_dsg_6_ileri.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 254486,
+  "detail": "",
+  "file": "arac_cupra_leon_leon_1_5_etsi_150_hp_standart_dsg.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 246371,
+  "detail": "",
+  "file": "arac_volkswagen_id_7_1_nesil_app_550_286_hp_pro_s.html"
+ },
+ {
+  "url": "https://shiftandtrend.com/sitemap_index.xml",
+  "outcome": "ok",
+  "status": 200,
+  "bytes": 1378,
+  "detail": "",
+  "file": "sitemap_index_xml.xml"
+ },
+ {
+  "url": "https://shiftandtrend.com/carscore-sitemap.xml",
+  "outcome": "not_found",
+  "status": 404,
+  "bytes": 0,
+  "detail": ""
+ }
+]
