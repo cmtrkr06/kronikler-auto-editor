@@ -89,6 +89,8 @@ def main_of(page: BeautifulSoup, url: str) -> Tag:
 class Outcome:
     label: str
     count: int
+    unit: str = "%"      # "%" (share of participants) or "adet" (raw count: the site shows counts while a
+                         # question is below its own threshold, "yüzdeler 3 katılımcıdan sonra gösterilir")
 
 
 @dataclass
@@ -207,12 +209,19 @@ class Vehicle:
     specs: dict[str, str]
     consumption: dict[str, float]    # Ortalama/En düşük/En yüksek (L/100km), Kayıt
     participants: Optional[int]
-    stats: dict[str, list[Outcome]]  # survey question -> [(label, percent)]
+    stats: dict[str, list[Outcome]]  # survey question -> [(label, percent or count)]
     faults: list[FaultReport]
+    low_data: list[str] = field(default_factory=list)       # questions under the site's own data threshold
+    pending_faults: list[dict] = field(default_factory=list)  # fault sections still collecting (no numbers)
 
     @property
     def name(self) -> str:
         return f"{self.make} {self.trim}"
+
+    def survey_ready(self, s: CarScoreSettings = CarScoreSettings()) -> bool:
+        """The owner survey is published as percentages (above the site's threshold) for every question
+        a comparison needs. Below it the verdict's strengths/complaints are percentages of 1-2 people."""
+        return all(q in self.stats and q not in self.low_data for q in s.compare_required_questions)
 
     def problems(self, s: CarScoreSettings = CarScoreSettings()) -> list[str]:
         p = []
@@ -225,7 +234,7 @@ class Vehicle:
                 p.append(f"{self.name}: {label} {value}")
         for group in (self.strengths, self.complaints, *self.stats.values()):
             for o in group:
-                if not 0 <= o.count <= 100:
+                if o.unit == "%" and not 0 <= o.count <= 100:
                     p.append(f"{self.name}: %{o.count} ({o.label})")
         c = self.consumption
         if c and not (c.get("En düşük", 0) <= c.get("Ortalama", 0) <= c.get("En yüksek", 1e9)):
@@ -233,16 +242,34 @@ class Vehicle:
         if c.get("Kayıt") and self.participants and c["Kayıt"] > self.participants:
             p.append(f"{self.name}: tüketim kaydı {c['Kayıt']} > katılımcı {self.participants}")
         for q in s.single_choice_questions:
-            if q in self.stats and abs(sum(o.count for o in self.stats[q]) - 100) > s.rounding_slack:
+            opts = self.stats.get(q, [])
+            if q in self.low_data or not opts or any(o.unit != "%" for o in opts):
+                continue                                  # counts, not shares: nothing to add up
+            if abs(sum(o.count for o in opts) - 100) > s.rounding_slack:
                 p.append(f"{self.name}: '{q}' yüzdeleri toplamı {sum(o.count for o in self.stats[q])}")
-        if self.participants is not None and self.participants != self.opinions:
-            p.append(f"{self.name}: katılımcı {self.participants}, görüş {self.opinions}")
+        if self.participants is not None and self.participants > self.opinions:
+            p.append(f"{self.name}: katılımcı {self.participants} > görüş {self.opinions}")
         for f in self.faults:
             p += f.problems(s)
         return p
 
 
 # ------------------------------------------------------------------ parsers
+def pending_fault(section: Tag, url: str) -> Optional[dict]:
+    """A fault section still below the site's publishing threshold: '7 bildirim toplandı. 12 bildirime
+    ulaşıldığında dağılım burada yayınlanacak.' No numbers to write about, but not a layout change."""
+    progress = section.select_one(".carscore-fault__progress-text")
+    if progress is None or section.select_one(".carscore-fault__headline") is not None:
+        return None
+    nums = [to_int(text(x)) for x in progress.select("strong")]
+    if len(nums) != 2 or None in nums:
+        raise ParseError(url, "toplanan bildirim / yayın eşiği")
+    title_el = section.select_one(".carscore-fault__title")
+    icon = title_el.select_one(".carscore-fault__icon") if title_el else None
+    title = text(title_el).replace(text(icon), "", 1).strip() if icon else text(title_el)
+    return {"title": title, "collected": nums[0], "threshold": nums[1]}
+
+
 def parse_fault(section: Tag, url: str) -> FaultReport:
     headline = need(section.select_one(".carscore-fault__headline"), url, "arıza başlığı")
     nums = headline.select("strong")
@@ -334,7 +361,7 @@ def parse_unit(html: bytes | str, url: str) -> UnitPage:
         code=text(need(main.select_one("h1.carscore-hero__title"), url, "başlık")),
         meta=text(main.select_one(".carscore-hero__meta")), specs=specs,
         about=text(main.select_one("section.carscore-prose")).removeprefix("Bu Şanzıman Hakkında").removeprefix("Bu Motor Hakkında").strip(),
-        fault=parse_fault(fault_el, url) if fault_el else None, summary=summary,
+        fault=parse_fault(fault_el, url) if fault_el and not pending_fault(fault_el, url) else None, summary=summary,
         top_complaint=text(main.select_one(".carscore-axis__signal")).lstrip("⚠ ").strip(),
         vehicles=cards, vehicle_note=text(main.select_one("p.carscore-note")))
 
@@ -346,8 +373,8 @@ def _bars(ul: Optional[Tag], url: str, what: str) -> list[Outcome]:
         raw = text(li.select_one(".carscore-bar__value, em"))
         value = to_int(raw)
         if value is None:
-            raise ParseError(url, f"{what}: '{label}' yüzdesi")
-        out.append(Outcome(label, value))
+            raise ParseError(url, f"{what}: '{label}' değeri")
+        out.append(Outcome(label, value, "%" if raw.startswith("%") else "adet"))
     return out
 
 
@@ -383,12 +410,14 @@ def parse_vehicle(html: bytes | str, url: str) -> Vehicle:
     for d in main.select("dl.carscore-specs > .carscore-spec"):
         specs[text(d.select_one("dt"))] = text(d.select_one("dd"))
     community = main.select_one("section.carscore-community")
-    participants, stats, consumption = None, {}, {}
+    participants, stats, consumption, low_data = None, {}, {}, []
     if community is not None:
         pm = re.search(r"(\d+) katılımcı", text(community.select_one(".carscore-section-title")))
         participants = int(pm.group(1)) if pm else None
         for art in community.select("article.carscore-stat"):
             q = text(art.select_one(".carscore-stat__title"))
+            if art.select_one(".carscore-stat__notice") is not None:
+                low_data.append(q)
             nums = art.select_one("dl.carscore-stat__numbers")
             if nums is not None:
                 for d in nums.select("div"):
@@ -399,6 +428,13 @@ def parse_vehicle(html: bytes | str, url: str) -> Vehicle:
                     consumption[label] = value
                 continue
             stats[q] = [o for ul in art.select("ul.carscore-bars") for o in _bars(ul, url, q)]
+    faults, pending = [], []
+    for sec in main.select("section.carscore-fault"):
+        waiting = pending_fault(sec, url)
+        if waiting is not None:
+            pending.append(waiting)
+        else:
+            faults.append(parse_fault(sec, url))
     hero = need(main.select_one("h1.carscore-hero__title"), url, "araç başlığı")
     return Vehicle(
         url=url, make=text(need(hero.select_one(".carscore-hero__make"), url, "marka/model")),
@@ -409,7 +445,7 @@ def parse_vehicle(html: bytes | str, url: str) -> Vehicle:
         repurchase_pct=repurchase, meters=meters, sources=sources,
         strengths=_bars(plus, url, "güçlü yönler"), complaints=_bars(minus, url, "şikâyetler"),
         specs=specs, consumption=consumption, participants=participants, stats=stats,
-        faults=[parse_fault(s, url) for s in main.select("section.carscore-fault")])
+        faults=faults, low_data=low_data, pending_faults=pending)
 
 
 # ------------------------------------------------------------------ cross checks

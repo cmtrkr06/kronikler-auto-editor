@@ -101,6 +101,10 @@ def candidates(snap: Snapshot, store: Optional[MemoryStore] = None,
                 missing = [lead.name for lead, v in ((la, va), (lb, vb)) if v is None or not snap.ok(lead.url)]
                 out.append(Candidate(topic, None, False, "veri yok/sorunlu: " + ", ".join(missing)))
                 continue
+            thin = [v.name for v in (va, vb) if not v.survey_ready(s)]
+            if thin:
+                out.append(Candidate(topic, None, False, "anket verisi sitenin yayın eşiği altında: " + ", ".join(thin)))
+                continue
             low = min(va.opinions, vb.opinions)
             if low < s.min_compare_opinions:
                 out.append(Candidate(topic, None, False, f"en az görüş {low} < eşik {s.min_compare_opinions}"))

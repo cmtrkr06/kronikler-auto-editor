@@ -115,9 +115,10 @@ def _vehicle_lines(v) -> list[list[str]]:
     if v.meters:
         head.append("Alt puanlar (0-100): " + "; ".join(f"{k} {val}" for k, val in v.meters.items()) + ".")
     survey = []
-    if v.strengths:
+    ready = not v.low_data
+    if ready and v.strengths:
         survey.append("Sahiplerin en çok övdüğü yönler: " + "; ".join(f"{o.label} %{o.count}" for o in v.strengths) + ".")
-    if v.complaints:
+    if ready and v.complaints:
         survey.append("Sahiplerin en çok şikâyet ettikleri: " + "; ".join(f"{o.label} %{o.count}" for o in v.complaints) + ".")
     c = v.consumption
     if c.get("Ortalama") is not None:
@@ -125,7 +126,15 @@ def _vehicle_lines(v) -> list[list[str]]:
                       f"{c.get('En düşük', 0):g}, en yüksek {c.get('En yüksek', 0):g}"
                       + (f" ({int(c['Kayıt'])} kayıt)." if c.get("Kayıt") else "."))
     for q, opts in v.stats.items():
-        survey.append(f"{q} " + "; ".join(f"{o.label} %{o.count}" for o in opts) + ".")
+        if q in v.low_data:
+            survey.append(f"{q} (az veri: sitede yüzde yerine kişi sayısı gösteriliyor) "
+                          + "; ".join(f"{o.label} {o.count} kişi" for o in opts) + ".")
+        else:
+            survey.append(f"{q} " + "; ".join(f"{o.label} %{o.count}" if o.unit == "%" else f"{o.label} {o.count} kişi"
+                                              for o in opts) + ".")
+    for w in v.pending_faults:
+        survey.append(f"{w['title']}: {w['collected']} bildirim toplandı; site {w['threshold']} bildirime "
+                      "ulaşmadan dağılım yayınlamıyor (bu konuda sayı verilemez).")
     specs = [f"{k}: {val}" for k, val in v.specs.items()]
     return [head, survey, specs]
 

@@ -153,6 +153,9 @@ class CarScoreSettings:
     single_choice_questions: tuple = ("Bu aracı tekrar alır mıydın?", "Aracı hangi amaçla kullanıyorsun?",
                                       "Şu an kaç kilometrede?")
     rounding_slack: int = 2             # percent points lost/gained by rounding
+    # A comparison needs these survey questions published as percentages on BOTH vehicles (the site
+    # shows raw counts below its own threshold; 2026-10-16 CUPRA Leon: "10 katılımcı" but 2 answers).
+    compare_required_questions: tuple = ("Bu aracı neden tercih ettin?", "Seni en çok rahatsız eden ne oldu?")
     # Vehicle pages read per run (hub class leaders + one per engine fault). Polite and bounded.
     max_vehicle_pages: int = 15
     # Planner gates (docs/PLAN.md section 4)

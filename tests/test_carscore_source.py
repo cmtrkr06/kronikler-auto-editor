@@ -162,3 +162,30 @@ def test_snapshot_roundtrip_and_drift(tmp_path):
     lower.faults["DQ200"].reports = 80
     assert "DQ200" in drift(back, lower)
     assert latest_snapshot(str(tmp_path), "2026-10-15") is None   # only days BEFORE today count
+
+
+# ---- variants seen on the live site 2026-10-16 (second fixture batch)
+LEON = f"{BASE}/arac/cupra-leon-leon-1-5-etsi-150-hp-standart-dsg/"
+TERRAMAR = f"{BASE}/arac/cupra-terramar-1-nesil-1-5-etsi-150-hp-supreme-dsg-7-ileri/"
+SEAT = f"{BASE}/arac/seat-leon-mk4-1-5-e-hybrid-204-hp-fr-dsg-6-ileri/"
+ID7 = f"{BASE}/arac/volkswagen-id-7-1-nesil-app-550-286-hp-pro-s/"
+
+
+def test_below_threshold_survey_is_counts_not_percentages():
+    v = parse_vehicle(page("arac_cupra_leon_leon_1_5_etsi_150_hp_standart_dsg.html"), LEON)
+    q = "Seni en çok rahatsız eden ne oldu?"
+    assert q in v.low_data and all(o.unit == "adet" for o in v.stats[q])
+    assert not v.survey_ready() and v.problems() == []      # a format, not an inconsistency
+
+
+def test_fault_section_still_collecting_is_pending_not_an_error():
+    v = parse_vehicle(page("arac_cupra_terramar_1_nesil_1_5_etsi_150_hp_supreme_dsg_7_ileri.html"), TERRAMAR)
+    assert v.pending_faults == [{"title": "48V Jeneratör (Alternatör)", "collected": 7, "threshold": 12}]
+    assert [f.unit for f in v.faults] == ["DQ381"]
+    seat = parse_vehicle(page("arac_seat_leon_mk4_1_5_e_hybrid_204_hp_fr_dsg_6_ileri.html"), SEAT)
+    assert seat.faults == [] and seat.pending_faults[0]["threshold"] == 10
+
+
+def test_participants_may_be_fewer_than_opinions():
+    v = parse_vehicle(page("arac_volkswagen_id_7_1_nesil_app_550_286_hp_pro_s.html"), ID7)
+    assert (v.opinions, v.participants) == (18, 17) and v.problems() == [] and v.survey_ready()

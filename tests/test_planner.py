@@ -85,3 +85,13 @@ def test_plan_runs_from_a_saved_snapshot(tmp_path, capsys, monkeypatch):
     out = capsys.readouterr().out
     assert "[YENİ] ariza: DQ200" in out and "== ariza-dq200 ==" in out and "[ELENDİ]" in out
     print_plan([])
+
+
+def test_thin_survey_blocks_a_comparison():
+    from test_carscore_source import FILES, LEON
+    FILES[LEON] = "arac_cupra_leon_leon_1_5_etsi_150_hp_standart_dsg.html"
+    try:
+        c = next(x for x in candidates(snap()) if set(x.topic.subject_urls) == {GOLF, LEON})
+    finally:
+        del FILES[LEON]
+    assert not c.ok and "yayın eşiği altında" in c.reason and "CUPRA Leon" in c.reason
