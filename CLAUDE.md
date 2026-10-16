@@ -16,8 +16,14 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
 - Adım 0 TAMAM (2026-10-16): Zapyus'tan ai_client, quota, memory (sade), models (ChronicleTopic),
   normalizer, fetcher (crawler'ın Fetcher'ı), fact_checker, seo_check, blogger, blogger_reauth,
   schema_markup (yalnız BlogPosting), data_pack (ResearchPack şekli). 161 test.
-- Sıradaki: Adım 1. İlk iş Actions → "CarScore ornek sayfalar" (`fetch_fixtures.py`): sunucudan erişim
-  kontrolü + ham sayfalar `fixtures` dalına. Sonra `carscore_source.py` ayrıştırıcı + tutarlılık kapıları.
+- Adım 1 TAMAM (2026-10-16): Actions'tan erişim var (robots izinli, 200). `carscore_source.py` (BeautifulSoup,
+  açık seçiciler, ParseError; tutarlılık: seçenek toplamı = bildirim, arızalı = sorun seçenekleri toplamı,
+  tek seçimli anket ~%100, ana sayfa kartı = ayrıntı sayfası, araç sayfasındaki birim bölümü = birim sayfası;
+  anlık görüntü data/carscore/<gün>.json, bir önceki güne göre gerileme → o konu bekler), `data_pack.py`
+  kurucuları, `planner.py` (AI yok), `python main.py --plan`, Actions "Konu plani (AI yok)". 184 test.
+- Site gerçekleri (2026-10-16): motor sayfasında arıza bölümü YOK (araç sayfasından okunur); araç sayfasındaki
+  arıza bölümü birimi kullanan TÜM araçların toplamı; anket yüzdelerinin soru başına tabanı sayfada yok.
+- Sıradaki: Adım 2 (yazar/SEO/fact-check uyarlaması + yerel önizleme). Kullanıcı onayı gerekir.
 
 ## Kurallar
 - Kullanıcıyla Türkçe konuş. Yazılar Türkçe.
@@ -26,7 +32,8 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
 - Etik okuma: sabit UA, robots.txt, nazik bekleme, 401/403/challenge → atla, bypass yok.
 - Yazıdaki HER sayı veri paketinden gelir; fact-check aynı pakete bakar. Pakette yoksa yazılmaz.
 - Ayrıştırıcı bir zorunlu alanı bulamazsa o sayfa HATA, konu yazılmaz. Tahmin/varsayılan sayı yok.
-- Örneklem eşiği altındaki konu yazılmaz; her oranın yanında taban sayı ("72 sahipten 42'si").
+- Örneklem eşiği altındaki konu yazılmaz. Arıza verisi adet olarak yazılır, oran olarak değil; anket yüzdesi
+  kişi sayısına çevrilmez (docs/PLAN.md bölüm 4).
 - Fiyat yazılmaz. Tamir masrafı yalnız sahip bildirimi aralığı olarak.
 - Secret'lar sadece .env / GitHub Secrets'ta. Blogger'a yalnız TASLAK (isDraft=true).
 - HTML gövdede H1 yok (H2-H4). Model adları, kotalar, eşikler config'de.
@@ -37,3 +44,4 @@ Plan: `docs/PLAN.md` (önce onu oku). Zapyus hattının (cmtrkr06/zapyus-auto-ed
 - Test: `pytest`
 - AI doğrulama: `python main.py --check-ai` (1 API çağrısı) · Kota: `python main.py --quota`
 - Örnek sayfalar (yerelde): `python fetch_fixtures.py fixtures/raw`
+- Konu planı (AI yok): `python main.py --plan [--snapshot dosya] [--show ariza-dq200]`

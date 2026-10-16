@@ -13,6 +13,7 @@ CarScore sayfaları → ayrıştır + tutarlılık kapıları → konu planla (k
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pytest                       # ağa bağımlı değil, tüm HTTP sahte
+python main.py --plan        # CarScore'u oku, aday konuları yaz (AI yok)
 python main.py --check-ai    # GEMINI_API_KEY gerekir
 ```
 
@@ -23,7 +24,9 @@ python main.py --check-ai    # GEMINI_API_KEY gerekir
 | `models.py` | `ChronicleTopic`, `TopicType`, `TopicStatus`, `FetchResult` |
 | `fetcher.py` | Nazik HTTP: sabit UA, robots.txt, alan adı başına bekleme, 403/challenge → atla |
 | `fetch_fixtures.py` | Örnek CarScore sayfalarını kaydeder (Actions: "CarScore ornek sayfalar") |
-| `data_pack.py` | Yazının tek dayanağı: [K1], [K2].. kimlikli veri parçaları |
+| `carscore_source.py` | CarScore sayfalarını ayrıştırır, tutarlılığı denetler, anlık görüntü + gerileme kontrolü |
+| `planner.py` | Aday konular (arıza kroniği, karşılaştırma), örneklem eşikleri, tekrar/güncelleme kararı — AI yok |
+| `data_pack.py` | Yazının tek dayanağı: [K1], [K2].. kimlikli veri parçaları (CarScore'dan kurulur) |
 | `ai_client.py`, `quota.py` | Tek AI kapısı (Gemini), model zinciri, günlük kota defteri |
 | `fact_checker.py`, `seo_check.py` | Bağımsız doğruluk kontrolü; kodla HTML/SEO/kopya kontrolü |
 | `blogger.py`, `blogger_reauth.py` | Yalnız TASLAK gönderim; telefondan giriş yenileme |

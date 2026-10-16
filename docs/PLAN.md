@@ -1,6 +1,6 @@
 # Kronikler Auto Editor — plan
 
-Durum: ONAYLANDI (2026-10-16). Adım 0 sürüyor.
+Durum: ONAYLANDI (2026-10-16). Adım 0 ve Adım 1 tamam; Adım 2 onay bekliyor.
 Hedef: https://otomobilkronikleri.blogspot.com/ için, yalnız CarScore verisinden (shiftandtrend.com/araclar/)
 yazı üreten ve Blogger'a TASLAK gönderen otomatik hat. Zapyus hattının (cmtrkr06/zapyus-auto-editor,
 commit e193136) kanıtlanmış parçaları kopyalanır; ayrı depo, ayrı state dalı, ayrı Gemini anahtarı.
@@ -52,7 +52,12 @@ Araç sahip kroniği ve ay kroniği sonraki sürüme kaldı.
 | Arıza kroniği | DQ200 Kroniği: 84 Sahipten 11'i Arıza Bildirdi | 30 bildirim |
 | Karşılaştırma | Formentor mu Leon mu? Sahip Verisiyle | iki araç da 10 anket |
 
-- Örneklem eşik altıysa konu yazılmaz. Her oran yanında taban sayı ("72 sahipten 42'si").
+- Örneklem eşik altıysa konu yazılmaz. Arıza verisi ADET olarak yazılır ("84 bildirimden 11'i"), oran olarak
+  değil: CarScore'un kendi notu bildirimlerin gönüllü ve temsili olmadığını söylüyor (sayfadaki "arıza oranı
+  değildir" notu pakete girer). Anket yüzdeleri için sayfa soru başına yanıt sayısı vermiyor: yüzde, toplam
+  katılımcı sayısıyla birlikte yazılır ("72 katılımcılı ankette %58"), kişi sayısına çevrilmez.
+- Araç sayfasındaki arıza bölümü o aracın değil, motor/şanzımanı kullanan TÜM araçların toplamıdır;
+  karşılaştırmada bir modele mal edilmez.
 - "Kesin arızalı", "asla alınmaz" gibi hükümler yasak; dil: "sahiplerin bildirdiği".
 - Fiyat yazılmaz (CarScore kararı: fiyat ön yüzde yok). Tamir masrafı yalnız sahip bildirimi aralığı olarak.
 - Her yazının sonunda kodla eklenen "Veri kaynağı" kutusu: CarScore sayfasına link, veri tarihi, örneklem.

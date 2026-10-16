@@ -139,6 +139,30 @@ class SchemaSettings:
 
 
 @dataclass(frozen=True)
+class CarScoreSettings:
+    """Reading CarScore's public pages (carscore_source.py). Markup checked 2026-10-16 on the pages
+    saved in tests/fixtures/ (fetched from GitHub Actions: robots.txt allows them, 200 everywhere)."""
+    base_url: str = "https://shiftandtrend.com"
+    hub_path: str = "/araclar/"
+    snapshot_dir: str = "data/carscore"
+    # Fault outcome bars that are NOT a fault. Every other bar counts as one. The site's own headline
+    # count ("84 bildirimden 11 tanesinde arıza") must equal the sum of the others (consistency gate).
+    no_issue_labels: tuple = ("Hayır, sorun yaşamadım",)
+    unknown_labels: tuple = ("Bilmiyorum / aracı yeni aldım",)
+    # Survey questions with ONE answer per owner: their percentages must add up to ~100.
+    single_choice_questions: tuple = ("Bu aracı tekrar alır mıydın?", "Aracı hangi amaçla kullanıyorsun?",
+                                      "Şu an kaç kilometrede?")
+    rounding_slack: int = 2             # percent points lost/gained by rounding
+    # Vehicle pages read per run (hub class leaders + one per engine fault). Polite and bounded.
+    max_vehicle_pages: int = 15
+    # Planner gates (docs/PLAN.md section 4)
+    min_fault_reports: int = 30         # a fault chronicle needs at least this many owner reports
+    min_compare_opinions: int = 10      # both vehicles of a comparison need this many owner opinions
+    # A drop between two snapshots means the source changed under us: that subject waits a day.
+    max_report_drop: int = 0
+
+
+@dataclass(frozen=True)
 class AssetSettings:
     """Images on GitHub Pages of a dedicated public repo, as in Zapyus. The repo is created in step 3."""
     owner: str = "cmtrkr06"
