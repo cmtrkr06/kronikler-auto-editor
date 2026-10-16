@@ -184,10 +184,17 @@ class CarScoreSettings:
 
 
 @dataclass(frozen=True)
-class AssetSettings:
-    """Images on GitHub Pages of a dedicated public repo, as in Zapyus. The repo is created in step 3."""
-    owner: str = "cmtrkr06"
-    repo: str = "kronikler-assets"
-    branch: str = "main"
-    pages_base: str = "https://cmtrkr06.github.io/kronikler-assets"
-    local_dir: str = "data/assets"      # dry-run previews use local copies
+class ImageSettings:
+    """Photos (user decision 2026-10-16): the editor's own photos from the "Görsel arşivi" DRAFT on the
+    blog (image_library.py), else a CarScore photo that carries an author + license credit. No asset repo:
+    Blogger photos stay on Google's servers, CarScore photos on shiftandtrend.com; data visuals are HTML."""
+    archive_title: str = "Görsel arşivi"
+    store_path: str = "data/images.json"
+    size: str = "s1600"                 # Blogger size segment used in posts
+    vision_size: str = "s800"           # smaller copy sent to the vision model
+    vision_tier: str = "fast"
+    max_labels_per_run: int = 15        # each label = 1 fast-model request, once per photo
+    min_label_confidence: int = 70      # a vision label below this is not used for matching
+    # images a draft may contain (seo_check.check_images): Blogger's image hosts + CarScore uploads
+    allowed_prefixes: tuple = ("https://blogger.googleusercontent.com/", "https://shiftandtrend.com/wp-content/uploads/")
+    carscore_licenses: tuple = ("CC BY", "CC BY-SA", "CC0")   # credited CarScore photos only

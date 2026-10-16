@@ -1,9 +1,9 @@
 from blogger import BloggerError, send_draft
-from config import AssetSettings
+from config import ImageSettings
 from memory import InMemoryStore
 from models import ChronicleTopic, TopicStatus, TopicType
 
-PAGES = AssetSettings().pages_base
+PAGES = "https://blogger.googleusercontent.com/img/b"
 GOOD_HTML = (f'<figure><img src="{PAGES}/images/a.jpg" alt="CarPlay ekranı"></figure>'
              "<h2>Kurulum</h2><p>Metin.</p>")
 

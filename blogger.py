@@ -21,7 +21,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Optional, Protocol
 
-from config import AssetSettings
+from config import ImageSettings
 from memory import MemoryStore
 from models import ChronicleTopic, TopicStatus, utcnow
 from normalizer import topic_key
@@ -37,6 +37,24 @@ class BloggerError(Exception):
 
 class BloggerClient(Protocol):
     def insert_draft(self, title: str, content: str, labels: list[str]) -> dict: ...
+    def find_draft(self, title: str) -> Optional[dict]:
+        """The DRAFT whose title matches (normalized, e.g. the 'Görsel arşivi' image archive), with body."""
+        want = topic_key(title)
+        token = None
+        try:
+            while True:
+                resp = self.service.posts().list(
+                    blogId=self.blog_id, status=["DRAFT"], view="AUTHOR", fetchBodies=True, maxResults=50,
+                    pageToken=token, fields="items(id,title,content,updated),nextPageToken").execute()
+                for p in resp.get("items", []):
+                    if topic_key(p.get("title", "")) == want:
+                        return p
+                token = resp.get("nextPageToken")
+                if not token:
+                    return None
+        except Exception as exc:
+            raise BloggerError(f"posts.list (taslak) başarısız: {type(exc).__name__}: {str(exc)[:200]}") from exc
+
     def get_post(self, post_id: str) -> dict: ...
     def patch_draft(self, post_id: str, title: str, content: str, labels: list[str]) -> dict: ...
     def live_posts(self) -> list[dict]: ...
@@ -178,7 +196,7 @@ def duplicate_title(title: str, client: BloggerClient) -> str:
 
 
 def send_draft(topic: ChronicleTopic, saved: dict, client: BloggerClient, store: MemoryStore,
-               assets: AssetSettings = AssetSettings()) -> SendResult:
+               images: ImageSettings = ImageSettings()) -> SendResult:
     """`saved`: the draft JSON written by write.py, with image URLs already public."""
     if not saved.get("ready"):
         return SendResult(False, "taslak HAZIR değil (SEO veya fact-check'ten geçmemiş)")
@@ -187,7 +205,7 @@ def send_draft(topic: ChronicleTopic, saved: dict, client: BloggerClient, store:
     html = saved["html"]
     if "../assets/" in html:
         return SendResult(False, "yazıda yerel görsel adresi kaldı; önce görseller yayımlanmalı")
-    image_errors = check_images(html, [assets.pages_base + "/"])
+    image_errors = check_images(html, images.allowed_prefixes)
     if image_errors:
         return SendResult(False, "görsel kontrolü: " + "; ".join(image_errors))
     duplicate = duplicate_title(saved["draft"]["title"], client)
@@ -222,7 +240,7 @@ def edited_in_blogger(post: dict, info: dict) -> bool:
 
 
 def update_draft(topic: ChronicleTopic, saved: dict, client: BloggerClient, store: MemoryStore,
-                 assets: AssetSettings = AssetSettings(), overwrite_edits: bool = False) -> SendResult:
+                 images: ImageSettings = ImageSettings(), overwrite_edits: bool = False) -> SendResult:
     """Replace title, body and labels of an existing Blogger DRAFT. A post that is not a draft any
     more (published or scheduled) is never touched; a draft edited in Blogger after our last write
     is not overwritten unless `overwrite_edits`."""
@@ -234,7 +252,7 @@ def update_draft(topic: ChronicleTopic, saved: dict, client: BloggerClient, stor
     html = saved["html"]
     if "../assets/" in html:
         return SendResult(False, "yazıda yerel görsel adresi kaldı; önce görseller yayımlanmalı")
-    image_errors = check_images(html, [assets.pages_base + "/"])
+    image_errors = check_images(html, images.allowed_prefixes)
     if image_errors:
         return SendResult(False, "görsel kontrolü: " + "; ".join(image_errors))
     try:
