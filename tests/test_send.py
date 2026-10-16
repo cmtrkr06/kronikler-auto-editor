@@ -205,3 +205,39 @@ def test_rewrite_feeds_the_saved_findings_back_once(tmp_path, monkeypatch):
 def test_checker_prompt_accepts_facts_stated_with_their_base():
     from fact_checker import SYSTEM
     assert "Tabanı yanında açıkça yazılmışsa" in SYSTEM and "bulgu YAZMA" in SYSTEM
+
+
+def test_rewrite_keeps_the_new_text_when_the_check_cannot_run(tmp_path, monkeypatch):
+    import write
+    from ai_client import AIClient
+    from config import AISettings
+    from fact_checker import FactChecker
+    from fakes import FakeBackend, HttpError
+    from test_writer import DIRTY
+    from writer import Writer
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    p, _, _ = pipeline(draft(), DIRTY, draft(), DIRTY)
+    write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
+    backend = FakeBackend(generate=[draft(title="Yeni Başlık: 84 Bildirim")] + [HttpError(503)] * 6)
+    ai = AIClient(AISettings(), backend, sleep=lambda s: None)
+    assert write.rewrite("ariza-dq200", Writer(ai, ws), FactChecker(ai), InMemoryStore(), ws) == 1
+    saved = json.loads((tmp_path / "drafts" / "ariza-dq200.json").read_text(encoding="utf-8"))
+    assert saved["pending_check"] is True and saved["draft"]["title"] == "Yeni Başlık: 84 Bildirim"
+
+
+def test_daily_skips_quietly_when_todays_budget_is_spent(tmp_path, monkeypatch):
+    import write
+    from config import AISettings, QuotaSettings
+    from quota import QuotaLedger
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    store = InMemoryStore()
+    ledger = QuotaLedger(store)
+    s = AISettings()
+    for m in {s.deep_model, s.check_model, *[x for _, c in s.fallback_models for x in c]}:
+        for _ in range(QuotaSettings().daily_limits[m]):
+            ledger.record(m, "writer")
+    assert write.writer_budget_left(store) is False
+    client = FakeClient()
+    assert write.daily(client, store, None, ws, today=date(2026, 10, 19), snapshot_path=snap_path) == 0
+    assert client.inserted == []
+    assert write.writer_budget_left(InMemoryStore()) is True

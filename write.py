@@ -213,16 +213,35 @@ def rewrite(key_prefix: str, writer=None, checker=None, store=None, ws: WriterSe
             ai = create_ai_client(load_ai_settings(), os.environ.get("GEMINI_API_KEY"), ledger=QuotaLedger(store))
             writer, checker = writer or Writer(ai, ws), checker or FactChecker(ai, FactCheckSettings())
         result = writer.write(topic, pack, feedback=feedback)
-        check = checker.check(result.draft.title, result.body, pack, result.model) if result.seo.passed else None
     except AIError as exc:
+        store.flush()
         print(f"[HATA] yeniden yazım çalışmadı: {exc}")
         return 1
-    finally:
-        store.flush()
-    outcome = ChronicleOutcome(result, check, [check.to_dict()] if check else [])
+    check, check_error = None, ""
+    if result.seo.passed:
+        try:
+            check = checker.check(result.draft.title, result.body, pack, result.model)
+        except AIError as exc:            # keep the new text: the next run checks it, never rewrites it
+            check_error = str(exc)
+    store.flush()
+    outcome = ChronicleOutcome(result, check, [check.to_dict()] if check else [], check_error=check_error)
     save_draft(topic, pack, result, ws.draft_dir, outcome, saved.get("data"))
     print(f"[{'HAZIR' if outcome.ready else 'HAZIR DEĞİL'}] {result.draft.title}" + ("" if outcome.ready else f": {outcome.reason}"))
     return 0 if outcome.ready else 1
+
+
+def writer_budget_left(store) -> bool:
+    """Is any model of the writer chain AND one of the check chain still under today's cap? (Pacific day,
+    resets 10:00 TR). The shared key's caps keep Zapyus' day safe; an empty budget is a skip, not an error."""
+    from config import AISettings, QuotaSettings
+    from quota import QuotaLedger
+    ai, ledger = AISettings(), QuotaLedger(store, QuotaSettings())
+    chains = dict(ai.fallback_models)
+    deep = [ai.deep_model, *chains.get("deep", ())]
+    check = [ai.check_model, *chains.get("check", ())]
+    free = lambda models, step: [m for m in models if ledger.check(m, step) is None]
+    w = free(deep, "writer")
+    return bool(w) and any(m != w[0] for m in free(check, "fact_check"))
 
 
 def recheck(key_prefix: str, checker=None, store=None, ws: WriterSettings = WriterSettings()) -> int:
@@ -357,6 +376,9 @@ def daily(client=None, store=None, pipeline=None, ws: WriterSettings = WriterSet
         return 0
     if week_count(store, today) >= ws.weekly_cap:
         print(f"[ATLA] bu hafta {ws.weekly_cap} taslak gitti (haftalık tavan)")
+        return 0
+    if pipeline is None and not writer_budget_left(store):
+        print("[ATLA] bugünün Gemini kotası dolu (ortak anahtar, Zapyus'a yer bırakılıyor); sıfırlanma 10:00 TR")
         return 0
     try:
         done = write_one("", snapshot_path, pipeline, store, ws)
