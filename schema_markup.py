@@ -140,11 +140,16 @@ def plan(post: dict, rec: Optional[dict], s: SchemaSettings = SchemaSettings()) 
     return "write", updated or post.get("published", "")
 
 
-def apply(client, records: dict, s: SchemaSettings = SchemaSettings(), dry_run: bool = False) -> dict:
-    """Bring every LIVE post's JSON-LD up to date. Returns counts {written, skipped, same, failed}."""
+def apply(client, records: dict, s: SchemaSettings = SchemaSettings(), dry_run: bool = False,
+          only_ids: Optional[set] = None) -> dict:
+    """Bring LIVE posts' JSON-LD up to date. Returns counts {written, skipped, same, failed}.
+    `only_ids`: touch only these posts (Kronikler: posts this pipeline created; the editor's own older
+    posts are never changed without being asked)."""
     counts = {"written": 0, "skipped": 0, "same": 0, "failed": 0}
     for post in client.live_posts():
         pid = str(post.get("id", ""))
+        if only_ids is not None and pid not in only_ids:
+            continue
         action, modified = plan(post, records.get(pid), s)
         if action == "skip":
             counts["skipped"] += 1

@@ -16,6 +16,7 @@ pytest                       # ağa bağımlı değil, tüm HTTP sahte
 python main.py --plan        # CarScore'u oku, aday konuları yaz (AI yok)
 python main.py --check-ai    # GEMINI_API_KEY gerekir
 python write.py --dry-run    # en iyi adayı yaz, data/drafts/ önizleme (Blogger'a gitmez)
+python write.py --daily      # zamanlanmış: yaz, kontrol et, Blogger'a TASLAK
 ```
 
 ## Dosyalar
@@ -31,7 +32,8 @@ python write.py --dry-run    # en iyi adayı yaz, data/drafts/ önizleme (Blogge
 | `writer.py`, `chronicle_pipeline.py`, `write.py` | Yazım (Gemini) → SEO + sayı kontrolü → fact-check → önizleme |
 | `ai_client.py`, `quota.py` | Tek AI kapısı (Gemini), model zinciri, günlük kota defteri |
 | `fact_checker.py`, `seo_check.py` | Bağımsız doğruluk kontrolü; kodla HTML/SEO/kopya kontrolü |
-| `blogger.py`, `blogger_reauth.py` | Yalnız TASLAK gönderim; telefondan giriş yenileme |
+| `image_library.py`, `visuals.py` | 'Görsel arşivi' taslağındaki resimler + kodla kapak ve veri görselleri (HTML) |
+| `blogger.py`, `blogger_reauth.py`, `blogger_login.sh` | Yalnız TASLAK gönderim; telefondan giriş yenileme |
 | `schema_markup.py` | Yayındaki yazılara BlogPosting JSON-LD |
 | `memory.py`, `normalizer.py` | Konu/kota hafızası (JSON, Actions'ta `state` dalı); Türkçe uyumlu anahtarlar |
 

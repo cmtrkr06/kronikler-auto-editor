@@ -156,3 +156,20 @@ def test_prompts_carry_the_arithmetic_rule():
     from fact_checker import SYSTEM as CHECK
     from writer import COMMON
     assert "geri kalan" in COMMON and "geri kalan 73" in CHECK
+
+
+def test_a_bad_main_title_is_replaced_by_a_passing_alternative():
+    from writer import choose_title
+    d = Draft.model_validate_json(draft(title="DQ200: Sahiplerin %13'ü Pişman",
+                                        title_alternatives=["DQ200'de Arıza Kaçıncı Kilometrede?",
+                                                            "DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza"]))
+    chosen, others = choose_title(d, [p.text for p in PACK.passages])
+    assert chosen.title == "DQ200'de Arıza Kaçıncı Kilometrede?" and others == ["DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde Arıza"]
+    r = evaluate(TOPIC, PACK, d, WriterSettings())
+    assert r.draft.title.startswith("DQ200'de") and r.title_options and r.seo.passed, r.seo.errors
+
+
+def test_all_titles_bad_keeps_the_error():
+    d = Draft.model_validate_json(draft(title="DQ200 alınmaz mı? %13", title_alternatives=["Uzak durun: DQ200"]))
+    r = evaluate(TOPIC, PACK, d, WriterSettings())
+    assert not r.seo.passed and any("olmayan sayı" in e for e in r.seo.errors)

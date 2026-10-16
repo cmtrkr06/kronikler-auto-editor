@@ -237,6 +237,21 @@ def ungrounded_numbers(text: str, source_texts: Iterable[str]) -> list[str]:
                   key=lambda x: (len(x), x))
 
 
+def title_problems(title: str, source_texts: Iterable[str]) -> list[str]:
+    """A headline may be catchy, never wrong: length, banned verdicts, every number from the pack."""
+    errors = []
+    if not title.strip():
+        errors.append("başlık boş")
+    if len(title) > TITLE_MAX:
+        errors.append(f"başlık {len(title)} karakter (en çok {TITLE_MAX})")
+    lowered = turkish_lower(title)
+    errors += [f"başlıkta yasak ifade: '{p}'" for p in BANNED_PHRASES if p in lowered]
+    stray = ungrounded_numbers(title, source_texts)
+    if stray:
+        errors.append("başlıkta veri paketinde olmayan sayı: " + ", ".join(stray))
+    return errors
+
+
 def chronicle_problems(html: str, title: str) -> list[str]:
     """Kronikler yapısı (docs/PLAN.md bölüm 4): başlıksız giriş, veri tablosu, 'Veri notu' kutusu."""
     errors = []

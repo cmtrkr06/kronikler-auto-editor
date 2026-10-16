@@ -11,7 +11,7 @@ never proposed again; a DRAFTED topic comes back only as NEEDS_UPDATE when its s
 from __future__ import annotations
 
 import hashlib
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass, field
 from itertools import combinations
 from typing import Optional
 
@@ -32,6 +32,7 @@ class Candidate:
     ok: bool
     reason: str               # why it is (not) a candidate
     action: str = "new"       # "new" | "update" | "skip"
+    data: dict = field(default_factory=dict)   # structured numbers for visuals.py (never from the AI)
 
 
 def pack_hash(pack: ResearchPack) -> str:
@@ -46,6 +47,26 @@ def compare_key(url_a: str, url_b: str, label: str) -> str:
     """Order-independent; readable prefix + hash so two long names never collide after truncation."""
     digest = hashlib.sha1("|".join(sorted([url_a, url_b])).encode("utf-8")).hexdigest()[:8]
     return f"{topic_key('karşılaştırma ' + label, max_len=60)}-{digest}"
+
+
+def fault_data(spot, fault, unit, snap: Snapshot, s: CarScoreSettings) -> dict:
+    users = [v for v in snap.vehicles.values()
+             if v.specs.get("Şanzıman") == fault.unit or any(f.unit == fault.unit for f in v.faults)]
+    models = [c.title for c in unit.vehicles] if unit is not None else []
+    models += [v.make for v in users if v.make not in models]
+    return {"unit": fault.unit, "label": spot.label, "reports": fault.reports, "with_issue": fault.with_issue,
+            "outcomes": [asdict(o) for o in fault.outcomes], "no_issue_labels": list(s.no_issue_labels),
+            "unknown_labels": list(s.unknown_labels), "models": models, "source_url": fault.source_url,
+            "photos": [v.photo for v in users if v.photo]}
+
+
+def vehicle_data(v, lead) -> dict:
+    return {"name": v.name, "short": f"{lead.name} {lead.config}".strip(), "url": v.url, "carscore": v.carscore,
+            "opinions": v.opinions, "rating": v.rating, "repurchase_pct": v.repurchase_pct,
+            "consumption": v.consumption.get("Ortalama"),
+            "top_strength": f"{v.strengths[0].label} %{v.strengths[0].count}" if v.strengths else "",
+            "top_complaint": f"{v.complaints[0].label} %{v.complaints[0].count}" if v.complaints else "",
+            "photo": v.photo}
 
 
 def _decide(topic: ChronicleTopic, store: Optional[MemoryStore]) -> tuple[str, str]:
@@ -85,7 +106,8 @@ def candidates(snap: Snapshot, store: Optional[MemoryStore] = None,
         topic.data_hash, topic.sample = pack_hash(pack), fault.reports
         topic.subject_urls = list(dict.fromkeys([spot.url, fault.source_url]))
         action, why = _decide(topic, store)
-        out.append(Candidate(topic, pack, action != "skip", why or f"{fault.reports} bildirim", action))
+        out.append(Candidate(topic, pack, action != "skip", why or f"{fault.reports} bildirim", action,
+                             fault_data(spot, fault, snap.units.get(spot.url), snap, s)))
 
     by_body: dict[str, list] = {}
     for lead in snap.hub.leads:
@@ -114,7 +136,8 @@ def candidates(snap: Snapshot, store: Optional[MemoryStore] = None,
             pack.created_at = snap.taken_at
             topic.data_hash, topic.sample = pack_hash(pack), low
             action, why = _decide(topic, store)
-            out.append(Candidate(topic, pack, action != "skip", why or f"{va.opinions} ve {vb.opinions} görüş", action))
+            out.append(Candidate(topic, pack, action != "skip", why or f"{va.opinions} ve {vb.opinions} görüş", action,
+                                 {"a": vehicle_data(va, la), "b": vehicle_data(vb, lb)}))
     return out
 
 

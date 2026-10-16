@@ -20,7 +20,7 @@ from config import WriterSettings
 from data_pack import ResearchPack
 from models import ChronicleTopic, TopicType
 from normalizer import topic_key
-from seo_check import SeoReport, check, sanitize_html
+from seo_check import SeoReport, check, sanitize_html, title_problems
 
 log = logging.getLogger("kronikler.writer")
 
@@ -33,6 +33,9 @@ class Claim(BaseModel):
 class Draft(BaseModel):
     title: str = Field(description="Yazının başlığı (Blogger bunu H1 yapar), en fazla 70 karakter; birim ya da "
                                    "araç adını ve paketteki gerçek bir sayıyı içerir")
+    title_alternatives: list[str] = Field(
+        default_factory=list,
+        description="İki farklı tarzda alternatif başlık (biri soru, biri çarpıcı bir sayı), aynı kurallarla")
     seo_title: str = Field(description="Arama sonuçları için başlık, en fazla 60 karakter")
     meta_description: str = Field(description="Arama açıklaması, 70-150 karakter, net ve tıklama odaklı")
     slug: str = Field(description="Küçük harf, Türkçe karaktersiz, tireli URL parçası")
@@ -77,6 +80,13 @@ YAPI (html_body)
 8. "Sonuç", "Değerlendirme", "Özet" başlığı AÇMA. Yazı verinin söylediği son somut noktayla bitsin.
 9. HTML gövdede H1 yok; alt başlıklar H2/H3. Gövdeye link ve görsel koyma (veri kaynağı kutusunu ve görselleri
    sistem ekler).
+
+BAŞLIK (çok önemli: okur tıklasın ama yanılmasın)
+- title merak uyandırsın: sahiplerin sesini, şaşırtıcı bir sayıyı ya da okurun aklındaki soruyu öne çıkar
+  (ör. "DQ200 Sahipleri Anlattı: 84 Bildirimin 11'inde DSG Arızası", "DQ200'de Arıza Kaçıncı Kilometrede?").
+- title_alternatives: iki farklı tarzda alternatif (biri soru başlığı, biri çarpıcı bir sayıyla).
+- Her başlık en fazla 70 karakter; içindeki her sayı pakette aynen geçer; veri desteklemeyen vaat ya da hüküm
+  YOK ("alınmaz", "kesin arızalı", "herkes pişman" gibi). Büyük harfle bağırma, ünlem yağmuru, "şok" yok.
 
 DİL
 10. Bilgili bir otomobil yazarı gibi sade, akıcı Türkçe; robotik ve kurumsal dil yok. Ondalıkta virgül (5,5).
@@ -136,6 +146,7 @@ class WriteResult:
     revisions: int = 0
     history: list[list[str]] = field(default_factory=list)  # SEO errors of rejected attempts
     model: str = ""                     # the model that wrote it; the fact-check must use another
+    title_options: list[str] = field(default_factory=list)   # the other headlines that passed, for the editor
 
 
 def source_box(pack: ResearchPack) -> tuple[str, list[str]]:
@@ -154,7 +165,17 @@ def source_box(pack: ResearchPack) -> tuple[str, list[str]]:
             f"değişebilir; güncel hâli için:</p><ul>{items}</ul>"), list(seen)
 
 
+def choose_title(draft: Draft, sources: list[str]) -> tuple[Draft, list[str]]:
+    """The model's main headline if it passes, else the first alternative that does (code decides)."""
+    options = [t.strip() for t in [draft.title, *draft.title_alternatives] if t and t.strip()]
+    good = [t for t in dict.fromkeys(options) if not title_problems(t, sources)]
+    if good and good[0] != draft.title.strip():
+        draft = draft.model_copy(update={"title": good[0]})
+    return draft, good[1:]
+
+
 def evaluate(topic: ChronicleTopic, pack: ResearchPack, draft: Draft, settings: WriterSettings) -> WriteResult:
+    draft, alternatives = choose_title(draft, [p.text for p in pack.passages])
     body, removed = sanitize_html(draft.html_body)
     slug = topic_key(draft.slug) or topic_key(draft.title)
     claim_ids = [[k.strip().strip("[]").upper() for k in c.kaynaklar] for c in draft.claims]
@@ -173,7 +194,7 @@ def evaluate(topic: ChronicleTopic, pack: ResearchPack, draft: Draft, settings: 
         t = t.strip()
         if t and t not in labels and len(labels) <= settings.max_tags:
             labels.append(t)
-    return WriteResult(topic.key, draft, body + box, body, slug, labels, urls, report)
+    return WriteResult(topic.key, draft, body + box, body, slug, labels, urls, report, title_options=alternatives)
 
 
 class Writer:

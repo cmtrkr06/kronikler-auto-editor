@@ -1,12 +1,14 @@
-"""Write one Kronikler article as a local preview (step 2: nothing goes to Blogger).
+"""Write Kronikler articles: local preview, Blogger DRAFT, and the scheduled run.
 
-    python write.py --dry-run                         # best candidate of today's CarScore data
+    python write.py --dry-run                         # best candidate of today's CarScore data, preview only
     python write.py --dry-run --topic ariza-dq200     # one topic (key prefix)
     python write.py --dry-run --snapshot data/carscore/2026-10-16.json
+    python write.py --send ariza-dq200                # a saved READY draft -> Blogger DRAFT (with photo + graphics)
+    python write.py --daily                           # scheduled run: weekly cap, write, check, send, schema
 
-Writes data/drafts/<key>.html (preview with SEO/fact-check status and every claim next to the data it
-rests on) and <key>.json (the draft, for step 3's Blogger send). One article per run: the free tier's
-daily writer quota is small and the plan is 3 articles a week.
+data/drafts/<key>.html is the preview (SEO/fact-check status, every claim next to its data); <key>.json is
+the draft with the structured data the graphics are drawn from. One article per run: the free tier's daily
+quota is shared with Zapyus and the plan is 3 articles a week. Nothing is ever published automatically.
 """
 from __future__ import annotations
 
@@ -26,6 +28,8 @@ from fact_checker import FactChecker, FactCheckResult
 from memory import create_store
 from models import ChronicleTopic
 from writer import Draft, WriteResult, Writer, evaluate
+
+log = logging.getLogger("kronikler.write")
 
 PREVIEW_CSS = """body{font:16px/1.6 system-ui,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;color:#222}
 .meta{background:#f5f5f2;border:1px solid #ddd;padding:1rem;border-radius:8px;font-size:14px}
@@ -87,7 +91,7 @@ def render_preview(topic: ChronicleTopic, pack: ResearchPack, r: WriteResult,
 
 
 def save_draft(topic: ChronicleTopic, pack: ResearchPack, r: WriteResult, directory: str,
-               outcome: Optional[ChronicleOutcome] = None) -> Path:
+               outcome: Optional[ChronicleOutcome] = None, data: Optional[dict] = None) -> Path:
     out = Path(directory)
     out.mkdir(parents=True, exist_ok=True)
     previous = out / f"{topic.key}.json"
@@ -101,7 +105,7 @@ def save_draft(topic: ChronicleTopic, pack: ResearchPack, r: WriteResult, direct
         "blogger": blogger_info, "topic": topic.to_dict(), "pack": pack.to_dict(),
         "topic_key": topic.key, "draft": r.draft.model_dump(), "html": r.html, "slug": r.slug,
         "labels": r.labels, "source_urls": r.source_urls, "revisions": r.revisions, "history": r.history,
-        "writer_model": r.model,
+        "writer_model": r.model, "title_options": r.title_options, "data": data or {},
         "seo": {"errors": r.seo.errors, "warnings": r.seo.warnings, "word_count": r.seo.word_count},
         "ready": outcome.ready if outcome else None,
         "pending_check": outcome.pending_check if outcome else False,
@@ -142,10 +146,11 @@ def load_snapshot(path: Optional[str]):
     return snap
 
 
-def dry_run(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipeline=None, store=None,
-            ws: WriterSettings = WriterSettings()) -> int:
-    """0 = a preview was written (ready or not), 1 = nothing to write or the writer was unreachable."""
-    from ai_client import AIError, create_ai_client
+def write_one(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipeline=None, store=None,
+              ws: WriterSettings = WriterSettings()):
+    """Pick today's topic, write + check it, save the draft. Returns (candidate, outcome, path), or None
+    when there is nothing to write. Raises AIError when the writer is unreachable."""
+    from ai_client import create_ai_client
     from planner import candidates, pick
     from quota import QuotaLedger
     store = store if store is not None else create_store(load_settings())
@@ -154,7 +159,7 @@ def dry_run(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipelin
     if chosen is None:
         print(f"[YOK] yazılabilir konu yok{' (' + topic_prefix + ')' if topic_prefix else ''}: "
               "python main.py --plan ile nedenlerine bak")
-        return 1
+        return None
     topic, pack = chosen.topic, chosen.pack
     print(f"[KONU] {topic.title} ({chosen.reason})")
     try:
@@ -162,17 +167,147 @@ def dry_run(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipelin
             ai = create_ai_client(load_ai_settings(), os.environ.get("GEMINI_API_KEY"), ledger=QuotaLedger(store))
             pipeline = ChroniclePipeline(Writer(ai, ws), FactChecker(ai, FactCheckSettings()), FactCheckSettings())
         outcome = pipeline.run(topic, pack, pending_draft(topic, pack, ws))
-    except AIError as exc:
-        print(f"[HATA] yazar çalışmadı: {exc}")
-        return 1
     finally:
         store.flush()
-    path = save_draft(topic, pack, outcome.result, ws.draft_dir, outcome)
+    path = save_draft(topic, pack, outcome.result, ws.draft_dir, outcome, chosen.data)
     state = "HAZIR" if outcome.ready else ("FACT-CHECK BEKLİYOR" if outcome.pending_check else "HAZIR DEĞİL")
     print(f"[{state}] {outcome.result.draft.title} · {outcome.result.seo.word_count} kelime · {path}")
     if not outcome.ready:
         print(f"   neden: {outcome.reason}")
+    return chosen, outcome, path
+
+
+def dry_run(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipeline=None, store=None,
+            ws: WriterSettings = WriterSettings()) -> int:
+    """0 = a preview was written (ready or not), 1 = nothing to write or the writer was unreachable."""
+    from ai_client import AIError
+    try:
+        done = write_one(topic_prefix, snapshot_path, pipeline, store, ws)
+    except AIError as exc:
+        print(f"[HATA] yazar çalışmadı: {exc}")
+        return 1
+    return 0 if done else 1
+
+
+# ------------------------------------------------------------------ Blogger
+EDITOR_NOTE_MARK = "kronikler-editor-note"
+
+
+def editor_note(saved: dict, notes: list[str]) -> str:
+    """Red box at the top of the Blogger DRAFT: what the API cannot set (search description, permalink)
+    and the choices left to the editor. It must be deleted before publishing - it says so."""
+    d = saved["draft"]
+    items = [f"<b>Arama açıklaması</b> (Blogger › Arama açıklaması): {escape(d['meta_description'])}",
+             f"<b>Kalıcı bağlantı önerisi</b> (Blogger › Kalıcı bağlantı › Özel): {escape(saved['slug'])}"]
+    if saved.get("title_options"):
+        items.append("<b>Diğer başlık seçenekleri</b>: " + " · ".join(escape(t) for t in saved["title_options"]))
+    items += [escape(n) for n in notes]
+    return (f'<div class="{EDITOR_NOTE_MARK}" style="border:2px solid #c8102e;background:#fff5f5;color:#111;'
+            f'padding:12px 14px;margin:0 0 20px;font-size:14px;line-height:1.5">'
+            f'<strong style="color:#c8102e">EDİTÖR NOTU · Yayınlamadan önce bu kutuyu sil.</strong><br>'
+            + "<br>".join(items) + "</div>")
+
+
+def final_html(saved: dict, library, with_note: bool = True) -> tuple[str, list[str]]:
+    from visuals import decorate
+    kind = saved["topic"]["type"]
+    html, report = decorate(kind, saved.get("data") or {}, saved["html"], library)
+    notes = list(report.notes)
+    if report.photo is not None:
+        notes.append(f"Görsel: {report.photo.reason}")
+    return (editor_note(saved, notes) if with_note else "") + html, notes
+
+
+def send(key_prefix: str, client, store, library=None, ws: WriterSettings = WriterSettings()) -> int:
+    """A saved READY draft -> Blogger DRAFT (new) or update of our unedited Blogger draft."""
+    from blogger import send_draft, update_draft
+    from image_library import load as load_library
+    from config import ImageSettings
+    paths = sorted(Path(ws.draft_dir).glob(f"{key_prefix}*.json"))
+    if len(paths) != 1:
+        print(f"[HATA] '{key_prefix}' için {len(paths)} taslak var (tek olmalı)")
+        return 1
+    path = paths[0]
+    saved = json.loads(path.read_text(encoding="utf-8"))
+    topic = ChronicleTopic.from_dict(saved["topic"])
+    library = library if library is not None else load_library(ImageSettings().store_path)
+    html, notes = final_html(saved, library)
+    outgoing = dict(saved, html=html)
+    if (saved.get("blogger") or {}).get("post_id"):
+        r = update_draft(topic, outgoing, client, store)
+    else:
+        r = send_draft(topic, outgoing, client, store)
+    if not r.ok:
+        print(f"[GÖNDERİLMEDİ] {saved['draft']['title']}: {r.message}")
+        return 1
+    saved["blogger"] = {"post_id": r.post_id, "sent_at": (r.post or {}).get("updated") or "",
+                        "updated_at": (r.post or {}).get("updated") or ""}
+    path.write_text(json.dumps(saved, ensure_ascii=False, indent=1), encoding="utf-8")
+    store.flush()
+    print(f"[TASLAK] Blogger'a gitti: {saved['draft']['title']} (id {r.post_id})")
+    for n in notes:
+        print(f"   not: {n}")
     return 0
+
+
+def our_post_ids(ws: WriterSettings = WriterSettings()) -> set[str]:
+    ids = set()
+    for p in Path(ws.draft_dir).glob("*.json"):
+        try:
+            pid = (json.loads(p.read_text(encoding="utf-8")).get("blogger") or {}).get("post_id")
+        except (OSError, ValueError):
+            continue
+        if pid:
+            ids.add(str(pid))
+    return ids
+
+
+def week_count(store, today) -> int:
+    week = today.isocalendar()[:2]
+    from datetime import date
+    return sum(1 for d in (store.get_meta("sent_days") or []) if date.fromisoformat(d).isocalendar()[:2] == week)
+
+
+def daily(client=None, store=None, pipeline=None, ws: WriterSettings = WriterSettings(), today=None,
+          snapshot_path: Optional[str] = None, ai_for_labels=None, fetch=None) -> int:
+    """Scheduled run (Mon/Wed/Fri evening). 0 = done (a draft went out, or nothing worth writing),
+    1 = something needs attention (writer/check/Blogger error) - the Actions run turns red."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    from ai_client import AIError
+    from config import ImageSettings
+    import image_library
+    store = store if store is not None else create_store(load_settings())
+    today = today or datetime.now(ZoneInfo("Europe/Istanbul")).date()
+    sent_days = store.get_meta("sent_days") or []
+    if today.isoformat() in sent_days:
+        print("[ATLA] bugün zaten bir taslak gitti")
+        return 0
+    if week_count(store, today) >= ws.weekly_cap:
+        print(f"[ATLA] bu hafta {ws.weekly_cap} taslak gitti (haftalık tavan)")
+        return 0
+    try:
+        done = write_one("", snapshot_path, pipeline, store, ws)
+    except AIError as exc:
+        print(f"[HATA] yazar çalışmadı: {exc}")
+        return 1
+    if not done:
+        return 0                                   # "nothing worth writing" is a valid result
+    chosen, outcome, _ = done
+    if not outcome.ready:
+        return 1
+    library = []
+    if client is not None:
+        try:
+            library = image_library.refresh(client, ImageSettings().store_path, ai_for_labels, fetch)
+        except SystemExit as exc:                  # no archive draft: photos fall back to CarScore
+            print(f"[UYARI] {exc}")
+            library = image_library.load(ImageSettings().store_path)
+    code = send(chosen.topic.key, client, store, library, ws)
+    if code == 0:
+        store.set_meta("sent_days", (sent_days + [today.isoformat()])[-30:])
+        store.flush()
+    return code
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -180,14 +315,44 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--dry-run", action="store_true", help="yerel önizleme yaz (Blogger'a gönderme)")
     ap.add_argument("--topic", default="", help="konu anahtarı başı (örn. ariza-dq200)")
     ap.add_argument("--snapshot", help="canlı site yerine kayıtlı anlık görüntü")
+    ap.add_argument("--send", metavar="KONU", help="kayıtlı HAZIR taslağı Blogger'a TASLAK olarak gönder")
+    ap.add_argument("--daily", action="store_true", help="zamanlanmış çalıştırma (haftalık tavan, yaz, gönder)")
     args = ap.parse_args(argv)
     logging.basicConfig(level=getattr(logging, load_settings().log_level, logging.INFO),
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
-    if not args.dry_run:
-        print("Adım 2'de yalnız --dry-run var; Blogger'a gönderim Adım 3'te.")
+    if args.dry_run:
+        return dry_run(args.topic, args.snapshot)
+    if not (args.send or args.daily):
+        ap.print_help()
         return 2
-    return dry_run(args.topic, args.snapshot)
+    from blogger import BloggerError, GoogleBloggerClient
+    try:
+        client = GoogleBloggerClient(os.environ.get("BLOGGER_ID", ""))
+    except BloggerError as exc:
+        print(f"[HATA] Blogger: {exc}")
+        return 1
+    store = create_store(load_settings())
+    if args.send:
+        return send(args.send, client, store)
+    ai = fetch = None
+    if os.environ.get("GEMINI_API_KEY"):
+        from ai_client import create_ai_client
+        from fetcher import Fetcher
+        from quota import QuotaLedger
+        ai = create_ai_client(load_ai_settings(), os.environ["GEMINI_API_KEY"], ledger=QuotaLedger(store))
+        fetch = Fetcher(load_settings()).fetch
+    code = daily(client, store, snapshot_path=args.snapshot, ai_for_labels=ai, fetch=fetch)
+    from config import SchemaSettings
+    import schema_markup
+    s = SchemaSettings()
+    if s.auto_apply:
+        records = schema_markup.load_records(s.record_path)
+        counts = schema_markup.apply(client, records, s, only_ids=our_post_ids())
+        schema_markup.save_records(s.record_path, records)
+        print(f"[ŞEMA] yazılan {counts['written']}, değişmeyen {counts['skipped'] + counts['same']}, hata {counts['failed']}")
+    store.flush()
+    return code
 
 
 if __name__ == "__main__":

@@ -142,6 +142,7 @@ class WriterSettings:
     length_targets: tuple = ((6000, (700, 1000)), (2500, (500, 750)), (0, (400, 550)))
     min_words: tuple = (("ariza", 400), ("karsilastirma", 500))
     labels: tuple = (("ariza", "Arıza Kronikleri"), ("karsilastirma", "Karşılaştırma"))
+    weekly_cap: int = 3                 # user decision 2026-10-16: 3 a week, at most 1 a day
 
 
 @dataclass(frozen=True)

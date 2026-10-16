@@ -189,3 +189,14 @@ def test_fault_section_still_collecting_is_pending_not_an_error():
 def test_participants_may_be_fewer_than_opinions():
     v = parse_vehicle(page("arac_volkswagen_id_7_1_nesil_app_550_286_hp_pro_s.html"), ID7)
     assert (v.opinions, v.participants) == (18, 17) and v.problems() == [] and v.survey_ready()
+
+
+def test_saved_snapshot_plans_exactly_like_the_live_one(tmp_path):
+    from planner import candidates
+    live, _ = collect()
+    save_snapshot(live, str(tmp_path), "2026-10-16")
+    back = latest_snapshot(str(tmp_path), "2026-10-17")
+    assert back.units.keys() == live.units.keys() and back.units[f"{BASE}/sanziman/dq200/"].vehicles
+    a = {c.topic.key: c.pack.render() for c in candidates(live) if c.pack}
+    b = {c.topic.key: c.pack.render() for c in candidates(back) if c.pack}
+    assert a == b and a

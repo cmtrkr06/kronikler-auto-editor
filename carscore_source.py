@@ -212,6 +212,7 @@ class Vehicle:
     stats: dict[str, list[Outcome]]  # survey question -> [(label, percent or count)]
     faults: list[FaultReport]
     low_data: list[str] = field(default_factory=list)       # questions under the site's own data threshold
+    photo: dict = field(default_factory=dict)  # hero photo WITH its credit {src, alt, author, license, license_url, source_url}
     pending_faults: list[dict] = field(default_factory=list)  # fault sections still collecting (no numbers)
 
     @property
@@ -428,6 +429,16 @@ def parse_vehicle(html: bytes | str, url: str) -> Vehicle:
                     consumption[label] = value
                 continue
             stats[q] = [o for ul in art.select("ul.carscore-bars") for o in _bars(ul, url, q)]
+    photo = {}
+    hero_img = main.select_one(".carscore-hero__image img")
+    credit = main.select_one(".carscore-hero__image .carscore-image-credit")
+    if hero_img is not None and credit is not None:        # no credit -> the photo is never reused
+        lic = credit.select_one(".carscore-image-credit__license a")
+        src_link = credit.select_one(".carscore-image-credit__source a")
+        photo = {"src": hero_img.get("src", ""), "alt": hero_img.get("alt", ""),
+                 "author": re.sub(r"^Foto:\s*", "", text(credit.select_one(".carscore-image-credit__author"))),
+                 "license": text(lic), "license_url": lic.get("href", "") if lic else "",
+                 "source_url": src_link.get("href", "") if src_link else ""}
     faults, pending = [], []
     for sec in main.select("section.carscore-fault"):
         waiting = pending_fault(sec, url)
@@ -445,7 +456,7 @@ def parse_vehicle(html: bytes | str, url: str) -> Vehicle:
         repurchase_pct=repurchase, meters=meters, sources=sources,
         strengths=_bars(plus, url, "güçlü yönler"), complaints=_bars(minus, url, "şikâyetler"),
         specs=specs, consumption=consumption, participants=participants, stats=stats,
-        faults=faults, low_data=low_data, pending_faults=pending)
+        faults=faults, low_data=low_data, pending_faults=pending, photo=photo)
 
 
 # ------------------------------------------------------------------ cross checks
@@ -489,7 +500,8 @@ def _fault_from_dict(d: dict) -> FaultReport:
 
 
 def snapshot_from_dict(d: dict) -> Snapshot:
-    """Only what drift checks and data packs need: faults and vehicles."""
+    """Everything planning needs: hub, unit pages, faults, vehicles, problems (a saved snapshot must
+    plan exactly like the live one)."""
     snap = Snapshot(d.get("taken_at", ""))
     snap.faults = {k: _fault_from_dict(v) for k, v in d.get("faults", {}).items()}
     for k, v in d.get("vehicles", {}).items():
@@ -497,6 +509,9 @@ def snapshot_from_dict(d: dict) -> Snapshot:
                                       "complaints": [Outcome(**o) for o in v["complaints"]],
                                       "stats": {q: [Outcome(**o) for o in os_] for q, os_ in v["stats"].items()},
                                       "faults": [_fault_from_dict(f) for f in v["faults"]]})
+    for k, u in d.get("units", {}).items():
+        snap.units[k] = UnitPage(**{**u, "fault": _fault_from_dict(u["fault"]) if u.get("fault") else None,
+                                    "vehicles": [UnitCard(**c) for c in u.get("vehicles", [])]})
     if d.get("hub"):
         h = d["hub"]
         snap.hub = Hub(h["url"], h["stats"], [Spotlight(**s) for s in h["spotlights"]], [Lead(**x) for x in h["leads"]])

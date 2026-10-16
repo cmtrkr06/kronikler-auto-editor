@@ -1,6 +1,6 @@
 # Kronikler Auto Editor — plan
 
-Durum: ONAYLANDI (2026-10-16). Adım 0 ve 1 tamam; Adım 2 kodu tamam, ilk önizleme Gemini anahtarını bekliyor.
+Durum: ONAYLANDI (2026-10-16). Adım 0-3 kodu tamam; ilk zamanlanmış çalıştırma Cuma 21:15 TR.
 Hedef: https://otomobilkronikleri.blogspot.com/ için, yalnız CarScore verisinden (shiftandtrend.com/araclar/)
 yazı üreten ve Blogger'a TASLAK gönderen otomatik hat. Zapyus hattının (cmtrkr06/zapyus-auto-editor,
 commit e193136) kanıtlanmış parçaları kopyalanır; ayrı depo, ayrı state dalı, ayrı Gemini anahtarı.
@@ -17,7 +17,7 @@ Zapyus haber sitelerini tarar ve kaynak sayfalardan paket kurar. Kronikler hiçb
 | `fact_checker.py`, `seo_check.py` | rehber zorunlu yapısı yerine Kronikler yapısı |
 | `blogger.py`, `blogger_reauth.py` | yok; yeni blog ID ve token |
 | `schema_markup.py` | yalnız BlogPosting; site adı/adresi |
-| `image_sources.py`, `image_manager.py`, `asset_host.py` | Wikimedia Commons model fotoğrafı; ayrı açık görsel deposu |
+| (görseller, karar 2026-10-16) | Zapyus görsel modülü alınmadı: editörün 'Görsel arşivi' taslağı + kredili CarScore fotoğrafı + HTML veri görselleri; görsel deposu yok |
 | `gunluk.sh`, iş akışları (günlük, Blogger girişi yenile, konu kararı) | yeni adlar |
 
 | Yeni | Görevi |
