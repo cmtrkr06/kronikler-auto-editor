@@ -37,24 +37,7 @@ class BloggerError(Exception):
 
 class BloggerClient(Protocol):
     def insert_draft(self, title: str, content: str, labels: list[str]) -> dict: ...
-    def find_draft(self, title: str) -> Optional[dict]:
-        """The DRAFT whose title matches (normalized, e.g. the 'Görsel arşivi' image archive), with body."""
-        want = topic_key(title)
-        token = None
-        try:
-            while True:
-                resp = self.service.posts().list(
-                    blogId=self.blog_id, status=["DRAFT"], view="AUTHOR", fetchBodies=True, maxResults=50,
-                    pageToken=token, fields="items(id,title,content,updated),nextPageToken").execute()
-                for p in resp.get("items", []):
-                    if topic_key(p.get("title", "")) == want:
-                        return p
-                token = resp.get("nextPageToken")
-                if not token:
-                    return None
-        except Exception as exc:
-            raise BloggerError(f"posts.list (taslak) başarısız: {type(exc).__name__}: {str(exc)[:200]}") from exc
-
+    def find_draft(self, title: str) -> Optional[dict]: ...
     def get_post(self, post_id: str) -> dict: ...
     def patch_draft(self, post_id: str, title: str, content: str, labels: list[str]) -> dict: ...
     def live_posts(self) -> list[dict]: ...
@@ -111,6 +94,24 @@ class GoogleBloggerClient:
                     return titles
         except Exception as exc:
             raise BloggerError(f"posts.list başarısız: {type(exc).__name__}: {str(exc)[:200]}") from exc
+
+    def find_draft(self, title: str) -> Optional[dict]:
+        """The DRAFT whose title matches (normalized, e.g. the 'Görsel arşivi' image archive), with body."""
+        want = topic_key(title)
+        token = None
+        try:
+            while True:
+                resp = self.service.posts().list(
+                    blogId=self.blog_id, status=["DRAFT"], view="AUTHOR", fetchBodies=True, maxResults=50,
+                    pageToken=token, fields="items(id,title,content,updated),nextPageToken").execute()
+                for p in resp.get("items", []):
+                    if topic_key(p.get("title", "")) == want:
+                        return p
+                token = resp.get("nextPageToken")
+                if not token:
+                    return None
+        except Exception as exc:
+            raise BloggerError(f"posts.list (taslak) başarısız: {type(exc).__name__}: {str(exc)[:200]}") from exc
 
     def get_post(self, post_id: str) -> dict:
         try:

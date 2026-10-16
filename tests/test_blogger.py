@@ -202,3 +202,29 @@ def test_new_title_is_sent_and_failed_listing_blocks_the_send():
     blocked = ListingClient(listing_error=BloggerError("posts.list başarısız: 500"))
     r = send_draft(topic(), saved(), blocked, InMemoryStore())
     assert not r.ok and "kopya kontrolü yapılamadı" in r.message and blocked.calls == []
+
+
+def test_google_client_finds_the_archive_draft_by_normalized_title():
+    from blogger import GoogleBloggerClient
+
+    class Req:
+        def __init__(self, resp):
+            self.resp = resp
+
+        def execute(self):
+            return self.resp
+
+    class Posts:
+        def __init__(self):
+            self.pages = [{"items": [{"id": "1", "title": "Başka"}], "nextPageToken": "t"},
+                          {"items": [{"id": "2", "title": "GÖRSEL ARŞİVİ ", "content": "<img>"}]}]
+
+        def list(self, **kw):
+            assert kw["status"] == ["DRAFT"] and kw["fetchBodies"] is True
+            return Req(self.pages.pop(0))
+
+    client = GoogleBloggerClient.__new__(GoogleBloggerClient)
+    client.blog_id = "b"
+    client.service = type("S", (), {"posts": lambda self: posts})()
+    posts = Posts()
+    assert client.find_draft("Görsel arşivi")["id"] == "2"
