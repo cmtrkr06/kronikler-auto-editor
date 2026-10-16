@@ -182,3 +182,26 @@ def test_recheck_runs_only_the_fact_check(tmp_path, monkeypatch):
     assert write.recheck("ariza-dq200", checker, InMemoryStore(), ws) == 0
     assert len(backend.prompts) == 1 and backend.prompts[0][0] == AISettings().check_model
     assert json.loads(path.read_text(encoding="utf-8"))["ready"] is True
+
+
+def test_rewrite_feeds_the_saved_findings_back_once(tmp_path, monkeypatch):
+    import write
+    from ai_client import AIClient
+    from config import AISettings
+    from fact_checker import FactChecker
+    from fakes import FakeBackend
+    from test_writer import DIRTY
+    from writer import Writer
+    write_mod, snap_path, ws = write_ready(tmp_path, monkeypatch)
+    p, _, _ = pipeline(draft(), DIRTY, draft(), DIRTY)          # failed after its own revision round
+    write.dry_run("", snap_path, pipeline=p, store=InMemoryStore(), ws=ws)
+    backend = FakeBackend(generate=[draft(), CLEAN])
+    ai = AIClient(AISettings(), backend, sleep=lambda s: None)
+    assert write.rewrite("ariza-dq200", Writer(ai, ws), FactChecker(ai), InMemoryStore(), ws) == 0
+    assert len(backend.prompts) == 2 and "%13 arıza" in backend.prompts[0][1]
+    assert backend.prompts[1][0] != backend.prompts[0][0]                       # checked on another model
+
+
+def test_checker_prompt_accepts_facts_stated_with_their_base():
+    from fact_checker import SYSTEM
+    assert "Tabanı yanında açıkça yazılmışsa" in SYSTEM and "bulgu YAZMA" in SYSTEM

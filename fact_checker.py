@@ -48,7 +48,9 @@ PAKETİ verilecek. Paket, CarScore'daki (shiftandtrend.com) sahip anketi ve arı
      temsili olmadığını söyler) → celisiyor.
    - Anket yüzdesini kişi sayısına çevirmek → desteklenmiyor.
    - Bir motor/şanzımanı kullanan TÜM araçların bildirimini tek bir modele mal etmek → celisiyor.
-   - Az bildirime dayanan bir bilgiyi (ör. "4 bildirimin ortancası") genel gerçek gibi sunmak → celisiyor.
+   - Az bildirime dayanan bir bilgiyi TABANINI SÖYLEMEDEN ya da genelleyen bir fiille ("yoğunlaşıyor", "genellikle",
+     "çoğunlukla", "sahipler ... ödüyor") sunmak → celisiyor. Tabanı yanında açıkça yazılmışsa ("4 bildirimin ortancası
+     50 – 75 Bin TL", "4 bildirimin en sık cevabı ...") bu DOĞRU aktarımdır, bulgu YAZMA.
    - Sayılar arasında kurulan her ilişkiyi ("geri kalan 67", "toplam", "çoğunluk", "en büyük grup") paketteki
      sayılarla HESAPLAYARAK kontrol et; tutmuyorsa → celisiyor (ör. 84 bildirimin 11'i arızalıysa geri kalan 73'tür).
    - Paketin belirsiz bıraktığı bir şeyi kesinleştirmek (ör. bir sayının hangi gruba ait olduğu) → desteklenmiyor.

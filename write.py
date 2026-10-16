@@ -189,6 +189,42 @@ def dry_run(topic_prefix: str = "", snapshot_path: Optional[str] = None, pipelin
     return 0 if done else 1
 
 
+def rewrite(key_prefix: str, writer=None, checker=None, store=None, ws: WriterSettings = WriterSettings()) -> int:
+    """A saved draft that failed the fact-check: ONE rewrite with the saved findings fed back, then one
+    check on another model (2 requests; the same as the pipeline's own revision round)."""
+    from ai_client import AIError, create_ai_client
+    from quota import QuotaLedger
+    paths = sorted(Path(ws.draft_dir).glob(f"{key_prefix}*.json"))
+    if len(paths) != 1:
+        print(f"[HATA] '{key_prefix}' için {len(paths)} taslak var (tek olmalı)")
+        return 1
+    saved = json.loads(paths[0].read_text(encoding="utf-8"))
+    fc = saved.get("fact_check") or {}
+    feedback = ([f"DOĞRULUK HATASI, düzelt: {e}" for e in fc.get("critical_errors", [])]
+                + [f"KAYNAKTA YOK, çıkar ya da düzelt: {e}" for e in fc.get("unsupported_claims", [])]
+                + list((saved.get("seo") or {}).get("errors", [])))
+    if not feedback:
+        print("[ATLA] yeniden yazdıracak bulgu yok; --recheck kullan")
+        return 1
+    topic, pack = ChronicleTopic.from_dict(saved["topic"]), ResearchPack.from_dict(saved["pack"])
+    store = store if store is not None else create_store(load_settings())
+    try:
+        if writer is None or checker is None:
+            ai = create_ai_client(load_ai_settings(), os.environ.get("GEMINI_API_KEY"), ledger=QuotaLedger(store))
+            writer, checker = writer or Writer(ai, ws), checker or FactChecker(ai, FactCheckSettings())
+        result = writer.write(topic, pack, feedback=feedback)
+        check = checker.check(result.draft.title, result.body, pack, result.model) if result.seo.passed else None
+    except AIError as exc:
+        print(f"[HATA] yeniden yazım çalışmadı: {exc}")
+        return 1
+    finally:
+        store.flush()
+    outcome = ChronicleOutcome(result, check, [check.to_dict()] if check else [])
+    save_draft(topic, pack, result, ws.draft_dir, outcome, saved.get("data"))
+    print(f"[{'HAZIR' if outcome.ready else 'HAZIR DEĞİL'}] {result.draft.title}" + ("" if outcome.ready else f": {outcome.reason}"))
+    return 0 if outcome.ready else 1
+
+
 def recheck(key_prefix: str, checker=None, store=None, ws: WriterSettings = WriterSettings()) -> int:
     """A saved draft that is not READY: code checks again (rules may have been fixed) and, if SEO now
     passes, ONE fact-check request on another model than the writer's. The writer is not called."""
@@ -354,6 +390,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--send", metavar="KONU", help="kayıtlı HAZIR taslağı Blogger'a TASLAK olarak gönder")
     ap.add_argument("--daily", action="store_true", help="zamanlanmış çalıştırma (haftalık tavan, yaz, gönder)")
     ap.add_argument("--recheck", metavar="KONU", help="kayıtlı taslağı yazarı çağırmadan yeniden kontrol et (1 fact-check)")
+    ap.add_argument("--rewrite", metavar="KONU", help="fact-check'te kalan taslağı bulgularla bir kez yeniden yaz (2 istek)")
     args = ap.parse_args(argv)
     logging.basicConfig(level=getattr(logging, load_settings().log_level, logging.INFO),
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -362,6 +399,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         return dry_run(args.topic, args.snapshot)
     if args.recheck:
         return recheck(args.recheck)
+    if args.rewrite:
+        return rewrite(args.rewrite)
     if not (args.send or args.daily):
         ap.print_help()
         return 2

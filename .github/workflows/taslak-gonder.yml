@@ -8,6 +8,10 @@ on:
       konu:
         description: "Konu anahtarı başı (örn. ariza-dq200)"
         required: true
+      yeniden_yaz:
+        description: "Fact-check'te kaldıysa bulgularla bir kez yeniden yazdır (2 Gemini isteği)"
+        type: boolean
+        default: false
 
 concurrency:
   group: state
@@ -52,7 +56,11 @@ jobs:
           mkdir -p data/logs
           log="data/logs/gonder-$(date +%F-%H%M).log"
           python image_library.py 2>&1 | tee "$log"
-          python write.py --recheck "$KONU" 2>&1 | tee -a "$log" || true     # not READY -> code check + 1 fact-check
+          if [ "${{ inputs.yeniden_yaz }}" = "true" ]; then
+            python write.py --rewrite "$KONU" 2>&1 | tee -a "$log" || true    # findings fed back, 1 rewrite + 1 check
+          else
+            python write.py --recheck "$KONU" 2>&1 | tee -a "$log" || true    # not READY -> code check + 1 fact-check
+          fi
           python write.py --send "$KONU" 2>&1 | tee -a "$log"
           tail -20 "$log" | sed 's/^/    /' >> "$GITHUB_STEP_SUMMARY"
 

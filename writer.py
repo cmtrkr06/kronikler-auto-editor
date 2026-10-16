@@ -64,7 +64,9 @@ DOĞRULUK (en önemli kural)
    ≠ "servise girmedi"). Paket bir şeyin belirsiz olduğunu söylüyorsa sen de belirsiz bırak.
 2. Arıza verisi gönüllü sahip BİLDİRİMİDİR, temsili değildir: "84 bildirimden 11'inde arıza bildirildi" diye ADET
    olarak yaz; "arıza oranı", "arızalı çıkıyor", "kesin arızalı", "uzak durun", "asla alınmaz" gibi hüküm YOK.
-   Az bildirime dayanan bir bilgiyi (ör. "4 bildirimin ortancası") tabanıyla birlikte ver.
+   Az bildirime dayanan bir bilgiyi (ör. "4 bildirimin ortancası") HER ZAMAN tabanıyla birlikte ver ve genelleyen fiil
+   kullanma: "arızalar 80-100 bin km'de yoğunlaşıyor" YANLIŞ; "kilometre sorusunu yanıtlayan 8 bildirimin ortancası
+   80 – 100 Bin" DOĞRU. "Ortanca" bir yoğunlaşma, çoğunluk ya da eğilim değildir.
 3. Blog aracı kendisi test etmedi: "test ettik, sürdük, denedik, kendi aracımızda" gibi birinci el deneyim
    YAZMA. Deneyim sahiplerindir: "sahiplerin bildirdiğine göre", "ankete katılanların %58'i" gibi.
 4. Paketteki cümleleri kopyalama; kendi cümlelerinle, okura dönük ve sade anlat.
